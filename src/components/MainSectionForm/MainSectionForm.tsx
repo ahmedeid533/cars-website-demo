@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { carModels, carSeries, carYear } from '@/mocks/searchInputs';
 import { CarContext } from '@/app/[locale]/context/CarContext';
 import styles from './MainSectionForm.module.css';
+import { useTranslations } from 'next-intl';
 
 const MainSectionForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> | null }) => {
     const [carModelValue, setCarModelValue] = useState(carModels[0]);
@@ -23,10 +24,11 @@ const MainSectionForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAc
         };
         carContext?.addCar(selectedCar);
     };
+    const t = useTranslations('Header')
     return (
         <section className={styles['main-section-form']}>
             <div className={styles['main-section-form-container']}>
-                <h6 className={styles['form-title']}>FIND PARTS FOR YOUR VEHICLE</h6>
+                <h6 className={styles['form-title']}>{t('FIND PARTS FOR YOUR VEHICLE')}</h6>
                 <div className={styles['input-container']}>
                     <SelectInput data={carModels} value={carModelValue} setValue={setCarModelValue} />
                     <div className={styles['input-inline-container']}>
@@ -41,7 +43,7 @@ const MainSectionForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAc
                             onClick={handleSearchCar}
                         >
                             <SearchIcon />
-                            <span className='capitalize'>search cars</span>
+                            <span className='capitalize'>{t('search cars')}</span>
                         </Link>
                     </div>
                 </div>
