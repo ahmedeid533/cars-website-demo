@@ -1,10 +1,32 @@
 {
-    "Header": {
-        "Display settings": "Display settings",
-        "Change your language": "Change your language",
-        "Language": "Language",
-        "Save": "Save",
-        "search by make model Year , Product Type , Part Number , or Brand": "search by make model Year , Product Type , Part Number , or Brand",
-        "Select your Vehicle": "Select your Vehicle"
-    }
+  "Header": {
+    "Display settings": "Display settings",
+    "Change your language": "Change your language",
+    "Language": "Language",
+    "Save": "Save",
+    "search by make model Year , Product Type , Part Number , or Brand": "search by make model Year , Product Type , Part Number , or Brand",
+    "Select your Vehicle": "Select your Vehicle",
+    "My Account": "My Account",
+    "Sign in": "Sign in",
+    "Create Account": "Create Account",
+    "New Customer?": "New Customer?",
+    "Sign Up": "Sign Up",
+    "account": "account",
+    "orders": "orders",
+    "wish lists": "wish lists",
+    "Carts": "Carts",
+    "Qty": "Qty",
+    "items in your Cart": "items in your Cart",
+    "Clear Cart": "Clear Cart",
+    "Subtotal": "Subtotal",
+    "Checkout Now": "Checkout Now",
+    "View Cart": "View Cart",
+    "Departments": "Departments",
+    "My Garage": "My Garage",
+    "My Wishlist": "My Wishlist",
+    "Help Center": "Help Center",
+    "Live Chat": "Live Chat",
+    "For Traders": "For Traders",
+    "01014953685": "01014953685"
+  }
 }

@@ -1,10 +1,32 @@
 {
-    "Header": {
-        "Display settings": "إعدادات العرض",
-        "Change your language": "غير لغتك",
-        "Language": "لغة",
-        "Save": "حفظ",
-        "search by make model Year , Product Type , Part Number , or Brand": "البحث حسب الصنع ، النموذج ، السنة ، نوع المنتج ، رقم القطعة ، أو العلامة التجارية",
-        "Select your Vehicle": "اختر سيارتك"
-    }
+  "Header": {
+    "Display settings": "إعدادات العرض",
+    "Change your language": "غير لغتك",
+    "Language": "لغة",
+    "Save": "حفظ",
+    "search by make model Year , Product Type , Part Number , or Brand": "البحث حسب الصنع ، النموذج ، السنة ، نوع المنتج ، رقم القطعة ، أو العلامة التجارية",
+    "Select your Vehicle": "اختر سيارتك",
+    "My Account": "حسابي",
+    "Sign in": "تسجيل الدخول",
+    "Create Account": "إنشاء حساب",
+    "New Customer?": "زبون جديد؟",
+    "Sign Up": "سجل",
+    "account": "حساب",
+    "orders": "طلبات",
+    "wish lists": "قوائم الرغبات",
+    "Carts": "العربة",
+    "Qty": "الكمية",
+    "items in your Cart": "العناصر في عربتك",
+    "Clear Cart": "مسح العربة",
+    "Subtotal": "المجموع الفرعي",
+    "Checkout Now": "الدفع الآن",
+    "View Cart": "عرض العربة",
+    "Departments":"الأقسام",
+    "My Garage":"الجراج الخاص بي",
+    "My Wishlist":"قائمة الرغبات الخاصة بي",
+    "Help Center":"مركز المساعدة",
+    "Live Chat":"الدردشة المباشرة",
+    "For Traders":"للتجار",
+    "01014953685":"01014953685"
+  }
 }

@@ -5,9 +5,6 @@ import Link from 'next/link';
 import { carModels, carSeries, carYear } from '@/mocks/searchInputs';
 import { CarContext } from '@/app/[locale]/context/CarContext';
 import styles from './MainSectionForm.module.css';
-interface MainSectionFormProps {
-    setOpen: React.Dispatch<React.SetStateAction<boolean>> | null;
-}
 
 const MainSectionForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> | null }) => {
     const [carModelValue, setCarModelValue] = useState(carModels[0]);
