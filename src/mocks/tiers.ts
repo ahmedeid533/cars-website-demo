@@ -1,0 +1,1 @@
+export const tiers = ['/category_name/t1.png', '/category_name/t2.png', '/category_name/t37.png', '/category_name/t48.png', '/category_name/t5.png', '/category_name/t6.png', '/category_name/t37.png', '/category_name/t48.png']

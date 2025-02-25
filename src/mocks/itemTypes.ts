@@ -1,0 +1,1 @@
+export const itemTypes = ['/category_name/i1.png', '/category_name/i2.png', '/category_name/i3.png', '/category_name/i4.png', '/category_name/i5.png', '/category_name/i6.png', '/category_name/i6.png', '/category_name/i6.png', '/category_name/i6.png', '/category_name/i6.png']

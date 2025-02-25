@@ -1,0 +1,1 @@
+export const socialMedia = [ "/contact/facebook.svg", "/contact/twetter.svg", "/contact/instagram.svg", "/contact/linkedIn.svg"]
