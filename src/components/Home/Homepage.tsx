@@ -1,3 +1,4 @@
+import { Banner } from '@/types'
 import VehicleSelectionBtn from '../Navbar/Components/VehicleSelectionBtn'
 import Advertisments from './Advertisments/Advertisments'
 import CarCollections from './CarCollections/CarCollections'
@@ -6,11 +7,14 @@ import MainSection from './MainSection/MainSection'
 import TabsAndItems from './TabsAndItems/TabsAndItems'
 import Vehicles from './Vehicles'
 
-const Homepage = () => {
+interface IHomepage {
+    banners: Banner[]
+}
+const Homepage = ({banners}: IHomepage) => {
     return (
         <>
             
-            <MainSection />
+            <MainSection banners={banners}/>
             <Vehicles />
             <CarCollections />
             <CarModels />

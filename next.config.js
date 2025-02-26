@@ -7,10 +7,10 @@ const nextConfig = {
   
   images: {
     remotePatterns: [
-      // {
-      //     protocol: "https",
-      //     hostname: "admin.ficmahac.com",
-      // }
+      {
+          protocol: "https",
+          hostname: "3arbitk.com",
+      }
     ]
   }
 }
