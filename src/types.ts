@@ -24,3 +24,18 @@ export interface CarModelYear {
   year: number
   model_id: number
 }
+
+export interface Logo {
+  id: number
+  brand_name: string
+  image_url: string
+}
+
+export interface BannerFooter {
+  id: number
+  title: string
+  banner_type: string
+  banner_url: string
+  image_url: string
+  resource_type: string
+}
