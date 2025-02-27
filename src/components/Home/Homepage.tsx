@@ -1,5 +1,4 @@
 import { Banner } from '@/types'
-import VehicleSelectionBtn from '../Navbar/Components/VehicleSelectionBtn'
 import Advertisments from './Advertisments/Advertisments'
 import CarCollections from './CarCollections/CarCollections'
 import CarModels from './CarModels'

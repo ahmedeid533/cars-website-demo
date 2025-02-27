@@ -12,7 +12,7 @@ type props = {
 
 export default function SelectInput({ data, value, setValue }: props) {
     return (
-        <FormControl className='w-full border-0 bg-white lg:bg-transparent rounded-xl'>
+        <FormControl className='bg-white lg:bg-transparent border-0 rounded-xl w-full'>
             <Select
                 sx={selectStyle}
                 value={value}

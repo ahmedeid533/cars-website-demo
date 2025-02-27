@@ -13,9 +13,9 @@ const DrawerLists = ({ toggleDrawer }: { toggleDrawer: (event: React.KeyboardEve
             role="presentation"
             onKeyDown={toggleDrawer}
         >
-            <ListItem className='flex items-center justify-between w-full py-5'>
+            <ListItem className='flex justify-between items-center py-5 w-full'>
                 <Link href={'/'} onClick={toggleDrawer}>
-                    <Image src={'/logo.svg'} alt='logo' width={100} height={50} />
+                    <Image src={'/main-logo-1.png'} alt='logo' width={100} height={50} />
                 </Link>
                 <CloseIcon onClick={toggleDrawer} className='cursor-pointer' />
             </ListItem>

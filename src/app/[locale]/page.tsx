@@ -4,8 +4,8 @@ import { Banner } from '@/types'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Auto Parts | Homepage',
-  description: 'Generated for Auto Parts'
+  title: '3ARBITK | Homepage',
+  description: 'Generated for 3ARBITK, auto space parts'
 }
 
 export default async function Home () {

@@ -5,6 +5,7 @@ import VehicleSelectionModal from './VehicleSelectionModal'
 import { CarContext } from '@/app/[locale]/context/CarContext'
 import SavedSearchModal from './SavedSearchModal'
 import { useTranslations } from 'next-intl'
+import { CarBrand } from '@/types'
 
 const VehicleSelectionBtn = () => {
   const [hovered, setIsHovered] = useState(false)

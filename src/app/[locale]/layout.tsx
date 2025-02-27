@@ -7,8 +7,8 @@ import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {
-  title: 'Auto Parts',
-  description: 'Generated for Auto Parts'
+  title: '3ARBITK',
+  description: 'Generated for 3ARBITK, auto space parts'
 }
 
 export default async function LocaleLayout ({
@@ -28,7 +28,7 @@ export default async function LocaleLayout ({
     <html lang='en'>
       <head>
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <link rel='icon' href='/logo.svg' />
+        <link rel='icon' href='/main-logo-2.png' />
       </head>
       <body lang={locale} dir={locale === 'en' ? 'ltr' : 'rtl'}>
         <NextIntlClientProvider locale={locale} messages={messages}>
