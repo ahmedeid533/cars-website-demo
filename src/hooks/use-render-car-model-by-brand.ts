@@ -10,12 +10,12 @@ const useRenderCarModelByBrand = (carBrandValue: number) => {
     setCarModelValue(value)
   }
   useEffect(() => {
+    setCarModelValue(NaN)
+    setCarModelState([])
     if ((carBrandValue)) {
       const fetchCarModels = async () => {
         const response = (await getCarModel(carBrandValue||3)) as CarModelBrand[]
-        if (response.length > 0) {
-          setCarModelValue(response[0]?.id)
-        }
+       
         setCarModelState(response)
       }
       fetchCarModels()

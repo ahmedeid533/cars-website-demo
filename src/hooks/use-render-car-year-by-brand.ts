@@ -10,12 +10,12 @@ const useRenderCarYearByBrand = (carModelValue: number) => {
     setCarYearValue(value)
   }
   useEffect(() => {
+    setCarYearValue(NaN)
+    setCarYearState([])
     if ((carModelValue)) {
       const fetchCarYears = async () => {
         const response = (await getCarYear(carModelValue)) as CarModelYear[]
-        if (response.length > 0) {
-          setCarYearValue(response[0]?.id);
-        }
+     
         setCarYearState(response)
       }
       fetchCarYears()

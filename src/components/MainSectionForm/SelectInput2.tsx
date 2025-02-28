@@ -1,27 +1,59 @@
-"use client"
-import { FormControl, OutlinedInput, Select } from '@mui/material';
-import * as React from 'react';
-import { MenuProps, selectStyle } from './selectStyles';
+import * as React from 'react'
+import {
+  FormControl,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent
+} from '@mui/material'
+import { selectStyle } from './selectStyles'
 
-
-type props = {
-    children: React.ReactNode,
-    value: number|string,
-    setValue: (val: number) => void
+type Props = {
+  children: React.ReactNode
+  value: number | string
+  setValue: (val: number) => void
+  disabled?: boolean
+  placeholder: string
 }
 
-export default function SelectInput2({ children, value, setValue }: props) {
-    return (
-        <FormControl className='bg-white lg:bg-transparent border-0 rounded-xl w-full'>
-            <Select
-                sx={selectStyle}
-                value={value}
-                onChange={(e) => setValue(e.target.value as number)}
-                input={<OutlinedInput />}
-                MenuProps={MenuProps}
-            >
-                {children}
-            </Select>
-        </FormControl >
-    );
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250
+    }
+  }
+}
+
+export default function SelectInput2 ({
+  children,
+  value,
+  setValue,
+  placeholder,
+  disabled = false
+}: Props) {
+  const handleChange = (event: SelectChangeEvent<number | string>) => {
+    setValue(event.target.value as number)
+  }
+
+  return (
+    <FormControl>
+      <Select
+        sx={selectStyle}
+        value={value}
+        onChange={handleChange}
+        input={<OutlinedInput />}
+        displayEmpty
+        MenuProps={MenuProps}
+        disabled={disabled}
+      >
+        <MenuItem disabled value=''>
+          {placeholder}
+        </MenuItem>
+        {children}
+      </Select>
+    </FormControl>
+  )
 }

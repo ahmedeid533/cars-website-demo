@@ -12,9 +12,6 @@ const useRenderCarBrand = () => {
   useEffect(() => {
     const fetchCarBrands = async () => {
       const response = (await getCarBrands()) as CarBrand[]
-      if (response.length > 0) {
-        setCarBrandValue(response[0].id);
-      }
       setCarBrandState(response)
     }
     fetchCarBrands()
