@@ -39,3 +39,16 @@ export interface BannerFooter {
   image_url: string
   resource_type: string
 }
+
+export interface Category {
+  id: number
+  name: {
+    en: string
+    ar: string
+  }
+  slug: string
+  image_url: string
+}
+export interface SubCategory extends Category {
+  appearance_type: string
+}

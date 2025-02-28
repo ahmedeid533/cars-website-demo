@@ -1,7 +1,6 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Divider, ListItem, ListItemButton } from '@mui/material'
-import { drawerItems } from '@/mocks/drawerItems'
 import { drawerContact } from '@/mocks/drawerConatct'
 import { drawerUserInfo } from '@/mocks/drawerUserInfo'
 import DrawerAccordionList from './DrawerAccordionList'
@@ -9,7 +8,9 @@ import DrawerUserInfoList from './DrawerUserInfoList'
 import DrawerContactList from './DrawerContactList'
 import Link from 'next/link'
 import ContactPageIcon from '@mui/icons-material/ContactPage'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
+import { Category } from '@/types'
+import { getCategories } from '@/libs/get-categories'
 
 const DrawerDepartmentList = ({
   toggleDrawer
@@ -23,7 +24,14 @@ const DrawerDepartmentList = ({
       setExpanded(isExpanded ? panel : false)
     }
   const t = useTranslations('Header')
-  const locale = useLocale()
+  const [departments, setDepartments] = React.useState<Category[]>([])
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      const response = (await getCategories()) as Category[]
+      setDepartments(response)
+    }
+    fetchDepartments()
+  },[])
   return (
     <div className='mb-10'>
       <ListItem>
@@ -31,16 +39,17 @@ const DrawerDepartmentList = ({
           {t('Departments')}
         </h3>
       </ListItem>
-      {drawerItems.map((link, index) => (
-        <DrawerAccordionList
-          expanded={expanded}
-          handleChange={handleChange}
-          key={index}
-          index={index}
-          link={link}
-          toggleDrawer={toggleDrawer}
-        />
-      ))}
+      {departments&&departments.length > 0 &&
+        departments?.map((link, index) => (
+          <DrawerAccordionList
+            expanded={expanded}
+            handleChange={handleChange}
+            key={index}
+            index={index}
+            link={link}
+            toggleDrawer={toggleDrawer}
+          />
+        ))}
       <Divider className='my-10' />
       {drawerUserInfo.map((link, index) => (
         <DrawerUserInfoList

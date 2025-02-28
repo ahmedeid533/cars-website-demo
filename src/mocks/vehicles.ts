@@ -1,7 +1,7 @@
 export const vehicles = [
     {
         image: "/home/vehicles/vehicle1.png",
-        path: "/",
+        path: "",
         name: "Angel transfer"
     },
     {

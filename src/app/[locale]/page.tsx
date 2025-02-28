@@ -2,7 +2,8 @@ import Homepage from '@/components/Home/Homepage'
 import { getBanners } from '@/libs/get-banners'
 import { getBannersFooter } from '@/libs/get-banners-footer'
 import { getLogos } from '@/libs/get-logos'
-import { Banner, BannerFooter, Logo } from '@/types'
+import { getMainCategories } from '@/libs/get-main-categories'
+import { Banner, BannerFooter, Category, Logo } from '@/types'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -14,5 +15,13 @@ export default async function Home () {
   const banners = (await getBanners()) as Banner[]
   const logos = (await getLogos()) as Logo[]
   const bannerFooter = (await getBannersFooter()) as BannerFooter[]
-  return <Homepage banners={banners} logos={logos}bannerFooter={bannerFooter} />
+  const mainCategories = (await getMainCategories()) as Category[]
+  return (
+    <Homepage
+      banners={banners}
+      logos={logos}
+      bannerFooter={bannerFooter}
+      mainCategories={mainCategories}
+    />
+  )
 }

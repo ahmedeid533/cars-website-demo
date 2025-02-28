@@ -1,4 +1,4 @@
-import { Banner, BannerFooter, Logo } from '@/types'
+import { Banner, BannerFooter, Category, Logo } from '@/types'
 import Advertisments from './Advertisments/Advertisments'
 import CarCollections from './CarCollections/CarCollections'
 import CarModels from './CarModels'
@@ -9,14 +9,15 @@ import Vehicles from './Vehicles'
 interface IHomepage {
   banners: Banner[]
   logos: Logo[]
-  bannerFooter: BannerFooter[]
+  bannerFooter: BannerFooter[],
+  mainCategories: Category[]
 }
-const Homepage = ({ banners, logos, bannerFooter }: IHomepage) => {
+const Homepage = ({ banners, logos, bannerFooter,mainCategories }: IHomepage) => {
   return (
     <>
       <MainSection banners={banners} />
       <Vehicles />
-      <CarCollections />
+      <CarCollections mainCategories={mainCategories}/>
       <CarModels logos={logos} />
       <TabsAndItems />
       <Advertisments bannerFooter={bannerFooter}/>

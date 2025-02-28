@@ -8,15 +8,15 @@ const SecondPart = () => {
   return (
     <div className='custom-container2 py-10'>
 
-      <div className='flex flex-wrap items-center justify-between gap-y-10 w-full'>
+      <div className='flex flex-wrap justify-between items-center gap-y-10 w-full'>
         <div className='flex flex-col gap-5 w-full lg:w-1/3'>
-          <div className='flex flex-col gap-2 items-start'>
+          <div className='flex flex-col items-start gap-2'>
             <Link href={'/'}>
-              <Image src={'/logoWhite.svg'} alt='logo' width={100} height={50} />
+              <Image src={'/main-logo-2.png'} alt='logo' width={150} height={100} className='object-none' />
             </Link>
             <p className='font-[300] text-xs'>Receive pricing updates, shopping tips & more!</p>
           </div>
-          <div className='hidden lg:flex flex-wrap  gap-20 items-start w-full '>
+          <div className='hidden lg:flex flex-wrap items-start gap-20 w-full'>
             {
               footerLinks.slice(0, 2).map((list, index) => (
                 <div key={index} className='flex flex-col gap-4'>
@@ -31,8 +31,8 @@ const SecondPart = () => {
             }
           </div>
         </div>
-        <div className='w-full lg:w-2/3 '>
-          <div className='flex lg:hidden justify-between mb-4  gap-20 items-start w-full '>
+        <div className='w-full lg:w-2/3'>
+          <div className='lg:hidden flex justify-between items-start gap-20 mb-4 w-full'>
             {
               footerLinks.slice(0, 2).map((list, index) => (
                 <div key={index} className='flex flex-col gap-4'>
@@ -46,7 +46,7 @@ const SecondPart = () => {
               ))
             }
           </div>
-          <div className='flex flex-wrap gap-5 lg:gap-0 items-start w-full justify-between'>
+          <div className='flex flex-wrap justify-between items-start gap-5 lg:gap-0 w-full'>
             {
               footerLinks.slice(2).map((list, index) => (
                 <div key={index} className='flex flex-col gap-4'>
@@ -62,12 +62,12 @@ const SecondPart = () => {
             <div>
               <div className='flex flex-col gap-7'>
                 <h3 className='font-bold text-md'>Our Mobile App</h3>
-                <div className="grid grid-cols-2 lg:grid-cols-1 items-center gap-4">
+                <div className="items-center gap-4 grid grid-cols-2 lg:grid-cols-1">
                   <PlatformLink text1="Download on the" text2="Apple Store" imagePath={'/apple.svg'} />
                   <PlatformLink text1="Get in on" text2="Google Play" imagePath={'/googlePlay.svg'} />
                 </div>
                 <h3 className='font-bold text-md'>Connect With Us</h3>
-                <div className='flex flex-row items-center w-full justify-between'>
+                <div className='flex flex-row justify-between items-center w-full'>
                   <Link href={'#'}>
                     <Image src={'/facebook.svg'} alt='facebook' width={15} height={20} />
                   </Link>
