@@ -48,7 +48,7 @@ const CustomItemsContainer = ({
                   alt={item.name[locale === 'en' ? 'en' : 'ar']}
                   width={100}
                   height={100}
-                  className='w-[100px] h-[100px] object-cover'
+                  className='w-auto h-[100px] object-contain'
                 />
               </div>
               <h6 className='text-xs text-center'>
