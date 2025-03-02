@@ -1,4 +1,6 @@
 import TabsAndItems from '@/components/Home/TabsAndItems/TabsAndItems'
+import { AllItemsInterface } from '@/libs/get-category-tabs-with-data'
+import { Category } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -6,9 +8,11 @@ import React from 'react'
 type props = {
     car_model: string | null,
     car_year: string | null,
-    car_series: string | null
+    car_series: string | null,
+    category_tabs: Category[]
+      allCategoryItems: AllItemsInterface[]
 }
-const SearchFound = ({ car_model, car_year, car_series }: props) => {
+const SearchFound = ({ car_model, car_year, car_series,allCategoryItems, category_tabs }: props) => {
     return (
         <div className='flex flex-col gap-10 custom-container1 pb-20'>
             <div className='flex flex-row items-center gap-20 mt-10'>
@@ -19,7 +23,7 @@ const SearchFound = ({ car_model, car_year, car_series }: props) => {
                 <Image src={'/search/item.png'} alt={`${car_year} ${car_model} ${car_series}`} fill className='object-contain lg:object-cover' />
             </div>
            
-            <TabsAndItems /> 
+            <TabsAndItems allCategoryItems={allCategoryItems} category_tabs={category_tabs} /> 
         </div>
     )
 }

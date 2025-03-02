@@ -4,22 +4,26 @@ import { memo, useState } from 'react'
 import CustomTabs from './CustomTabs'
 import CustomItemsContainer from './CustomItemsContainer'
 import { useLocale } from 'next-intl'
-import useRenderTabsWithData from '@/hooks/use-render-tabs-with-data'
+import { Category } from '@/types'
+import { AllItemsInterface } from '@/libs/get-category-tabs-with-data'
 
-const TabsAndItems= () =>{
+interface ITabsAndItems {
+  category_tabs: Category[]
+  allCategoryItems: AllItemsInterface[]
+}
+const TabsAndItems = ({ allCategoryItems, category_tabs }: ITabsAndItems) => {
   const [value, setValue] = useState(0)
-  const { categoryTabs, allCategoryItems } = useRenderTabsWithData()
   const locale = useLocale()
-  console.log("first")
+  console.log('first')
   return (
     <>
-      {categoryTabs.length > 0 ? (
+      {category_tabs.length > 0 ? (
         <section className='flex flex-col gap-1 pb-5'>
           <div className='custom-container1'>
             <CustomTabs
               value={value}
               setValue={setValue}
-              categoryTabs={categoryTabs}
+              categoryTabs={category_tabs}
             />
           </div>
           <Divider />
@@ -29,10 +33,12 @@ const TabsAndItems= () =>{
               allCategoryItems[value]?.name[locale === 'en' ? 'en' : 'ar'] ||
               'top categories'
             }
-            data={allCategoryItems[value]?allCategoryItems[value].data : []}
+            data={allCategoryItems[value] ? allCategoryItems[value].data : []}
           />
         </section>
-      ): (<h2>Loading...</h2>)}
+      ) : (
+        <h2>Loading...</h2>
+      )}
     </>
   )
 }
