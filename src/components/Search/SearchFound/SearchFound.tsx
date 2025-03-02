@@ -1,4 +1,4 @@
-import CustomItemsContainer from '@/components/Home/TabsAndItems/CustomItemsContainer'
+import TabsAndItems from '@/components/Home/TabsAndItems/TabsAndItems'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -18,11 +18,8 @@ const SearchFound = ({ car_model, car_year, car_series }: props) => {
             <div className='relative w-full h-[30vh] lg:h-[50vh]'>
                 <Image src={'/search/item.png'} alt={`${car_year} ${car_model} ${car_series}`} fill className='object-contain lg:object-cover' />
             </div>
-            <div className='flex flex-col gap-3 mt-5 text-center'>
-                <h3 className='font-bold text-4xl'>Top Categories</h3>
-                <p className='text-custom-gray text-sm'>{car_year} {car_model} {car_series}</p>
-            </div>
-            <CustomItemsContainer value={0} name={''} />
+           
+            <TabsAndItems /> 
         </div>
     )
 }
