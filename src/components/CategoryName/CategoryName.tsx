@@ -25,11 +25,13 @@ const CategoryName = ({
       <MainSection category={category} />
       <OptionMobileBtn />
       {hasBrands && (
+        <div>
           {/* <ShopBySize /> */}
           <TiresTypes
             brands={sub_subCategories}
             subCategoryName={subCategoryName}
           />
+        </div>
       )}
       <div className='custom-container1'>
         {hasBrands === false && sub_subCategories.length>0 && (
