@@ -21,19 +21,17 @@ const CustomItemsContainer = ({ value, name, data }: ICustomItemsContainer) => {
             data?.map((item, index) => (
               <Link
                 title={item.slug}
-                href={`/category/${name.toLocaleLowerCase()}?item=${item.name[
-                  locale === 'en' ? 'en' : 'ar'
-                ].toLocaleLowerCase()}`}
+                href={`/category/${item.slug}?category_id=${value}&sub_category_id=${item.id}`}
                 key={index}
                 className='flex flex-col items-center gap-3 w-full h-full'
               >
-                <div className='flex h-[100px]'>
+                <div className='flex px-4 h-[200px]'>
                   <Image
                     src={item.image_url}
                     alt={item.name[locale === 'en' ? 'en' : 'ar']}
-                    width={100}
-                    height={100}
-                    className='w-auto h-[100px] object-contain'
+                    width={400}
+                    height={400}
+                    className='w-auto h-[200px] object-contain'
                   />
                 </div>
                 <h6 className='text-xs text-center'>

@@ -1,36 +1,48 @@
-"use client"
-import { Divider } from '@mui/material'
-import CustomTabs from './CustomTabs'
+'use client'
 import FilterAndItems from './FilterAndItems/FilterAndItems'
 import ItemTypes from './ItemTypes'
 import MainSection from './MainSection'
-import ShopBySize from './ShopBySize/ShopBySize'
 import TiresTypes from './TiresTypes'
-import { useState } from 'react'
 import OptionMobileBtn from './OptionMobileBtn'
+import { Category, SubCategory } from '@/types'
+import { useLocale } from 'next-intl'
 
-const CategoryName = () => {
-    const [value, setValue] = useState(0)
-    return (
-        <>
-            <div className="hidden lg:block">
-                <CustomTabs value={value} setValue={setValue} />
-                <Divider className='mb-5' />
-            </div>
-            <MainSection />
-            <OptionMobileBtn />
-            <div className="hidden lg:block">
-                <ShopBySize />
-                <TiresTypes />
-            </div>
-            <div className="custom-container1">
-                <div className="hidden lg:block">
-                    <ItemTypes />
-                </div>
-                <FilterAndItems />
-            </div>
-        </>
-    )
+interface ICategoryName {
+  category: Category | null | undefined
+  hasBrands: boolean
+  sub_subCategories: SubCategory[]
+  subCategoryName: string
+}
+const CategoryName = ({
+  category,
+  hasBrands,
+  sub_subCategories,
+  subCategoryName
+}: ICategoryName) => {
+  const locale = useLocale()
+  return (
+    <>
+      <MainSection category={category} />
+      <OptionMobileBtn />
+      {hasBrands && (
+        <div className='hidden lg:block'>
+          {/* <ShopBySize /> */}
+          <TiresTypes
+            brands={sub_subCategories}
+            subCategoryName={subCategoryName}
+          />
+        </div>
+      )}
+      <div className='custom-container1'>
+        {hasBrands === false && sub_subCategories.length>0 && (
+          <div className='hidden lg:block'>
+            <ItemTypes sub_subCategories={sub_subCategories} />
+          </div>
+        )}
+        <FilterAndItems />
+      </div>
+    </>
+  )
 }
 
 export default CategoryName

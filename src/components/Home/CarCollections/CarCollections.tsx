@@ -10,7 +10,7 @@ const CarCollections = ({ mainCategories }: { mainCategories: Category[] }) => {
       <div className={`grid grid-cols-2 items-center gap-4`}>
         {mainCategories.map((collection, index) => (
           <Link
-            href={`/category/${collection.slug}`}
+            href={`/category/${collection.slug}?category_id=${collection.id}`}
             key={index}
             className={`h-[20vh] lg:h-[30vh] w-full bg-no-repeat bg-cover bg-center overflow-hidden`}
             style={{ backgroundImage: `url(${collection.image_url})` }}
