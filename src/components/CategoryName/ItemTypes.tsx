@@ -27,7 +27,7 @@ const ItemTypes = ({
               height={150}
               className='w-[150px] h-[150px] object-contain'
             />
-            <h4 className='font-light text-lg'>{item.name[locale === 'en' ? 'en' : 'ar']}</h4>
+            <h4 className='font-light text-sm text-center'>{item.name[locale === 'en' ? 'en' : 'ar']}</h4>
           </Link>
         ))}
       </div>

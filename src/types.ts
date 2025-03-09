@@ -52,3 +52,26 @@ export interface Category {
 export interface SubCategory extends Category {
   appearance_type: string
 }
+
+export interface SubCategoryOptionValue {
+  id: number;
+  value: {
+    en: string;
+    ar: string;
+  };
+  priority: number;
+}
+
+export interface SubCategoryOption {
+  id: number;
+  name: {
+    en: string;
+    ar: string;
+  };
+  type: string;
+  is_required: boolean;
+  is_filterable: boolean;
+  priority: number;
+  values: SubCategoryOptionValue[];
+}
+

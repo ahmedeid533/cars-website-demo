@@ -1,6 +1,6 @@
 import { Category, SubCategory } from '@/types'
 import { getCategories } from './get-categories'
-import { getTopCategories } from './get-top-categories copy'
+import { getTopCategories } from './get-top-categories'
 import { getSubCategories } from './get-sub-categories'
 
 export type AllItemsInterface = {

@@ -1,7 +1,8 @@
 import CategoryName from '@/components/CategoryName/CategoryName'
 import { getCategories } from '@/libs/get-categories'
+import { getOptionSubCategories } from '@/libs/get-option-sub-categories'
 import { getSub_subCategories } from '@/libs/get-sub-sub-categories'
-import { SubCategory } from '@/types'
+import { SubCategory, SubCategoryOption } from '@/types'
 import { Metadata } from 'next'
 
 type props = {
@@ -28,8 +29,22 @@ const page = async ({ params, searchParams }: props) => {
     ? categories.find(category => category.id === parseInt(category_id))
     : null
   const hasBrands = sub_category_id === '36' || sub_category_id === '2'
-  const sub_subCategories = await getSub_subCategories(Number(sub_category_id)) as SubCategory[]
-  return <CategoryName category={current_category} hasBrands={hasBrands} sub_subCategories={sub_subCategories} subCategoryName={params.category_name} />
+  const sub_subCategories = (await getSub_subCategories(
+    Number(sub_category_id)
+  )) as SubCategory[]
+  let subCategoryOption:SubCategoryOption[] = [];
+  if (sub_category_id) {
+    subCategoryOption = await getOptionSubCategories(parseInt(sub_category_id)) as SubCategoryOption[]
+  }
+  return (
+    <CategoryName
+      category={current_category}
+      hasBrands={hasBrands}
+      sub_subCategories={sub_subCategories}
+      subCategoryName={params.category_name}
+      subCategoryOption={subCategoryOption}
+    />
+  )
 }
 
 export default page
