@@ -2,8 +2,8 @@ import Orders from "@/components/Orders/Orders";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Auto Parts | Orders',
-  description: 'Generated for Auto Parts',
+  title: '3RABITK | Orders',
+  description: 'Generated for 3RABITK',
 }
 
 

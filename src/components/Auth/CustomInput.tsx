@@ -1,18 +1,23 @@
-import { FormControl, InputLabel, OutlinedInput } from '@mui/material'
-import React from 'react'
+import { FormControl, InputLabel, OutlinedInput, FormHelperText } from "@mui/material";
+import { FieldProps, ErrorMessage } from "formik";
+import React from "react";
 
-type props = {
-    type: string,
-    label: string,
-    placeholder: string,
-}
-const CustomInput = ({ type, label, placeholder }: props) => {
-    return (
-        <FormControl className='w-full' variant="outlined">
-            <InputLabel htmlFor={label} className='bg-white'>{label}</InputLabel>
-            <OutlinedInput id={label} type={type} className="w-full" label={label} placeholder={placeholder} />
-        </FormControl>
-    )
-}
+type Props = {
+  label: string;
+  placeholder: string;
+  type: string;
+} & FieldProps;
 
-export default CustomInput
+const CustomInput: React.FC<Props> = ({ label, placeholder, type, field }) => {
+  return (
+    <FormControl className="w-full" variant="outlined">
+      <InputLabel htmlFor={field.name}>{label}</InputLabel>
+      <OutlinedInput {...field} id={field.name} type={type} placeholder={placeholder} />
+      <ErrorMessage name={field.name}>
+        {(msg) => <FormHelperText error>{msg}</FormHelperText>}
+      </ErrorMessage>
+    </FormControl>
+  );
+};
+
+export default CustomInput;

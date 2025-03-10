@@ -3,7 +3,7 @@ export const mainSectionDisplayData = [
         image: "/home/main-section/main-background1.jpg",
         h1: "Welcome",
         h2: {
-            title: "Get All Brands Of Auto Parts",
+            title: "Get All Brands Of 3RABITK",
             special: "Of Cars"
         },
         h3: "The Best Car Rebair Service",

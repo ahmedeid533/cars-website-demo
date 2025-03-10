@@ -9,8 +9,8 @@ type props = {
 
 export async function generateMetadata({ params }: props): Promise<Metadata> {
     return {
-        title: `Auto Parts | Product #${params.id}`,
-        description: `Generated for Auto Parts Product #${params.id} Cars`,
+        title: `3RABITK | Product #${params.id}`,
+        description: `Generated for 3RABITK Product #${params.id} Cars`,
     }
 }
 

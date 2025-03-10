@@ -2,8 +2,8 @@ import Payment from "@/components/Payment/Payment";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: 'Auto Parts | Payment',
-    description: 'Generated for Auto Parts',
+    title: '3RABITK | Payment',
+    description: 'Generated for 3RABITK',
 }
 
 

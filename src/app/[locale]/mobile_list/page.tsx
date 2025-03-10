@@ -2,8 +2,8 @@ import MobileList from "@/components/MobileList/MobileList";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: 'Auto Parts | Mobile List',
-    description: 'Generated for Auto Parts',
+    title: '3RABITK | Mobile List',
+    description: 'Generated for 3RABITK',
 }
 
 const page = () => {

@@ -5,6 +5,8 @@ import NextTopLoader from 'nextjs-toploader'
 import { getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
+import { Flip, ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: '3ARBITK',
@@ -44,6 +46,23 @@ export default async function LocaleLayout ({
             shadow='0 0 10px #2299DD,0 0 5px #2299DD'
           />
           <Layout>{children}</Layout>
+          <ToastContainer
+                position="bottom-right"
+                autoClose={10000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Flip}
+                style={{
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                }}
+            />
         </NextIntlClientProvider>
       </body>
     </html>

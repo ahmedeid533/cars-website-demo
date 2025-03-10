@@ -2,8 +2,8 @@ import Login from '@/components/Auth/Login'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Auto Parts | Login',
-  description: 'Generated for Auto Parts',
+  title: '3RABITK | Login',
+  description: 'Generated for 3RABITK',
 }
 
 

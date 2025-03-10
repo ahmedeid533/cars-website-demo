@@ -2,8 +2,8 @@ import Contact from "@/components/Contact/Contact";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Auto Parts | Contact Us',
-  description: 'Generated for Auto Parts',
+  title: '3RABITK | Contact Us',
+  description: 'Generated for 3RABITK',
 }
 
 const page = () => {

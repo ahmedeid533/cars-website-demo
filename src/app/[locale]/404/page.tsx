@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Auto Parts | 404 Not Found',
-  description: 'Generated for Auto Parts',
+  title: '3RABITK | 404 Not Found',
+  description: 'Generated for 3RABITK',
 }
 
 const page = () => {

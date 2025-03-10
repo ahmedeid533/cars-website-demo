@@ -6,8 +6,9 @@ export const apiClient = (token?: string) => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` }) // Attach token if provided
-    }
+      ...(token && { Authorization: `Bearer ${token}` }), // Attach Bearer token if provided
+    },
+    withCredentials: true, // IMPORTANT: Allows Laravel to manage authentication via cookies
   })
 }
 
@@ -31,3 +32,15 @@ export const apiClient = (token?: string) => {
 //     console.error('Error:', error.response?.data || error.message)
 //   }
 // }
+
+// ✅ EXAMPLES
+// Public POST request
+// postData('/public-endpoint', { name: 'John', age: 30 })
+//   .then(response => console.log('Public Response:', response))
+//   .catch(error => console.error('Public Error:', error));
+
+// Private POST request with Token
+// const token = 'YOUR_ACCESS_TOKEN';
+// postData('/private-endpoint', { key: 'value' }, token)
+//   .then(response => console.log('Private Response:', response))
+//   .catch(error => console.error('Private Error:', error));

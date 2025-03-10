@@ -1,49 +1,100 @@
-"use client"
-import { Divider } from '@mui/material'
-import CustomInput from './CustomInput'
-import CustomPasswordInput from './CustomPasswordInput'
+'use client'
+import React, { Fragment } from 'react'
+import { Formik, Form, Field } from 'formik'
 import Link from 'next/link'
+import { Divider, Button } from '@mui/material'
 import SocialMediaBtns from './SocialMediaBtns'
-import { useRouter } from 'next/navigation'
+import { formFields } from './signinFormFields'
+import { initialValues } from '@/forms/signup/initialValues'
+import { validationSchema } from '@/forms/signup/schema'
+import useFormLoading from '@/hooks/use-form-loading'
+import useRegisterSubmit from '@/hooks/use-register-submit'
+import Spinner from '../ui/Spinner'
 
-const SignIn = () => {
-    const router = useRouter()
-    return (
-        <>
-            <h2 className='text-2xl font-bold text-custom-black uppercase text-center'>account signup</h2>
-            <div className='w-full flex flex-col gap-5 mt-5'>
-                <h5 className="text-[#111] uppercase font-bold">Set User E-mail Address & Password</h5>
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault()
-                        router.push('/signin/verification')
-                    }}
-                    className="w-full flex flex-col gap-4"
-                >
-                    <CustomInput label="Frist Name *" type='text' placeholder='ex: John' />
-                    <CustomInput label="Last Name *" type='text' placeholder='Ex: Doe' />
-                    <CustomInput label="Please enter your email *" type='email' placeholder='example@gmail.com' />
-                    <CustomPasswordInput label='Please enter your passowrd*' />
-                    <CustomPasswordInput label='Please confirm your passowrd*' />
-                    <CustomInput label="Location *" type='text' placeholder='Ex: London, England' />
-                    <button className="w-full rounded uppercase text-white bg-custom-blue py-3 my-3">
-                        Create Your Account
-                    </button>
-                    <Divider />
-                    <p className='text-gray-500 text-center'>Or use one of these options</p>
-                    <SocialMediaBtns />
-                    <p className="text-center">
-                        <span className='text-sm text-[#111]'>Already have your account? </span>
-                        <Link href={'/login'} className='text-custom-blue'>Login</Link>
-                    </p>
-                    <p className="text-center text-sm">
-                        <span className=' text-[#111]'>By creating an account you are agreeing to our </span>
-                        <Link href={'#'} className='text-custom-blue'>Privacy policy and terms of use</Link>
-                    </p>
-                </form>
-            </div>
-        </>
-    )
+export default function SignupForm () {
+  const { isLoading } = useFormLoading()
+  const handleRegisterSubmit = useRegisterSubmit()
+
+  return (
+    <Fragment>
+      <h2 className='font-bold text-custom-black text-2xl text-center uppercase'>
+        Account Signup
+      </h2>
+      <div className='flex flex-col gap-5 mt-5 w-full'>
+        <h5 className='font-bold text-[#111] uppercase'>
+          Set User E-mail Address & Password
+        </h5>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleRegisterSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form className='flex flex-col gap-4 w-full'>
+              {formFields.map(
+                ({
+                  name,
+                  component: Component,
+                  label,
+                  type,
+                  placeholder,
+                  isDatePicker
+                }) =>
+                  isDatePicker ? (
+                    <Component key={name} name={name} label={label} />
+                  ) : (
+                    <Field
+                      key={name}
+                      name={name}
+                      component={Component}
+                      label={label}
+                      type={type}
+                      placeholder={placeholder}
+                    />
+                  )
+              )}
+
+              <Button
+                type='submit'
+                variant='contained'
+                color='primary'
+                className='bg-custom-blue my-3 py-3 rounded w-full text-white uppercase'
+                disabled={isLoading || isSubmitting}
+              >
+                {isLoading || isSubmitting ? (
+                  <Spinner />
+                ) : (
+                  <span className='w-full text-center'>
+                    Create Your Account
+                  </span>
+                )}
+              </Button>
+
+              <Divider />
+              <p className='text-gray-500 text-center'>
+                Or use one of these options
+              </p>
+              <SocialMediaBtns />
+              <p className='text-center'>
+                <span className='text-[#111] text-sm'>
+                  Already have an account?{' '}
+                </span>
+                <Link href='/login' className='text-custom-blue'>
+                  Login
+                </Link>
+              </p>
+              <p className='text-sm text-center'>
+                <span className='text-[#111]'>
+                  By creating an account, you agree to our{' '}
+                </span>
+                <Link href='#' className='text-custom-blue'>
+                  Privacy Policy and Terms of Use
+                </Link>
+              </p>
+            </Form>
+          )}
+        </Formik>
+      </div>
+    </Fragment>
+  )
 }
-
-export default SignIn

@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import SignIn from '@/components/Auth/Signin';
 
 export const metadata: Metadata = {
-  title: 'Auto Parts | Signin',
-  description: 'Generated for Auto Parts',
+  title: '3RABITK | Signin',
+  description: 'Generated for 3RABITK',
 }
 
 const page = () => {

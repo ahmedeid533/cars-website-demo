@@ -75,3 +75,20 @@ export interface SubCategoryOption {
   values: SubCategoryOptionValue[];
 }
 
+export interface Customer {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  status: string; // Add more statuses if needed
+}
+
+export interface AuthResponse {
+  message: string;
+  customer?: Customer;
+  token?: string;
+  status?: string,
+  errors?: {
+    [key: string]: string[]; 
+  };
+}

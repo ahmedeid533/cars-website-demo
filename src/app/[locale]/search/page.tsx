@@ -15,8 +15,8 @@ export async function generateMetadata ({
   searchParams
 }: props): Promise<Metadata> {
   return {
-    title: `Auto Parts | ${searchParams.car_year} ${searchParams.car_model} ${searchParams.car_series}`,
-    description: `Generated for Auto Parts ${searchParams.car_year} ${searchParams.car_model} ${searchParams.car_series} search`
+    title: `3RABITK | ${searchParams.car_year} ${searchParams.car_model} ${searchParams.car_series}`,
+    description: `Generated for 3RABITK ${searchParams.car_year} ${searchParams.car_model} ${searchParams.car_series} search`
   }
 }
 
