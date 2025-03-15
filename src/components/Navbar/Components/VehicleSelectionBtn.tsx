@@ -59,7 +59,7 @@ const VehicleSelectionBtn = () => {
         <span className=''>
           {carContext?.cars.length === 0
             ? t('Select your Vehicle')
-            : `${carContext?.cars[0].year} ${carContext?.cars[0].name} | Change`}
+            : `${carContext?.cars[0].model_year.year} ${carContext?.cars[0].car_brand.name["en"]} ${carContext?.cars[0].car_model.name["en"]} | Change`}
         </span>
       </button>
       <SavedSearchModal open={openSavedSearch} setOpen={setOpenSavedSearch} />

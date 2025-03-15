@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { makeNotification } from '@/util/makeNotification';
 import displayErrorMessages from '@/util/displayErrorMessages';
 import { initialValues } from '@/forms/signup/initialValues';
-import { register } from '@/action/register';
+import { register } from '@/action/auth/register';
 import { useLocale } from 'next-intl';
 import Cookies from "universal-cookie";
 import { cookies } from 'next/headers';

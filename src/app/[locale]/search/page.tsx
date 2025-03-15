@@ -7,7 +7,7 @@ type props = {
   searchParams: {
     car_model: string
     car_year: string
-    car_series: string
+    car_brand: string
   }
 }
 
@@ -15,8 +15,8 @@ export async function generateMetadata ({
   searchParams
 }: props): Promise<Metadata> {
   return {
-    title: `3RABITK | ${searchParams.car_year} ${searchParams.car_model} ${searchParams.car_series}`,
-    description: `Generated for 3RABITK ${searchParams.car_year} ${searchParams.car_model} ${searchParams.car_series} search`
+    title: `3RABITK | ${searchParams.car_year} ${searchParams.car_brand} ${searchParams.car_model}`,
+    description: `Generated for 3RABITK ${searchParams.car_year} ${searchParams.car_brand} ${searchParams.car_model} search`
   }
 }
 

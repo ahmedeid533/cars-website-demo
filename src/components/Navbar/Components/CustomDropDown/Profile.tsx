@@ -4,7 +4,7 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import Cookies from 'universal-cookie'
-import { logout } from '@/action/logout'
+import { logout } from '@/action/auth/logout'
 import { makeNotification } from '@/util/makeNotification'
 
 const Profile = () => {

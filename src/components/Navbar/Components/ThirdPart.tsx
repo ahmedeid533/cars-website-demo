@@ -6,13 +6,13 @@ import { usePathname } from 'next/navigation'
 import { checkIsNotAuthPages } from '../../../global/isNotAuthPages'
 import LockIcon from '@mui/icons-material/Lock'
 import Link from 'next/link'
-import { useLocale, useTranslations } from 'next-intl'
+import Cookies from 'universal-cookie'
 
 const ThirdPart = () => {
   const path = usePathname()
   const isNotAuthPage = checkIsNotAuthPages(path)
-  const t = useTranslations('Header')
-  const locale = useLocale()
+  const cookie = new Cookies()
+  const token = cookie.get('token')
   return (
     <>
       {isNotAuthPage ? (
@@ -30,6 +30,8 @@ const ThirdPart = () => {
               />
             }
           />
+          {
+            token &&
           <CustomDropDown
             link='cart'
             content={
@@ -49,6 +51,7 @@ const ThirdPart = () => {
               </div>
             }
           />
+          }
         </div>
       ) : (
         <Link

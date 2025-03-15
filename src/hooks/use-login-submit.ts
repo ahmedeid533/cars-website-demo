@@ -6,7 +6,7 @@ import displayErrorMessages from '@/util/displayErrorMessages'
 import { initialValues } from '@/forms/login/initialValues'
 import { useLocale } from 'next-intl'
 import Cookies from 'universal-cookie'
-import { login } from '@/action/login'
+import { login } from '@/action/auth/login'
 
 const useLoginSubmit = () => {
   const cookie = new Cookies()

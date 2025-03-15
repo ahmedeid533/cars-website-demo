@@ -92,3 +92,37 @@ export interface AuthResponse {
     [key: string]: string[]; 
   };
 }
+
+
+interface CarModel {
+  id: number;
+  name: {
+    en: string;
+    ar: string;
+  };
+  brand_id: number;
+}
+
+interface ModelYear {
+  id: number;
+  year: number;
+  model_id: number;
+}
+
+export interface CustomerVehicle {
+  id: number;
+  customer_id: number;
+  is_primary: boolean;
+  notes: string | null;
+  car_brand: CarBrand;
+  car_model: CarModel;
+  model_year: ModelYear;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CustomerVehicleRequest {
+  car_brand_id: string;
+  car_model_id: string;
+  model_year_id: string;
+}

@@ -6,9 +6,9 @@ export const apiClient = (token?: string) => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` }), // Attach Bearer token if provided
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
-    withCredentials: true, // IMPORTANT: Allows Laravel to manage authentication via cookies
+    withCredentials: true,
   })
 }
 

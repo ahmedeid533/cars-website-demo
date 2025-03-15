@@ -36,10 +36,9 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
   const handleSearchCar = () => {
     if (setOpen) setOpen(false)
     const selectedCar = {
-      id: Math.random(),
-      name: carBrandName as string,
-      year: carYearName as string,
-      series: carModelName as string
+      car_brand_id: carBrandValue.toString(),
+      car_model_id: carModelValue.toString(),
+      model_year_id: carYearValue.toString(),
     }
     carContext?.addCar(selectedCar)
   }
@@ -71,7 +70,7 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
                 <SelectInput2
                   value={(carModelValue as number) || ''}
                   setValue={handleCarModelChange}
-                  disabled={!carBrandValue||carModelState.length === 0}
+                  disabled={!carBrandValue || carModelState.length === 0}
                   placeholder={
                     !carBrandValue
                       ? 'Select Car Model'
@@ -90,7 +89,7 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
                 <SelectInput2
                   value={(carYearValue as number) || ''}
                   setValue={handleCarYearChange}
-                  disabled={!(carModelValue)||carYearState.length===0}
+                  disabled={!carModelValue || carYearState.length === 0}
                   placeholder={
                     !carModelValue
                       ? 'Select Car Year'
@@ -109,7 +108,7 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
               </div>
               <div className={styles['search-container']}>
                 <Link
-                  href={`/search?car_Brand=${carBrandName}&car_year=${carYearName}&car_series=${carModelName}&car_Brand_id=${carBrandValue}&car_year_id=${carYearValue}&car_series_id=${carModelValue}`}
+                  href={`/search?car_brand=${carBrandName}&car_year=${carYearName}&car_model=${carModelName}&car_Brand_id=${carBrandValue}&car_year_id=${carYearValue}&car_model_id=${carModelValue}`}
                   className={`${styles['search-button']} ${
                     !carBrandValue || !carYearValue || !carModelValue
                       ? styles['disabled']
