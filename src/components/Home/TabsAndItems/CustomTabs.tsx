@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { Tab, Tabs } from '@mui/material'
+import { useEffect } from 'react'
 import { tabsAndItems } from '@/mocks/tabsAndItems'
 import { Category } from '@/types'
 import { useLocale } from 'next-intl'
@@ -11,7 +12,7 @@ type props = {
   categoryTabs: Category[]
 }
 const CustomTabs = ({ value, setValue, categoryTabs }: props) => {
-  const locale = useLocale()
+	const locale = useLocale()
   return (
     <div className='custom-container1'>
       <div className='flex justify-center items-center w-full overflow-hidden'>

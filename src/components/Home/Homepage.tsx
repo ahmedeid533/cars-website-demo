@@ -5,7 +5,9 @@ import CarModels from './CarModels'
 import MainSection from './MainSection/MainSection'
 import TabsAndItems from './TabsAndItems/TabsAndItems'
 import Vehicles from './Vehicles'
-import { AllItemsInterface } from '@/libs/get-category-tabs-with-data'
+import {
+	AllItemsInterface,
+} from "@/libs/get-category-tabs-with-data";
 
 interface IHomepage {
   banners: Banner[]

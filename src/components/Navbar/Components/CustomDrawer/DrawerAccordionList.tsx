@@ -83,7 +83,7 @@ const DrawerAccordionList = ({
       </AccordionSummary>
       <AccordionDetails sx={{ borderBottom: 'none' }} className='px-10'>
         <div className='flex flex-col gap-7'>
-          {categoryItems.map((item, index) => (
+          {categoryItems?.map((item, index) => (
             <Link
               href={`/product/${item.slug}?id=${item.id}`}
               key={index}

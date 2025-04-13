@@ -30,7 +30,9 @@ export const getCategoryTabsWithData = async () => {
       ...getCategoryResponse
     ]
     allCategoryItems = await Promise.all(
-      category_tabs.map(async category => {
+			category_tabs.map(async category => {
+			console.log("category ==> ", category);
+				
         return category.id === 1
           ? {
               value: category.id,

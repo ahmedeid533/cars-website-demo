@@ -51,7 +51,7 @@ const DrawerDepartmentList = ({
           />
         ))}
       <Divider className='my-10' />
-      {drawerUserInfo.map((link, index) => (
+      {drawerUserInfo?.map((link, index) => (
         <DrawerUserInfoList
           key={index}
           link={link}
@@ -59,7 +59,7 @@ const DrawerDepartmentList = ({
         />
       ))}
       <Divider className='mb-10' />
-      {drawerContact.map((link, index) => (
+      {drawerContact?.map((link, index) => (
         <DrawerContactList
           key={index}
           link={link}

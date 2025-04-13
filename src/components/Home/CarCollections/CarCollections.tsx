@@ -8,7 +8,7 @@ const CarCollections = ({ mainCategories }: { mainCategories: Category[] }) => {
   return (
     <section className='custom-container1'>
       <div className={`grid grid-cols-2 items-center gap-4`}>
-        {mainCategories.map((collection, index) => (
+        {mainCategories?.map((collection, index) => (
           <Link
             href={`/category/${collection.slug}?category_id=${collection.id}`}
             key={index}
