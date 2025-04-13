@@ -4,7 +4,14 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Details from './Details/Details';
 
-const ProductDetails = ({product}) => {
+interface Product {
+  photos?: {
+	main_photo?: string;
+  };
+  mainInfo?: any; // Replace 'any' with the specific type if known
+}
+
+const ProductDetails = ({ product }: { product: Product }) => {
 	const [selectedImage, setSelectedImage] = useState(0);
 	return (
 		<section className="grid grid-cols-1 lg:grid-cols-5 items-start gap-10 gap-x-0 lg:gap-x-10">

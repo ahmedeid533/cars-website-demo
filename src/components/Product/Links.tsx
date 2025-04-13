@@ -2,7 +2,12 @@ import { useLocale } from 'next-intl'
 import Link from 'next/link'
 import React from 'react'
 
-const Links = ({ category }) => {
+interface Category {
+	main?: { name: string };
+	sub?: { name: string };
+}
+
+const Links = ({ category }: { category: Category }) => {
 	const locale = useLocale();
 	return (
 		<div className="flex items-center text-[#8C8C8C] text-sm">

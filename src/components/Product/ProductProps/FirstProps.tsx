@@ -1,6 +1,10 @@
 import React from 'react'
 
-const FirstProps = ({ description }) => {
+interface FirstPropsProps {
+	description: string;
+}
+
+const FirstProps: React.FC<FirstPropsProps> = ({ description }) => {
 	return (
 		<div className="flex flex-col gap-2">
 			<div className="flex flex-col gap-4 text-custom-black bg-[#EEEEEE] rounded py-5 px-8">

@@ -1,7 +1,13 @@
 import Image from 'next/image'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const FirstSection = ({ mainInfo }) => {
+interface MainInfo {
+	name: string;
+	price: number;
+	stock: number;
+}
+
+const FirstSection = ({ mainInfo }: { mainInfo: MainInfo }) => {
 	return (
 		<div className="flex flex-col gap-2">
 			<div className="flex items-start gap-4 w-full">
