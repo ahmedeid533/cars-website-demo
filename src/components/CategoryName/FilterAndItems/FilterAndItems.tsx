@@ -30,6 +30,7 @@ const FilterAndItems = () => {
 		<section className="flex flex-col gap-2 mb-10 ">
 			<GridOptionsAndResults
 				setGridColsNumber={handleSetGridColsNumber}
+				allItemsCount={products.length}
 			/>
 			<div className="grid grid-cols-1 lg:grid-cols-4 items-start gap-10">
 				{/* <Filters />  if back make next line cool-span-3 */}
