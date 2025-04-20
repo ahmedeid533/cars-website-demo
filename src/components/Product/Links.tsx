@@ -14,7 +14,10 @@ const Links = ({ category }: { category: Category }) => {
 			<Link className="px-4 " href={`/${locale}`}>
 				Home
 			</Link>
-			<Link className="px-4 border-r border-r-[#8C8C8C]" href={"#"}>
+			<Link
+				className="px-4 border-r border-r-[#8C8C8C]"
+				href={`/${locale}/category/all`}
+			>
 				All Products
 			</Link>
 			<Link className="px-4 border-r border-r-[#8C8C8C]" href={"#"}>

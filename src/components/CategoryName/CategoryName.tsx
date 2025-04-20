@@ -1,11 +1,13 @@
 'use client'
 import FilterAndItems from './FilterAndItems/FilterAndItems'
+import { getCategories } from "@/libs/get-categories";
 import ItemTypes from './ItemTypes'
 import MainSection from './MainSection'
 import TiresTypes from './TiresTypes'
 import OptionMobileBtn from './OptionMobileBtn'
 import { Category, SubCategory, SubCategoryOption } from '@/types'
 import { useLocale } from 'next-intl'
+import { useEffect } from 'react'
 import Link from 'next/link'
 
 interface ICategoryName {
@@ -23,12 +25,11 @@ const CategoryName = ({
   subCategoryOption
 }: ICategoryName) => {
 	const locale = useLocale()
-  console.log("subCategoryName ==> ", subCategoryName);
 	
   return (
 		<>
 			<MainSection category={category} />
-			<div className="flex justify-evenly items-center w-full">
+			{/* <div className="flex justify-evenly items-center w-full">
 				{subCategoryOption &&
 					subCategoryOption[0]?.values.map((option, index) => (
 						<Link
@@ -39,19 +40,21 @@ const CategoryName = ({
 							{option.value[locale === "en" ? "en" : "ar"]}
 						</Link>
 					))}
-			</div>
-			<OptionMobileBtn />
-			{hasBrands && (
+			</div> */}
+			{/* <OptionMobileBtn /> */}
+			{/* {hasBrands && (
 				<div>
-					{/* <ShopBySize /> */}
+				 <ShopBySize /> 
 					<TiresTypes
 						brands={sub_subCategories}
 						subCategoryName={subCategoryName}
 					/>
 				</div>
-			)}
+			)} */}
 			<div className="custom-container1">
-				{hasBrands === false && sub_subCategories.length > 0 && (
+				{
+					// hasBrands === false &&
+					sub_subCategories.length > 0 && (
 					<ItemTypes
 						sub_subCategories={sub_subCategories}
 						subCategoryName={subCategoryName}

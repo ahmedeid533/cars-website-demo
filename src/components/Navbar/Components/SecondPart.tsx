@@ -1,7 +1,9 @@
 "use client";
 import { InputBase } from "@mui/material";
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import SearchIcon from "@mui/icons-material/Search";
 import { checkIsNotAuthPages } from "../../../global/isNotAuthPages";
 import { usePathname } from "next/navigation";
@@ -13,28 +15,50 @@ interface List {
 	name_ar: string;
 	name_en: string;
 	slug: string;
+	price: string;
+	main_photo: string;
 }
 
 const SecondPart = () => {
 	const [value, setValue] = useState<List[]>([]);
 	const path = usePathname();
 	const isNotAuthPage = checkIsNotAuthPages(path);
+	const locale = useLocale();
 	const t = useTranslations("Header");
 
 	return (
 		<>
 			{isNotAuthPage && (
 				<div className="flex flex-row flex-1 justify-between items-center gap-5 bg-transparent px-2 py-1 border-[#929292] relative border-[1px] rounded-md">
-					<div className="absolute left-2 top-[150%] bg-white text-black flex flex-col rounded-md w-full z-10 overflow-y-auto" onClick={() => {
-						setValue([]);
-					}}>
+					<div
+						className="absolute left-2 top-[150%] bg-white text-black flex flex-col rounded-md w-full z-10 overflow-y-auto"
+						onClick={() => {
+							setValue([]);
+						}}
+					>
 						{value?.map((elm: List) => (
 							<Link
 								key={elm.id}
 								href={`/product/${elm.id}`}
-								className="text-md border-b-2 border-[#929292] px-2 py-1 cursor-pointer hover:bg-[#929292] hover:text-white"
+								className="text-md flex search text-lg justify-between border-b-2 border-[#929292] h-[70px] px-2 py-1 cursor-pointer hover:bg-custom-blue font-semibold hover:text-white"
 							>
-								{path != "/en" ? elm.name_ar : elm.name_en}
+								<div>
+									<div>
+										{locale == "en"
+											? elm.name_en
+											: elm.name_ar}
+									</div>
+									<div className="text-[#929292] searchPrice">
+										{elm.price}
+									</div>
+								</div>
+								<Image
+									src={`https://3arbitk.com/storage/${elm.main_photo}`}
+									alt="product"
+									width={50}
+									height={50}
+									className="w-auto h-full rounded-md"
+								/>
 							</Link>
 						))}
 					</div>

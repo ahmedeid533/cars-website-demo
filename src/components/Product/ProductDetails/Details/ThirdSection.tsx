@@ -11,9 +11,9 @@ const ThirdSection = () => {
     const [open, setOpen] = useState(false)
     return (
         <div className='flex flex-col gap-3'>
-            <h5 className='font-bold'>CHOOSE OPTION(S):</h5>
-            <CustomSelectInput />
-            <div className="grid grid-cols-3 items-center gap-3">
+            {/* <h5 className='font-bold'>CHOOSE OPTION(S):</h5>
+            <CustomSelectInput /> */}
+            <div className="grid grid-cols-3 items-center gap-3 mt-150px lg:mt-[250px]">
                 <div className='w-full flex items-center justify-between border border-custom-black text-custom-black px-2 rounded py-4 text-center'>
                     <div className='cursor-pointer' onClick={() => setCounter(counter - 1)}>
                         <RemoveIcon />
@@ -27,12 +27,12 @@ const ThirdSection = () => {
                     Add To Cart
                 </Link>
             </div>
-            <div className='flex items-end justify-end'>
+            {/* <div className='flex items-end justify-end'>
                 <button onClick={() => setOpen(true)} className='w-2/3 lg:w-full py-3 rounded border border-custom-black text-custom-black font-bold'>
                     PRODUCT OPTIONS
                 </button>
-            </div>
-            <DetailsModel setOpen={setOpen} open={open} />
+            </div> */}
+            {/* <DetailsModel setOpen={setOpen} open={open} /> */}
         </div>
     )
 }

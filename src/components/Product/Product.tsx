@@ -23,6 +23,7 @@ const Product = ({ id }: { id: string }) => {
 				const d = res.data.data;
 				const product_ = {
 					productDetails: {
+						id: d.id,
 						photos: {
 							main_photo: `https://3arbitk.com/storage/${d.main_photo}`,
 							all_photos: d.photos,
@@ -59,8 +60,8 @@ const Product = ({ id }: { id: string }) => {
 	}, [product]);
 	return (
 		<>
-			<CustomTabs value={value} setValue={setValue} />
-			<Divider />
+			{/* <CustomTabs value={value} setValue={setValue} />
+			<Divider /> */}
 			<div className="custom-container1 py-10 flex flex-col gap-10">
 				<Links category={product?.category} />
 				{product?.productDetails && (
@@ -70,7 +71,7 @@ const Product = ({ id }: { id: string }) => {
 			<Divider />
 			<ProductProps description={product?.description} />
 			<Divider />
-			<SimilarProducts />
+			<SimilarProducts id={product?.productDetails.id} />
 		</>
 	);
 };

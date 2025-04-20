@@ -13,15 +13,15 @@ const FirstProps: React.FC<FirstPropsProps> = ({ description }) => {
 					<li className="text-sm">{description}</li>
 				</ul>
 			</div>
-			<div className="flex flex-col gap-4 text-custom-black bg-[#EEEEEE] rounded py-5 px-8">
+			{/* <div className="flex flex-col gap-4 text-custom-black bg-[#EEEEEE] rounded py-5 px-8">
 				<h2 className="font-bold text-2xl">Disclaimer</h2>
 				<ul className="list-disc p-4 text-custom-blue">
 					<li className="text-sm">
 						This product is valid for exchange for 14 days from now
 					</li>
 				</ul>
-			</div>
-			<div className="flex flex-col gap-4 text-custom-black bg-[#EEEEEE] rounded py-5 px-8">
+			</div> */}
+			{/* <div className="flex flex-col gap-4 text-custom-black bg-[#EEEEEE] rounded py-5 px-8">
 				<h2 className="font-bold text-2xl">Feature</h2>
 				<ul className="list-disc p-4 flex flex-col gap-1">
 					<li className="text-sm">
@@ -47,7 +47,7 @@ const FirstProps: React.FC<FirstPropsProps> = ({ description }) => {
 						control, including various stress and impact tests.
 					</li>
 				</ul>
-			</div>
+			</div> */}
 		</div>
 	);
 };
