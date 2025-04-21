@@ -29,7 +29,7 @@ const ItemsInMobile = ({ items }: { items: any[] }) => {
 						className={`w-full p-2 text-custom-black flex flex-col gap-3 items-center`}
 					>
 						<div className="flex flex-col items-center ">
-							<h2 className="font-bold text-center">
+							<h2 className="font-bold text-ellipsis overflow-hidden whitespace-nowrap w-full text-center ">
 								{locale == "en" ? item.name_en : item.name_ar}
 							</h2>
 							{/* <Image
@@ -51,7 +51,7 @@ const ItemsInMobile = ({ items }: { items: any[] }) => {
 								</span>
 							</p>
 						</div>
-						<p className="text-[#525252] text-xs">
+						<p className="text-[#525252] text-xs text-ellipsis overflow-hidden whitespace-nowrap w-full text-center">
 							{locale == "en"
 								? item.description_en
 								: item.description_ar}

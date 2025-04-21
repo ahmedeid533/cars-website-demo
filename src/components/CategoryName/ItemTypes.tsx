@@ -13,9 +13,9 @@ const ItemTypes = ({
 }) => {
 	const locale = useLocale();
 	return (
-		<section className="flex flex-col gap-6 pt-10 pb-32 text-custom-black">
+		<section className="flex flex-col gap-6 pt-10 md:pb-32 pb-8 text-custom-black">
 			<h2 className="font-semibold text-2xl">{subCategoryName}</h2>
-			<div className="items-center gap-x-16 gap-y-10 grid grid-cols-5">
+			<div className="items-center md:gap-x-16 md:gap-y-10  grid grid-cols-5">
 				{sub_subCategories?.map((item, index) => (
 					<Link
 						key={index}
