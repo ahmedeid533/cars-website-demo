@@ -13,7 +13,24 @@ import { toast } from "react-toastify";
 const Cart = () => {
 	const t = useTranslations("Header");
 	const locale = useLocale();
-	const [cart, setCart] = useState([]);
+	interface CartItem {
+		id: number;
+		product: {
+			main_photo: string;
+			name_en: string;
+			name_ar: string;
+		};
+		quantity: number;
+		total: number;
+		price: number;
+	}
+
+	interface Cart {
+		items: CartItem[];
+		total: number;
+	}
+
+	const [cart, setCart] = useState<Cart | null>(null);
 	const cookie = new Cookies();
 	const router = useRouter();
 
@@ -37,7 +54,7 @@ const Cart = () => {
 			apiClient(token)
 				.delete("/cart/clear")
 				.then((res) => {
-					setCart([]);
+					setCart({ items: [], total: 0 });
 					toast.success("Cart cleared successfully")
 				})
 				.catch((err) => {
@@ -45,12 +62,12 @@ const Cart = () => {
 				});
 	};
 	
-	const clearItem = (id) => {
+	const clearItem = (id: number) => {
 			const token = cookie.get("token");
 			apiClient(token)
 				.delete("/cart/delete/item/"+id)
 				.then((res) => {
-					setCart([]);
+					setCart({ items: [], total: 0 });
 					toast.success("Item removed from cart")
 				})
 				.catch((err) => {

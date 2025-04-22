@@ -7,12 +7,18 @@ import Cookies from "universal-cookie";
 import { useEffect, useState } from "react";
 import { apiClient } from "@/util/axois";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Cart = () => {
 	const cookie = new Cookies();
 	const router = useRouter();
 
-	const [cart, setCart] = useState([]);
+	interface Cart {
+		items: any[]; // Replace `any` with the specific type of items if known
+		total: number; // Add other properties as needed
+	}
+
+	const [cart, setCart] = useState<Cart>({ items: [], total: 0 });
 
 	const getCart = () => {
 		const token = cookie.get("token");
@@ -35,7 +41,7 @@ const Cart = () => {
 		apiClient(token)
 			.delete("/cart/clear")
 			.then((res) => {
-				setCart([]);
+				setCart({ items: [], total: 0 });
 				toast.success("Cart cleared successfully");
 			})
 			.catch((err) => {
