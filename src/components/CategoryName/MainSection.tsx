@@ -3,6 +3,7 @@ import MainSectionForm from '../MainSectionForm/MainSectionForm'
 import { Category } from '@/types'
 
 const MainSection = ({ category }: { category: Category | null|undefined }) => {
+console.log("category ==> ", category);
   return (
     <>
       <section className="relative bg-cover bg-no-repeat bg-center mb-5 lg:mb-52 w-full h-[30vh] sm:h-[70vh]"

@@ -1,7 +1,7 @@
 "use client"
 import { productImage } from '@/mocks/productImage'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Details from './Details/Details';
 
 interface Product {
@@ -9,13 +9,15 @@ interface Product {
 		main_photo: string;
 		all_photos: any[];
   };
-  mainInfo?: any; 
+	mainInfo?: any; 
+	id: string | number;
 }
 
 const ProductDetails = ({ product }: { product: Product }) => {
 	const [selectedImage, setSelectedImage] = useState(
 		product?.photos!.main_photo
 	);
+
 	return (
 		<section className="grid grid-cols-1 lg:grid-cols-5 items-start gap-10 gap-x-0 lg:gap-x-10">
 			<div className="flex flex-col-reverse lg:grid grid-cols-1 lg:grid-cols-6 col-span-3 items-start gap-10 lg:gap-5">
@@ -73,7 +75,9 @@ const ProductDetails = ({ product }: { product: Product }) => {
 					)}
 				</div>
 			</div>
-			<Details productDetails={product?.mainInfo} />
+			<Details
+				productDetails={product?.mainInfo} id={product?.id}
+			/>
 		</section>
 	);
 };

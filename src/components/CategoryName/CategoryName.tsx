@@ -25,7 +25,7 @@ const CategoryName = ({
   subCategoryOption
 }: ICategoryName) => {
 	const locale = useLocale()
-	
+  console.log("sub_subCategories ==> ", sub_subCategories);
   return (
 		<>
 			<MainSection category={category} />
