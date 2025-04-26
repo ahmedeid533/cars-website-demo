@@ -23,7 +23,7 @@ console.log("items ==> ", items);
 					<div
 						className={`${
 							gridColsNumber === 3
-								? "h-[40vh] bg-[#F3F3F3] w-full flex"
+								? "h-[40vh] bg-[#F3F3F300] w-full flex"
 								: "h-auto bg-transparent block"
 						} items-center justify-center`}
 					>
@@ -83,7 +83,7 @@ console.log("items ==> ", items);
 						{gridColsNumber === 3 && (
 							<>
 								<h6 className="font-bold">
-									${item.selling_price}
+									{item.selling_price}EGP
 								</h6>
 								{/* <p className="text-[#A4A4A4] line-through">
 									$165.09 - $276 .29
@@ -95,7 +95,7 @@ console.log("items ==> ", items);
 						{gridColsNumber === 1 && (
 							<>
 								<h4 className="text-custom-gray">
-									${item.selling_price}
+									{item.selling_price}EGP
 								</h4>
 								<h5>
 									<span className="text-custom-green font-bold text-4xl">

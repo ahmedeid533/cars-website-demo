@@ -62,7 +62,7 @@ const Cart = () => {
 				<div className="grid grid-cols-1 lg:grid-cols-4 items-start gap-5">
 					<div className="flex flex-col col-span-1 lg:col-span-3 gap-3">
 						<Items cart={cart?.items} />
-						<div className="w-full hidden lg:flex items-center justify-between">
+						{/* <div className="w-full hidden lg:flex items-center justify-between">
 							<div className="w-1/3"></div>
 							<div className="w-1/3 flex items-center justify-center">
 								<button className="rounded border border-custom-black text-custom-black py-3 px-6 font-bold">
@@ -79,7 +79,7 @@ const Cart = () => {
 									Clear The Cart
 								</button>
 							</div>
-						</div>
+						</div> */}
 					</div>
 					<OrderDetails total={cart?.total} />
 					<div className="w-full flex items-center justify-between">

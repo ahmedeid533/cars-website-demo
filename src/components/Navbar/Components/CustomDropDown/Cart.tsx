@@ -10,7 +10,7 @@ import { apiClient } from "@/util/axois";
 import { useLocale, useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 
-const Cart = () => {
+const Cart = ({ hovered }: { hovered: boolean }) => {
 	const t = useTranslations("Header");
 	const locale = useLocale();
 	interface CartItem {
@@ -50,34 +50,37 @@ const Cart = () => {
 			});
 	};
 	const clearCart = () => {
-			const token = cookie.get("token");
-			apiClient(token)
-				.delete("/cart/clear")
-				.then((res) => {
-					setCart({ items: [], total: 0 });
-					toast.success("Cart cleared successfully")
-				})
-				.catch((err) => {
-					console.log("error ==> ", err);
-				});
+		const token = cookie.get("token");
+		apiClient(token)
+			.delete("/cart/clear")
+			.then((res) => {
+				setCart({ items: [], total: 0 });
+				toast.success("Cart cleared successfully");
+			})
+			.catch((err) => {
+				console.log("error ==> ", err);
+			});
 	};
-	
+
 	const clearItem = (id: number) => {
-			const token = cookie.get("token");
-			apiClient(token)
-				.delete("/cart/delete/item/"+id)
-				.then((res) => {
-					setCart({ items: [], total: 0 });
-					toast.success("Item removed from cart")
-				})
-				.catch((err) => {
-					console.log("error ==> ", err);
-				});
+		const token = cookie.get("token");
+		apiClient(token)
+			.delete("/cart/delete/item/" + id)
+			.then((res) => {
+				setCart({ items: [], total: 0 });
+				toast.success("Item removed from cart");
+			})
+			.catch((err) => {
+				console.log("error ==> ", err);
+			});
 	};
-	
+
 	useEffect(() => {
+		if (!hovered) {
+			return;
+		}
 		getCart();
-	}, []);
+	}, [hovered]);
 	return (
 		<div className="flex flex-col gap-5">
 			<h2 className="font-bold text-custom-black">{t("Carts")}</h2>
@@ -114,7 +117,7 @@ const Cart = () => {
 									{t("Qty")}: {item?.quantity}
 								</span>
 								<span>
-									${item.total}EGP each: {item.price}EGP
+									{item.total}EGP each: {item.price}EGP
 								</span>
 							</p>
 						</div>

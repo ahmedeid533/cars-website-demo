@@ -30,7 +30,7 @@ const FirstSection = ({ mainInfo }: { mainInfo: MainInfo }) => {
 				</p>
 			</div> */}
 			<div className="text-xl font-bold text-custom-blue lg:text-custom-black flex items-center gap-5">
-				<h2>${mainInfo.price}</h2>
+				<h2>{mainInfo.price}EGP</h2>
 			</div>
 			<p className="text-custom-black text-sm">
 				In Stock ({mainInfo.stock}) - Ships within 24 hrs

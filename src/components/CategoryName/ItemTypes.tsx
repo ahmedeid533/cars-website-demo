@@ -13,7 +13,7 @@ const ItemTypes = ({
 	sub_subCategories: SubCategory[];
 	subCategoryName: string | undefined;
 }) => {
-	const [supSubId, setSupSubId] = useState<number>(0);
+	const [supSubId, setSupSubId] = useState<number>(sub_subCategories[0]?.id);
 	const [supSubName, setSupSubName] = useState<string>("");
 	const [products, setProducts] = useState<any[]>([]);
 	const locale = useLocale();
@@ -29,6 +29,11 @@ const ItemTypes = ({
 				console.log("err ==> ", err);
 			});
 	}, [supSubId]);
+	useEffect(() => {
+		setSupSubName(
+			sub_subCategories[0]?.name[locale === "en" ? "en" : "ar"]
+		);
+	}, []);
 	return (
 		<section className="flex flex-col gap-6 pt-10 md:pb-32 pb-8 text-custom-black">
 			<h2 className="font-semibold text-2xl">{subCategoryName}</h2>
