@@ -19,7 +19,7 @@ const page = () => {
 				/>
 			</div>
 			<h2 className="font-bold text-custom-black text-2xl md:text-5xl text-center tracking-wide">
-				{document.location.href.includes("en") ? (
+				{"en" == "en"? (
 					<>
 						This page will be{" "}
 						<span className="text-custom-blue">launched</span> soon
