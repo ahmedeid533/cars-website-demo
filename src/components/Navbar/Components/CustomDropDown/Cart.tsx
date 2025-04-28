@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { apiClient } from "@/util/axois";
 import { useLocale, useTranslations } from "next-intl";
 import { toast } from "react-toastify";
+import { get } from "http";
 
 const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; setCartItemsCount?: (count: number) => void }) => {
 	const t = useTranslations("Header");
@@ -82,6 +83,9 @@ const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; set
 		}
 		getCart();
 	}, [hovered]);
+	useEffect(() => {
+		getCart();
+	}, []);
 	return (
 		<div className="flex flex-col gap-5">
 			<h2 className="font-bold text-custom-black">{t("Carts")}</h2>
