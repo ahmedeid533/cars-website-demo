@@ -45,7 +45,7 @@ console.log("items ==> ", items);
 						} text-custom-black`}
 					>
 						<h2 className="font-bold flex flex-col ">
-							<span>
+							<span className="text-ellipsis overflow-hidden whitespace-nowrap">
 								{locale == "en" ? item.name_en : item.name_ar}
 							</span>
 						</h2>
@@ -115,7 +115,7 @@ console.log("items ==> ", items);
 							href={`/product/${item.id}`}
 							className="text-custom-black border rounded border-custom-black py-2 px-6 transition duration-300 hover:text-white hover:bg-custom-blue hover:border-custom-blue"
 						>
-							View Details
+							{locale == "en"?"View Details":"عرض التفاصيل"}
 						</Link>
 					</div>
 				</div>

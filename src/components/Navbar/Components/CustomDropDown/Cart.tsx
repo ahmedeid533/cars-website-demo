@@ -10,7 +10,7 @@ import { apiClient } from "@/util/axois";
 import { useLocale, useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 
-const Cart = ({ hovered }: { hovered: boolean }) => {
+const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; setCartItemsCount?: (count: number) => void }) => {
 	const t = useTranslations("Header");
 	const locale = useLocale();
 	interface CartItem {
@@ -44,6 +44,7 @@ const Cart = ({ hovered }: { hovered: boolean }) => {
 			.get("/cart")
 			.then((res) => {
 				setCart(res.data.data);
+				setCartItemsCount(res.data.data.items.length);
 			})
 			.catch((err) => {
 				console.log("error ==> ", err);
@@ -139,7 +140,7 @@ const Cart = ({ hovered }: { hovered: boolean }) => {
 						</span>
 					</span>
 					<span>
-						{t("Subtotal")}: ${cart?.total}
+						{t("Subtotal")}: {cart?.total}EGP
 					</span>
 				</p>
 				<div className="flex flex-row items-center gap-4 w-4/5">

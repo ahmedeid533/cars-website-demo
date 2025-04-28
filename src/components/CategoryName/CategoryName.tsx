@@ -8,25 +8,29 @@ import OptionMobileBtn from './OptionMobileBtn'
 import { Category, SubCategory, SubCategoryOption } from '@/types'
 import { useLocale } from 'next-intl'
 import { useEffect } from 'react'
-import Link from 'next/link'
+import { useState } from "react";
+import Link from "next/link";
 
 interface ICategoryName {
-  category: Category | null | undefined
-  hasBrands: boolean
-  sub_subCategories: SubCategory[]
-  subCategoryName: string
-  subCategoryOption: SubCategoryOption[]
+	category: Category | null | undefined;
+	hasBrands: boolean;
+	sub_subCategories: SubCategory[];
+	subCategoryName: string;
+	subCategoryOption: SubCategoryOption[];
 }
 const CategoryName = ({
-  category,
-  hasBrands,
-  sub_subCategories,
-  subCategoryName,
-  subCategoryOption
+	category,
+	hasBrands,
+	sub_subCategories,
+	subCategoryName,
+	subCategoryOption,
 }: ICategoryName) => {
-	const locale = useLocale()
-  console.log("sub_subCategories ==> ", sub_subCategories);
-  return (
+	const [subSubCategoryId, setSubSubCategoryId] = useState<number>();
+	const locale = useLocale();
+	console.log("sub_subCategories ==> ", sub_subCategories);
+	console.log("category lol kkkk ==> ", category);
+
+	return (
 		<>
 			<MainSection category={category} />
 			{/* <div className="flex justify-evenly items-center w-full">
@@ -55,15 +59,19 @@ const CategoryName = ({
 				{
 					// hasBrands === false &&
 					sub_subCategories.length > 0 && (
-					<ItemTypes
-						sub_subCategories={sub_subCategories}
-						subCategoryName={subCategoryName}
-					/>
+						<ItemTypes
+							subCategories={sub_subCategories}
+							subCategoryName={subCategoryName}
+							setSubSubCategoryId={setSubSubCategoryId}
+						/>
+					)
+				}
+				{subSubCategoryId && (
+					<FilterAndItems subSubCategoryId={subSubCategoryId} />
 				)}
-				<FilterAndItems />
 			</div>
 		</>
-  );
-}
+	);
+};
 
 export default CategoryName

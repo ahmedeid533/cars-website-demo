@@ -46,7 +46,7 @@ const Items = ({ cart }: { cart: any[] }) => {
 							{/* <SortServices label="QTY" /> */}
 							<div>quantity: {item?.quantity}</div>
 							<span>
-								${item.total}EGP each: {item.price}EGP
+								{item.total}EGP each: {item.price}EGP
 							</span>
 						</div>
 						{/* <div className="rounded border border-custom-blue px-6 py-2 flex items-center w-3/4 gap-2">

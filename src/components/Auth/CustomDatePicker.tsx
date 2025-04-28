@@ -28,7 +28,9 @@ const CustomDatePicker: React.FC<Props> = ({ label, name }) => {
       <Stack spacing={3}>
         <MobileDatePicker
           label={label}
-          inputFormat="MM/DD/YYYY"
+					inputFormat="MM/DD/YYYY"
+					minDate={dayjs("1960-01-01")}
+					maxDate={dayjs("2025-01-01")}
           value={field.value ? dayjs(field.value) : null}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} fullWidth error={meta.touched && Boolean(meta.error)} />}

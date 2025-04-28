@@ -8,26 +8,39 @@ import AdditionalItems from "./AdditionalItems";
 import GetMore from "./GetMore";
 import ItemsInMobile from "./ItemsInMobile";
 
-const FilterAndItems = () => {
+const FilterAndItems = ({ subSubCategoryId }: { subSubCategoryId: number }) => {
 	const [gridColsNumber, setGridColsNumber] = useState(1);
 	const [products, setProducts] = useState<any[]>([]);
 
-	const getProducts = async () => {
-		const res = await apiClient().get("/products");
-		setProducts(res.data.data);
-		console.log("res.data.data from getProducts ==> ", res.data.data);
+	interface Product {
+		id: string;
+		name: string;
+		price: number;
+		// Add other fields as per the API response
 	}
+
+	const getProducts = async (supSubId: number): Promise<void> => {
+		apiClient()
+			.get<{ data: Product[] }>(`/products?sub_subcategory_id=${supSubId}`)
+			.then((res) => {
+				console.log("res ==> ", res.data.data);
+				setProducts(res.data.data);
+			})
+			.catch((err: unknown) => {
+				console.log("err ==> ", err);
+			});
+	};
 
 	const handleSetGridColsNumber = useCallback((cols: number) => {
 		setGridColsNumber(cols);
 	}, []);
 
 	useEffect(() => {
-		getProducts();
-	}, []);
+		getProducts(subSubCategoryId);
+	}, [subSubCategoryId]);
 
 	return (
-		<section className="flex flex-col gap-2 mb-10 ">
+		<section className="flex flex-col gap-2 mb-10  md:w-[70vw] mx-auto ">
 			<GridOptionsAndResults
 				setGridColsNumber={handleSetGridColsNumber}
 				allItemsCount={products.length}

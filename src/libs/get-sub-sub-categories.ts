@@ -4,7 +4,8 @@ import { apiClient } from '@/util/axois'
 export const getSub_subCategories = async (
   category_id: number
 ): Promise<SubCategory[] | undefined> => {
-  try {
+	try {
+console.log("category_id ==> ", category_id);
     const response = await apiClient().get(
       `/categories/sub-subcategories/${category_id}`
     )
