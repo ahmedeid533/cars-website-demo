@@ -7,12 +7,7 @@ export const metadata: Metadata = {
 };
 
 const page = () => {
-	let locale = "";
-	if (document.location.href.includes("en")) {
-		locale = "en";
-	} else {
-		locale = "ar";
-	}
+	
 	return (
 		<aside className="flex md:flex-col flex-col-reverse justify-center items-center gap-5 custom-container2 py-10">
 			<div className="relative w-3/4 md:w-full h-[60vh]">
@@ -24,7 +19,7 @@ const page = () => {
 				/>
 			</div>
 			<h2 className="font-bold text-custom-black text-2xl md:text-5xl text-center tracking-wide">
-				{locale === "en" ? (
+				{document.location.href.includes("en") ? (
 					<>
 						This page will be{" "}
 						<span className="text-custom-blue">launched</span> soon

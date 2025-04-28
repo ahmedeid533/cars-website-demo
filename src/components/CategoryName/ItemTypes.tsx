@@ -25,12 +25,14 @@ const ItemTypes = ({
 	const getSubSubCategory = async (id: number): Promise<void> => {
 		const subSubCategory: any[] = (await getSub_subCategories(id)) || [];
 		setProducts(subSubCategory || []);
+		setSubSubCategoryId(subSubCategory[0]?.id);
 	}
 
 	useEffect(() => {
 		if (document.location.href.includes("sub_category_id")) {
 			setProducts(subCategories);
 			setSupSubName(subCategoryName || "");
+			setSubSubCategoryId(subCategories[0]?.id);
 			// setShow(false);
 		} else {
 			getSubSubCategory(supSubId);
@@ -40,7 +42,7 @@ const ItemTypes = ({
 
 
 	useEffect(() => {
-		document.location.href.includes("sub_category_id")?null:setSupSubName(subCategories[0]?.name[locale === "en" ? "en" : "ar"]);
+		document.location.href.includes("sub_category_id") ? null : setSupSubName(subCategories[0]?.name[locale === "en" ? "en" : "ar"]);
 	}, []);
 	return (
 		<section className="flex flex-col gap-2 pt-10 md:pb-32 pb-8 text-custom-black">
