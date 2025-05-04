@@ -25,7 +25,13 @@ const LangChangeModal = ({ open, setOpen }: props) => {
   const handleClose = () => {
     setOpen(false)
     startTransition(() => {
-      router.replace(`/${lang}/${generatePathname(pathname.split('/'))}`)
+      router.replace(
+			`/${lang}/${generatePathname(document.location.href.split("/"))}`
+		);
+      console.log(
+			"document.location.href ==> ",
+			generatePathname(document.location.href.split("/")),
+		);
     })
   }
   return (

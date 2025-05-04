@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import PageNotFoundComponent from "./_component";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -18,19 +19,7 @@ const page = () => {
 					className="object-contain"
 				/>
 			</div>
-			<h2 className="font-bold text-custom-black text-2xl md:text-5xl text-center tracking-wide">
-				{"en" == "en"? (
-					<>
-						This page will be{" "}
-						<span className="text-custom-blue">launched</span> soon
-					</>
-				) : (
-					<>
-						هذه الصفحة{" "}
-						<span className="text-custom-blue">ستطلق</span> قريبا
-					</>
-				)}
-			</h2>
+			<PageNotFoundComponent />
 		</aside>
 	);
 };

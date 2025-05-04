@@ -25,7 +25,7 @@ const Profile = () => {
       .finally(() => {
         cookie.remove('token')
         cookie.remove('customer')
-        window.location.href = '/'
+				window.location.reload()
       })
   }
   return (
@@ -82,10 +82,10 @@ const Profile = () => {
           ))}
           <button
             className='flex flex-row justify-between items-center pb-3 border-b border-b-[#525252] w-full'
-            onClick={handleLogout}
+            onClick={()=>handleLogout()}
           >
             <div className='flex flex-row items-center gap-3'>
-              <h4 className='text-red-700 capitalize'>{'Logout'}</h4>
+              <h4 className='text-red-700 capitalize'>{locale === 'ar' ? 'تسجيل الخروج' :'Logout'}</h4>
             </div>
             <ArrowRightAltIcon
               className='text-red-700'

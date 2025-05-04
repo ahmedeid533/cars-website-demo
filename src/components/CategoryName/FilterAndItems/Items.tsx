@@ -6,7 +6,6 @@ import React from 'react'
 
 const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[] }) => {
 	const locale = useLocale()
-console.log("items ==> ", items);
     return (
 		<div
 			className={`hidden lg:grid grid-cols-${gridColsNumber} items-center gap-5`}

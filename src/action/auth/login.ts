@@ -6,6 +6,7 @@ export const login = async (data: typeof initialValues): Promise<AuthResponse | 
    
     try {
       const response = await apiClient().post('/customers/login', data);
+      console.log("response login==> ", response);
       return response.data; 
     } catch (error: any) {
       console.error("Error:", error.response?.data || error.message);

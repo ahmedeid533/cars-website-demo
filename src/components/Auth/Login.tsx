@@ -76,7 +76,7 @@ const Login = () => {
                   Don{"'"}t have an account? 
                 </span>
                 <Link href={'/signin'} className='text-custom-blue'>
-                  Signin
+                  Sign up
                 </Link>
               </p>
             </Form>

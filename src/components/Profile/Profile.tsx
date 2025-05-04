@@ -11,7 +11,7 @@ const Profile = () => {
     const [value, setValue] = useState(0)
     return (
         <>
-            <CustomTabs value={value} setValue={setValue} />
+            {/* <CustomTabs value={value} setValue={setValue} /> */}
             <Divider />
             <div className='pt-5 lg:pt-20 pb-10 flex flex-col gap-10'>
                 <div className='custom-container1'>

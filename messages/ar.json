@@ -1,5 +1,11 @@
 {
   "Header": {
+		"Loading...": "جار التحميل...",
+		"Change": "تغيير",
+		"Add vehicles": "إضافة مركبات",
+		"Select Car Model": "اختر طراز السيارة",
+		"Select Car Year": "اختر سنة السيارة",
+		"Select Car Brand": "اختر علامة السيارة",
     "Display settings": "إعدادات العرض",
     "Change your language": "غير لغتك",
     "Language": "لغة",
@@ -31,8 +37,23 @@
     "FIND PARTS FOR YOUR VEHICLE": "البحث عن قطع غيار لسيارتك",
     "search cars": "البحث عن السيارات"
   },
+	"Footer": {
+		"Receive pricing updates, shopping tips & more!": "احصل على تحديثات الأسعار ونصائح التسوق والمزيد!",
+		"Our Mobile App": "تطبيقنا المحمول",
+		"Company": "الشركة",
+		"About Us": "معلومات عنا",
+		"Contact Us": "اتصل بنا",
+		"Quick Links": "روابط سريعة",
+		"Get in Touch": "تواصل معنا",
+		"Help center": "مركز المساعدة",
+		"Live Chats": "الدردشة المباشرة",
+		"Download on the": "تحميل على",
+		"Apple Store": "متجر أبل",
+		"Get it on": "احصل على",
+		"Google Play": "جوجل بلاي",
+		"Connect With Us": "تواصل معنا"
+	},
   "homepage": {
     "Book Now": "احجز الآن"
-
   }
 }

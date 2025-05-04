@@ -13,8 +13,6 @@ interface ITabsAndItems {
 	allCategoryItems: AllItemsInterface[];
 }
 const TabsAndItems = ({ allCategoryItems, category_tabs }: ITabsAndItems) => {
-	console.log("category_tabs ==> ", category_tabs);
-	console.log("allCategoryItems ==> ", allCategoryItems);
 	const [value, setValue] = useState(0);
 	const locale = useLocale();
 	return (

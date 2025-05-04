@@ -17,7 +17,7 @@ const FirstPart = () => {
     <div className='flex flex-row items-center gap-3'>
       {isNotAuthPage && <CustomDrawer />}
       <Link href={'/'}>
-        <Image src={'/main-logo-1.png'} alt='logo' width={100} height={100} />
+        <Image src={'/main-logo-1.png'} className='scale-[1.2]' alt='logo' width={100} height={100} />
       </Link>
       <button
         className='hidden lg:flex flex-row items-center gap-2 p-2 border-[1px] border-custom-black rounded w-auto'

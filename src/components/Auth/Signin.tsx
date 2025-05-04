@@ -70,11 +70,11 @@ export default function SignupForm () {
                 )}
               </Button>
 
-              <Divider />
+              {/* <Divider />
               <p className='text-gray-500 text-center'>
                 Or use one of these options
               </p>
-              <SocialMediaBtns />
+              <SocialMediaBtns /> */}
               <p className='text-center'>
                 <span className='text-[#111] text-sm'>
                   Already have an account?{' '}

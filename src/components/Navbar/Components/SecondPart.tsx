@@ -30,16 +30,12 @@ const SecondPart = () => {
 		<>
 			{isNotAuthPage && (
 				<div className="flex flex-row flex-1 justify-between items-center gap-5 bg-transparent px-2 py-1 border-[#929292] relative border-[1px] rounded-md">
-					<div
-						className="absolute left-2 top-[150%] bg-white text-black flex flex-col rounded-md w-full z-10 overflow-y-auto"
-						onClick={() => {
-							setValue([]);
-						}}
-					>
+					<div className="absolute left-2 top-[150%] max-h-[70vh] bg-white text-black flex flex-col rounded-md w-full z-10 overflow-y-scroll scrollbar-hide">
 						{value?.map((elm: List) => (
 							<Link
 								key={elm.id}
 								href={`/product/${elm.id}`}
+								onClick={() => setValue([])}
 								className="text-md flex search text-lg justify-between border-b-2 border-[#929292] h-[70px] px-2 py-1 cursor-pointer hover:bg-custom-blue font-semibold hover:text-white"
 							>
 								<div>
@@ -69,16 +65,20 @@ const SecondPart = () => {
 						inputProps={{ "aria-label": "search" }}
 						className="w-full text-[#5C5C5C] placeholder:text-[#5C5C5C] placeholder:text-xs"
 						onChange={(e) => {
-							apiClient()
-								.get("/products/search?query=" + e.target.value)
-								.then((res) => {
-									console.log(res.data);
-									setValue(res.data.data);
-									console.log("list ==> ", res.data.data);
-								})
-								.catch((err) => {
-									console.log(err);
-								});
+							if (e.target.value.length === 0) {
+								setValue([]);
+							} else {
+								apiClient()
+									.get("/products/search?query=" + e.target.value)
+									.then((res) => {
+										console.log(res.data);
+										setValue(res.data.data);
+										console.log("list ==> ", res.data.data);
+									})
+									.catch((err) => {
+										console.log(err);
+									});
+							}
 						}}
 					/>
 

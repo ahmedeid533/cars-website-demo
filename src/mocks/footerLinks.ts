@@ -6,22 +6,22 @@ export const footerLinks = [
                 name: "About Us",
                 href: "/about"
             },
-            {
-                name: "Blog",
-                href: "/blog"
-            },
-            {
-                name: "Services",
-                href: "/services"
-            },
-            {
-                name: "FAQs",
-                href: "/FAQs"
-            },
-            {
-                name: "Terms",
-                href: "/terms"
-            },
+            // {
+            //     name: "Blog",
+            //     href: "/blog"
+            // },
+            // {
+            //     name: "Services",
+            //     href: "/services"
+            // },
+            // {
+            //     name: "FAQs",
+            //     href: "/FAQs"
+            // },
+            // {
+            //     name: "Terms",
+            //     href: "/terms"
+            // },
             {
                 name: "Contact Us",
                 href: "/contact"
@@ -33,7 +33,7 @@ export const footerLinks = [
         links: [
             {
                 name: "Get in Touch",
-                href: "/get-in-touch"
+                href: "/contact"
             },
             {
                 name: "Help center",
@@ -43,10 +43,10 @@ export const footerLinks = [
                 name: "Live Chats",
                 href: "/live-chats"
             },
-            {
-                name: "How it works",
-                href: "/how-it-works"
-            },
+            // {
+            //     name: "How it works",
+            //     href: "/how-it-works"
+            // },
         ]
     },
     {

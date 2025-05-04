@@ -25,11 +25,8 @@ const CategoryName = ({
 	subCategoryName,
 	subCategoryOption,
 }: ICategoryName) => {
-	const [subSubCategoryId, setSubSubCategoryId] = useState<number>();
+	const [subSubCategoryId, setSubSubCategoryId] = useState<number>(-1);
 	const locale = useLocale();
-	console.log("sub_subCategories ==> ", sub_subCategories);
-	console.log("category lol kkkk ==> ", category);
-
 	return (
 		<>
 			<MainSection category={category} />

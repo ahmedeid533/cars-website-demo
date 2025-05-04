@@ -47,7 +47,11 @@ export interface Category {
     ar: string
   }
   slug: string
-  image_url: string
+	image_url: string
+	parent_category?: {
+		id: number
+	}
+
 }
 export interface SubCategory extends Category {
   appearance_type: string

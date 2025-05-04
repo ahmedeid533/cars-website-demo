@@ -1,5 +1,11 @@
 {
   "Header": {
+		"Loading...": "Loading...",
+		"Change": "Change",
+		"Add vehicles": "Add vehicles",
+		"Select Car Brand": "Select Car Brand",
+		"Select Car Model": "Select Car Model",
+		"Select Car Year": "Select Car Year",
     "Display settings": "Display settings",
     "Change your language": "Change your language",
     "Language": "Language",
@@ -31,6 +37,22 @@
     "FIND PARTS FOR YOUR VEHICLE": "FIND PARTS FOR YOUR VEHICLE",
     "search cars": "search cars"
   },
+	"Footer": {
+		"Receive pricing updates, shopping tips & more!": "Receive pricing updates, shopping tips & more!",
+		"Our Mobile App": "Our Mobile App",
+		"Company": "Company",
+		"About Us": "About Us",
+		"Contact Us": "Contact Us",
+		"Quick Links": "Quick Links",
+		"Get in Touch": "Get in Touch",
+		"Help center": "Help center",
+		"Live Chats": "Live Chat",
+		"Download on the": "Download on the",
+		"Apple Store": "Apple Store",
+		"Get it on": "Get it on",
+		"Google Play": "Google Play",
+		"Connect With Us": "Connect With Us"
+	},
   "homepage": {
     "Book Now": "Book Now"
   }

@@ -69,7 +69,8 @@ const MobileList = () => {
             {drawerUserInfo.map((link, index) => (
               <DrawerUserInfoList
                 key={index}
-                link={link}
+								link={link}
+								path={"#"}
                 toggleDrawer={function (
                   event: React.KeyboardEvent | React.MouseEvent
                 ): void {

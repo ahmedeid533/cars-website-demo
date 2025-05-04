@@ -6,6 +6,9 @@ import { drawerUserInfo } from '@/mocks/drawerUserInfo'
 import DrawerAccordionList from './DrawerAccordionList'
 import DrawerUserInfoList from './DrawerUserInfoList'
 import DrawerContactList from './DrawerContactList'
+
+import Image from "next/image";
+import Cookies from "universal-cookie";
 import Link from 'next/link'
 import ContactPageIcon from '@mui/icons-material/ContactPage'
 import { useTranslations } from 'next-intl'
@@ -24,7 +27,10 @@ const DrawerDepartmentList = ({
       setExpanded(isExpanded ? panel : false)
     }
   const t = useTranslations('Header')
-  const [departments, setDepartments] = React.useState<Category[]>([])
+	const [departments, setDepartments] = React.useState<Category[]>([])
+	
+	const cookie = new Cookies();
+	const user = cookie.get("customer");
   useEffect(() => {
     const fetchDepartments = async () => {
       const response = (await getCategories()) as Category[]
@@ -33,49 +39,61 @@ const DrawerDepartmentList = ({
     fetchDepartments()
   },[])
   return (
-    <div className='mb-10'>
-      <ListItem>
-        <h3 className='mb-5 font-bold text-custom-black text-xl capitalize'>
-          {t('Departments')}
-        </h3>
-      </ListItem>
-      {departments&&departments.length > 0 &&
-        departments?.map((link, index) => (
-          <DrawerAccordionList
-            expanded={expanded}
-            handleChange={handleChange}
-            key={index}
-            index={index}
-            link={link}
-            toggleDrawer={toggleDrawer}
-          />
-        ))}
-      <Divider className='my-10' />
-      {drawerUserInfo?.map((link, index) => (
-        <DrawerUserInfoList
-          key={index}
-          link={link}
-          toggleDrawer={toggleDrawer}
-        />
-      ))}
-      <Divider className='mb-10' />
-      {drawerContact?.map((link, index) => (
-        <DrawerContactList
-          key={index}
-          link={link}
-          toggleDrawer={toggleDrawer}
-        />
-      ))}
-      <ListItem disablePadding className='mb-3'>
-        <Link href='/trader' className='w-full' onClick={toggleDrawer}>
-          <ListItemButton className='flex flex-row items-center gap-3 w-full'>
-            <ContactPageIcon />
-            <h4 className='text-custom-black'>{t('For Traders')}</h4>
-          </ListItemButton>
-        </Link>
-      </ListItem>
-    </div>
-  )
+		<div className="mb-10">
+			<ListItem>
+				<h3 className="mb-5 font-bold text-custom-black text-xl capitalize">
+					{t("Departments")}
+				</h3>
+			</ListItem>
+			{departments &&
+				departments.length > 0 &&
+				departments?.map((link, index) => (
+					<DrawerAccordionList
+						expanded={expanded}
+						handleChange={handleChange}
+						key={index}
+						index={index}
+						link={link}
+						toggleDrawer={toggleDrawer}
+					/>
+				))}
+			<Divider className="my-10" />
+			{drawerUserInfo?.map((link, index) => (
+				<DrawerUserInfoList
+					key={index}
+					link={link}
+					toggleDrawer={toggleDrawer}
+					path={"#"}
+				/>
+			))}
+			<DrawerUserInfoList
+				link={{
+					title: "My Account",
+					desc: "Hello, " + user.name,
+				}}
+				path='/profile'
+				toggleDrawer={toggleDrawer}
+			/>
+			<Divider className="mb-10" />
+			{drawerContact?.map((link, index) => (
+				<DrawerContactList
+					key={index}
+					link={link}
+					toggleDrawer={toggleDrawer}
+				/>
+			))}
+			<ListItem disablePadding className="mb-3">
+				<Link href="/trader" className="w-full" onClick={toggleDrawer}>
+					<ListItemButton className="flex flex-row items-center gap-3 w-full">
+						<ContactPageIcon />
+						<h4 className="text-custom-black">
+							{t("For Traders")}
+						</h4>
+					</ListItemButton>
+				</Link>
+			</ListItem>
+		</div>
+  );
 }
 
 export default DrawerDepartmentList
