@@ -6,8 +6,6 @@ import { drawerUserInfo } from '@/mocks/drawerUserInfo'
 import DrawerAccordionList from './DrawerAccordionList'
 import DrawerUserInfoList from './DrawerUserInfoList'
 import DrawerContactList from './DrawerContactList'
-
-import Image from "next/image";
 import Cookies from "universal-cookie";
 import Link from 'next/link'
 import ContactPageIcon from '@mui/icons-material/ContactPage'
@@ -69,7 +67,7 @@ const DrawerDepartmentList = ({
 			<DrawerUserInfoList
 				link={{
 					title: "My Account",
-					desc: "Hello, " + user.name,
+					desc: "Hello, " + user?.name,
 				}}
 				path='/profile'
 				toggleDrawer={toggleDrawer}
