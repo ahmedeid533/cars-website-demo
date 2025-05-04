@@ -55,7 +55,7 @@ const CategoryName = ({
 			<div className="custom-container1">
 				{
 					// hasBrands === false &&
-					sub_subCategories.length > 0 && (
+					sub_subCategories?.length > 0 && (
 						<ItemTypes
 							subCategories={sub_subCategories}
 							subCategoryName={subCategoryName}
