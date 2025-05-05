@@ -33,7 +33,8 @@ const Advertisments = ({ bannerFooter }: { bannerFooter: BannerFooter[] }) => {
 						backgroundImage: `url(${bannerFooter[2].image_url})`,
 					}}
 				>
-					<div className="flex flex-col justify-center items-center gap-4 bg-[#00000066] h-full text-white">
+					{/* bg-[#00000066] */}
+					<div className="flex flex-col justify-center items-center gap-4  h-full text-white">
 						<h3 className="w-2/3 text-3xl lg:text-5xl text-center leading-[1.2]">
 							{/* {bannerFooter[2].title} */}
 						</h3>

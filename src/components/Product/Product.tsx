@@ -9,11 +9,66 @@ import ProductProps from "./ProductProps/ProductProps";
 import SimilarProducts from "./SimilarProducts";
 import { apiClient } from "@/util/axois";
 
+
+
 const Product = ({ id }: { id: string }) => {
 	console.log("idFp ==> ", id);
 	const [value, setValue] = useState(0);
 	const locale = useLocale();
 	const [product, setProduct] = useState<any>(null);
+
+	interface ProductDetails {
+		id: string;
+		photos: {
+			main_photo: string;
+			all_photos: string[];
+		};
+		mainInfo: {
+			name: string;
+			price: number;
+			stock: number;
+		};
+	}
+
+	interface Category {
+		main: {
+			id: string | null;
+			name: string | null;
+		};
+		sub: {
+			id: string | null;
+			name: string | null;
+		};
+	}
+
+	interface ProductType {
+		productDetails: ProductDetails;
+		category: Category;
+		description: string;
+	}
+
+	function addToRecentlyViewed(item: ProductType): void {
+		const key = "recentlyViewed";
+		const maxItems = 8;
+
+		// Get current list from localStorage
+		let items: ProductType[] = JSON.parse(localStorage.getItem(key) || "[]") || [];
+		// Remove item if it already exists
+		items = items.filter(
+			(i) => i.productDetails.id !== item.productDetails.id
+		);
+
+		// Add new item to the end
+		items.push(item);
+
+		// Remove the oldest item if list exceeds max
+		if (items.length > maxItems) {
+			items.shift(); // Remove the first item (FIFO)
+		}
+
+		// Save back to localStorage
+		localStorage.setItem(key, JSON.stringify(items));
+	}
 
 	useEffect(() => {
 		apiClient()
@@ -49,6 +104,7 @@ const Product = ({ id }: { id: string }) => {
 				};
 				console.log("product_ ==> ", product_);
 				setProduct(product_);
+				addToRecentlyViewed(product_);
 			})
 			.catch((err) => {
 				console.log("error ==> ", err);

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { Divider, ListItem, ListItemButton } from '@mui/material'
 import { drawerContact } from '@/mocks/drawerConatct'
-import { drawerUserInfo } from '@/mocks/drawerUserInfo'
+// import { drawerUserInfo } from '@/mocks/drawerUserInfo'
 import DrawerAccordionList from './DrawerAccordionList'
 import DrawerUserInfoList from './DrawerUserInfoList'
 import DrawerContactList from './DrawerContactList'
@@ -12,6 +12,7 @@ import ContactPageIcon from '@mui/icons-material/ContactPage'
 import { useTranslations } from 'next-intl'
 import { Category } from '@/types'
 import { getCategories } from '@/libs/get-categories'
+import VehicleSelectionBtn from '../VehicleSelectionBtn'
 
 const DrawerDepartmentList = ({
   toggleDrawer
@@ -56,22 +57,17 @@ const DrawerDepartmentList = ({
 					/>
 				))}
 			<Divider className="my-10" />
-			{drawerUserInfo?.map((link, index) => (
+			<VehicleSelectionBtn />
+			{user && (
 				<DrawerUserInfoList
-					key={index}
-					link={link}
+					link={{
+						title: "My Account",
+						desc: t("Hello, ") + user?.name,
+					}}
+					path="/profile"
 					toggleDrawer={toggleDrawer}
-					path={"#"}
 				/>
-			))}
-			<DrawerUserInfoList
-				link={{
-					title: "My Account",
-					desc: "Hello, " + user?.name,
-				}}
-				path='/profile'
-				toggleDrawer={toggleDrawer}
-			/>
+			)}
 			<Divider className="mb-10" />
 			{drawerContact?.map((link, index) => (
 				<DrawerContactList

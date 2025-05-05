@@ -8,38 +8,58 @@ import SliderArrowBtns from './SliderArrowBtns';
 import { orderSliderConfig } from './orderSliderConfig';
 import Link from 'next/link';
 
+interface RecentlyViewedItem {
+	productDetails: {
+		id: string;
+		photos: {
+			main_photo: string;
+		};
+		mainInfo: {
+			name: string;
+			price: string;
+		};
+	};
+}
+
 const OrderSlider = () => {
-    const { sliderRef, handleNext, handlePrev } = SliderArrowsRef()
+	const { sliderRef, handleNext, handlePrev } = SliderArrowsRef()
+	const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed") || "[]") || [];
+	console.log("recentlyViewed ==> ", recentlyViewed);
     return (
-        <div className="slider-container relative">
-            <Slider {...orderSliderConfig} ref={sliderRef}>
-                {
-                    [1, 2, 3, 4, 5, 6].map((_,index) => (
-                        <Link key={index} href={`/product/${index + 1}`} className='custom-container1 transition duration-300 hover:scale-x-105' >
-                            <div
-                                className='rounded flex flex-col border border-custom-black hover:border-custom-blue'
-                            >
-                                <div className='flex items-center justify-center pt-5'>
-                                    <Image src={`/home/categories/c${index + 3}.png`} alt='item' width={150} height={150} className='w-[150px] h-[150px]' />
-                                </div>
-                                <div className='p-3 mt-10 flex flex-col gap-4 text-custom-black'>
-
-                                    <div className='flex flex-row gap-2 items-center'>
-                                        <Image src={'/profile/rating.svg'} alt='rating' width={100} height={20} />
-                                        <span className='text-sm'>(1)</span>
-                                    </div>
-                                    <h2 className='font-bold'>Side Folding Mirror Motor W5</h2>
-                                    <h5 className='font-bold text-xl'>$199 - $250</h5>
-                                </div>
-
-                            </div>
-                        </Link>
-                    ))
-                }
-            </Slider>
-            <SliderArrowBtns handleNext={handleNext} handlePrev={handlePrev} />
-        </div>
-    )
+		<div className="slider-container relative">
+			<Slider {...orderSliderConfig} ref={sliderRef}>
+					{ recentlyViewed?.length > 1  &&
+						recentlyViewed?.map((items: RecentlyViewedItem, index: number) => (
+					<Link
+						key={items.productDetails.id}
+						href={`/product/${items.productDetails.id}`}
+						className="custom-container1 transition duration-300 hover:scale-x-105"
+					>
+						<div className="rounded flex flex-col border border-custom-black hover:border-custom-blue">
+							<div className="flex items-center justify-center pt-5">
+								<Image
+									src={items.productDetails.photos.main_photo}
+									alt="item"
+									width={150}
+									height={150}
+									className="w-[150px] h-[150px]"
+								/>
+							</div>
+							<div className="p-3 mt-10 flex flex-col gap-4 text-custom-black">
+								<h2 className="font-bold text-ellipsis overflow-hidden whitespace-nowrap text-lg">
+									{items.productDetails.mainInfo.name}
+								</h2>
+								<h5 className="font-bold text-xl">
+									{items.productDetails.mainInfo.price}EGP
+								</h5>
+							</div>
+						</div>
+					</Link>
+				))}
+			</Slider>
+			<SliderArrowBtns handleNext={handleNext} handlePrev={handlePrev} />
+		</div>
+	);
 }
 
 export default OrderSlider

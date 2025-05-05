@@ -9,13 +9,16 @@ import GetMore from "./GetMore";
 import ItemsInMobile from "./ItemsInMobile";
 
 const FilterAndItems = ({
-	subSubCategoryId
+	subSubCategoryId,
+	option,
+	optionId,
 }: {
-		subSubCategoryId: number;
+	subSubCategoryId: number;
+	option: string;
+	optionId: number;
 }) => {
 	const [gridColsNumber, setGridColsNumber] = useState(1);
 	const [products, setProducts] = useState<any[]>([]);
-
 
 	interface Product {
 		id: string;
@@ -37,6 +40,19 @@ const FilterAndItems = ({
 				console.log("err ==> ", err);
 			});
 	};
+	const getProductsByOptions = async (option: number): Promise<void> => {
+		apiClient()
+			.get<{ data: Product[] }>(
+				`/products/by-options?options[${optionId}]=${option}`
+			)
+			.then((res) => {
+				console.log("res ==> ", res.data.data);
+				setProducts(res.data.data);
+			})
+			.catch((err: unknown) => {
+				console.log("err ==> ", err);
+			});
+	};
 	const getAllProducts = async () => {
 		console.log(
 			"object ==> ",
@@ -48,9 +64,10 @@ const FilterAndItems = ({
 				`/products?category_id=${parseInt(
 					document.location.href.split("=")[1],
 					10
-				)}&subcategory_id=${isNaN(parseInt(
-					document.location.href.split("=")[2], 10)) ? "" : parseInt(
-					document.location.href.split("=")[2],10)
+				)}&subcategory_id=${
+					isNaN(parseInt(document.location.href.split("=")[2], 10))
+						? ""
+						: parseInt(document.location.href.split("=")[2], 10)
 				}
 					`
 			)
@@ -71,6 +88,12 @@ const FilterAndItems = ({
 		if (subSubCategoryId === -1) return;
 		getProducts(subSubCategoryId);
 	}, [subSubCategoryId]);
+
+	useEffect(() => {
+		if (option === "") return;
+		getProductsByOptions(parseInt(option, 10));
+	}, [option]);
+
 	useEffect(() => {
 		getAllProducts();
 	}, []);

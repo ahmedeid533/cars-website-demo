@@ -26,22 +26,26 @@ const CategoryName = ({
 	subCategoryOption,
 }: ICategoryName) => {
 	const [subSubCategoryId, setSubSubCategoryId] = useState<number>(-1);
+	const [option, setOption] = useState<string>("");
 	const locale = useLocale();
+
 	return (
 		<>
 			<MainSection category={category} />
-			{/* <div className="flex justify-evenly items-center w-full">
+			<div className="flex justify-evenly items-center w-full md:w-[80%] mx-auto mt-4 mb-4 overflow-scroll scroll-hidden">
 				{subCategoryOption &&
 					subCategoryOption[0]?.values.map((option, index) => (
-						<Link
+						<div
 							key={index}
-							href={"#"}
-							className="font-bold text-sm"
+							className="font-bold text-sm text-white bg-[#1E1E1E] text-nowrap mx-1 rounded-lg px-4 py-2 cursor-pointer hover:bg-[#3A3A3A]"
+							onClick={() => {
+								setOption(option?.id + "");
+							}}
 						>
 							{option.value[locale === "en" ? "en" : "ar"]}
-						</Link>
+						</div>
 					))}
-			</div> */}
+			</div>
 			{/* <OptionMobileBtn /> */}
 			{/* {hasBrands && (
 				<div>
@@ -64,7 +68,11 @@ const CategoryName = ({
 					)
 				}
 				{subSubCategoryId && (
-					<FilterAndItems subSubCategoryId={subSubCategoryId} />
+					<FilterAndItems
+						subSubCategoryId={subSubCategoryId}
+						option={option}
+						optionId={subCategoryOption ? subCategoryOption[0]?.id : 0}
+					/>
 				)}
 			</div>
 		</>

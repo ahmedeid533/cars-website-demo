@@ -1,6 +1,7 @@
 {
   "Header": {
 		"Loading...": "Loading...",
+		"Hello, ": "Hello, ",
 		"Change": "Change",
 		"Add vehicles": "Add vehicles",
 		"Select Car Brand": "Select Car Brand",
