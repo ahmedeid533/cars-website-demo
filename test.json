@@ -1,0 +1,38 @@
+{
+    "id": 48,
+    "order_number": "ORD-25-726221",
+    "status": "pending",
+    "status_label": "Pending",
+    "total_amount": "500.00",
+    "commission_amount": "0.00",
+    "items": [
+        {
+            "id": 36,
+            "product": {
+                "id": 29,
+                "name": "علامات جنوط",
+                "image": "https://3arbitk.com/storage/product_photos/1743178521_main_Untitled Project (29) (1).jpg"
+            },
+            "quantity": 1,
+            "unit_price": "500.00",
+            "total_price": "500.00",
+            "selected_options": null
+        }
+    ],
+    "payment_method": {
+        "id": 1,
+        "name": "Cash On Delivery"
+    },
+    "shipping_address": {
+        "governorate": "Cairo",
+        "city": "15 May",
+        "address": "df",
+        "landmark": "df"
+    },
+    "notes": "987",
+    "created_at": "2025-05-06 01:21:51",
+    "updated_at": "2025-05-06 01:21:51",
+    "shipped_at": null,
+    "delivered_at": null,
+    "cancelled_at": null
+}

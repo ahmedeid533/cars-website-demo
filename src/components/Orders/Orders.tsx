@@ -76,7 +76,7 @@ const Orders = () => {
 								<Divider className="bg-custom-black w-full block lg:hidden" />
 								<OrderInfo order={order} />
 							</div>
-							<OrderOptions id={Number(order.id)} />
+							<OrderOptions id={Number(order.id)} status={order.status} />
 						</Box>
 					))}
 				</div>
