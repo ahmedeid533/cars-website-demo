@@ -17,7 +17,7 @@ content: JSX.Element;
 	const [hovered, setHovered] = useState(false);
 	return (
 		<div className="group inline-block relative">
-			<Link href={`/${link}`}>{content}</Link>
+			<Link href={`/${locale}/${link}`}>{content}</Link>
 			<div
 				className={`hidden min-h-[15vh] items-end justify-end absolute ${
 					locale === "en" ? "right-0" : "left-0"

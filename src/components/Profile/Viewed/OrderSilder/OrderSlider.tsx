@@ -42,7 +42,7 @@ const OrderSlider = () => {
 									alt="item"
 									width={150}
 									height={150}
-									className="w-[150px] h-[150px]"
+									className="w-[180px] h-[150px] object-contain"
 								/>
 							</div>
 							<div className="p-3 mt-10 flex flex-col gap-4 text-custom-black">

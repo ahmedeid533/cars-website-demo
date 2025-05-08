@@ -3,13 +3,9 @@ import Link from 'next/link'
 import './style.css'
 import { Category } from '@/types'
 import { useLocale } from 'next-intl'
-import { useEffect } from 'react'
 
 const CarCollections = ({ mainCategories }: { mainCategories: Category[] }) => {
 	const locale = useLocale()
-	useEffect(() => {
-		console.log("response.data.data from getMainCategories ==> ", mainCategories);
-	}, [mainCategories])
   return (
     <section className='custom-container1'>
       <div className={`grid grid-cols-2 items-center gap-4 md:w-5/6 mx-auto`}>

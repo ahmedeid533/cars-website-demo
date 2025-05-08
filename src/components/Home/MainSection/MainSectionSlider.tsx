@@ -44,7 +44,7 @@ const MainSectionSlider = ({ banners }: IMainSectionSlider) => {
 				// spaceBetween={30}
 				className="w-full h-[50vh] min-h-[300px]"
 			>
-				{banners.map((section, index) => (
+				{banners?.map((section, index) => (
 					<SwiperSlide key={index}>
 						{/* lg:w-[100%] w-full   m-auto*/}
 						<section className="flex justify-center items-center  bg-cover bg-center lg:w-[100%] h-full">
@@ -52,7 +52,7 @@ const MainSectionSlider = ({ banners }: IMainSectionSlider) => {
 								src={section.image_url}
 								alt={section.title}
 								fill
-								className="absolute object-cover"
+								className="absolute object-contain"
 							/>
 							<div className="z-10 relative flex justify-center bg-[#00000066] w-full h-full">
 								<div className="flex flex-col justify-center items-center gap-2 text-white text-center">

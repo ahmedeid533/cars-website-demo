@@ -56,7 +56,7 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
 								setValue={handleCarBrandChange}
 								placeholder={
 									carBrandState.length === 0
-										? t("Loading...")
+										? t("Loading")
 										: t("Select Car Brand")
 								}
 								disabled={carBrandState.length === 0}
@@ -86,7 +86,7 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
 										!carBrandValue
 											? t("Select Car Model")
 											: carModelState.length === 0
-											? t("Loading...")
+											? t("Loading")
 											: t("Select Car Model")
 									}
 								>
@@ -117,7 +117,7 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
 										!carModelValue
 											? t("Select Car Year")
 											: carYearState.length === 0
-											? t("Loading...")
+											? t("Loading")
 											: t("Select Car Year")
 									}
 								>

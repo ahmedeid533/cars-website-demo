@@ -2,7 +2,10 @@
 import React, { useEffect } from "react";
 import { Box, Divider, List, ListItem, ListItemButton } from "@mui/material";
 import Link from "next/link";
+import { logout } from '@/action/auth/logout'
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
 import Image from "next/image";
+import { makeNotification } from '@/util/makeNotification'
 import DrawerAccordionList from "../Navbar/Components/CustomDrawer/DrawerAccordionList";
 import { drawerItems } from "@/mocks/drawerItems";
 import { drawerUserInfo } from "@/mocks/drawerUserInfo";
@@ -12,17 +15,36 @@ import { drawerContact } from "@/mocks/drawerConatct";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import VehicleSelectionBtn from "@/components/Navbar/Components/VehicleSelectionBtn";
 import { getCategories } from "@/libs/get-categories";
-import { useTranslations } from "next-intl";
+import { useTranslations,useLocale } from "next-intl";
 import { Category } from "@/types";
 import Cookies from "universal-cookie";
 
+
 const MobileList = () => {
 	const [expanded, setExpanded] = React.useState<string | false>(false);
+	const locale = useLocale();
 	const cookie = new Cookies();
 	const user = cookie.get("customer");
+	const token = cookie.get("token");
 	const t = useTranslations("Header");
 
 	const toggleDrawer = () => {};
+	const handleLogout = async () => {
+		await logout(token)
+			.then((res) => {
+				if (res && res.message) {
+					makeNotification("success", res?.message);
+				}
+			})
+			.catch((err) => {
+				makeNotification("error", err?.message);
+			})
+			.finally(() => {
+				cookie.remove("token");
+				cookie.remove("customer");
+				window.location.href = `/${locale}`;
+			});
+	};
 	const handleChange =
 		(panel: string) =>
 		(event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -92,14 +114,39 @@ const MobileList = () => {
             ))} */}
 						<VehicleSelectionBtn />
 						{user && (
-							<DrawerUserInfoList
-								link={{
-									title: "My Account",
-									desc: t("Hello, ") + user?.name,
-								}}
-								path="/profile"
-								toggleDrawer={toggleDrawer}
-							/>
+							<>
+								<DrawerUserInfoList
+									link={{
+										title: "My Account",
+										desc: t("Hello, ") + user?.name,
+									}}
+									path={`/${locale}/profile`}
+									toggleDrawer={toggleDrawer}
+								/>
+								<button
+									className="flex flex-row justify-between items-center pb-3 px-[5vw] border-b border-b-[#525252] w-full"
+									onClick={() => handleLogout()}
+								>
+									<div className="flex flex-row items-center gap-3">
+										<h4 className="text-red-700 capitalize">
+											{locale === "ar"
+												? "تسجيل الخروج"
+												: "Logout"}
+										</h4>
+									</div>
+									<ArrowRightAltIcon
+										className="text-red-700"
+										style={
+											locale === "ar"
+												? {
+														transform:
+															"rotate(180deg)",
+												  }
+												: { transform: "none" }
+										}
+									/>
+								</button>
+							</>
 						)}
 						<Divider className="mb-10" />
 						{drawerContact.map((link, index) => (

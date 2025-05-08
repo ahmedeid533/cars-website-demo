@@ -29,8 +29,9 @@ const useLoginSubmit = () => {
             locale === 'en' ? res.message : 'تم تسجيل الدخول بنجاح'
           )
           cookie.set('token', res.token)
-          cookie.set('customer', res.customer)
-          router.push(`/${locale}`)
+					cookie.set('customer', res.customer)
+					window.location.href = `/${locale}`
+          router.push(`/${locale}/profile`)
         } else {
           displayErrorMessages(res?.errors as Record<string, string[]>)
         }

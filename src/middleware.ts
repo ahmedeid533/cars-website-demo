@@ -78,7 +78,7 @@ export function middleware(request: NextRequest) {
   const locale = pathParts[1]; // Locale comes after intlMiddleware
   const route = "/" + pathParts.slice(2).join("/");
 
-  const protectedRoutes = ["/orders", "/profile", "/search"];
+  const protectedRoutes = ["/orders", "/profile", "/search","/cart", "/checkout"];
   const authRoutes = ["/login", "/signup"];
 
   // Redirect unauthenticated users from protected routes

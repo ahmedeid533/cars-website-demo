@@ -6,7 +6,6 @@ import { BannerFooter } from '@/types'
 import { useLocale } from 'next-intl'
 
 const Advertisments = ({ bannerFooter }: { bannerFooter: BannerFooter[] }) => {
-	console.log("bannerFooter ==> ", bannerFooter);
   const locale = useLocale()
   return (
 		<section className="custom-container1 py-10">

@@ -10,7 +10,10 @@ const SecondLine = ({order}: {order: any}) => {
 				<div className="flex items-center gap-1">
 					{order?.status === "completed" && (
 						<div className="rounded-full bg-custom-green p-1 flex items-center justify-center text-white">
-							<DoneIcon className="text-sm" />
+							<DoneIcon
+								className="text-sm"
+								style={{ maxWidth: "2vw" }}
+							/>
 						</div>
 					)}
 					{order?.status === "pending" && (
@@ -23,7 +26,10 @@ const SecondLine = ({order}: {order: any}) => {
 					)}
 					{order?.status === "cancelled" && (
 						<div className="rounded-full bg-red-500 p-1 flex items-center justify-center text-white">
-							<CancelIcon className="text-sm" />
+							<CancelIcon
+								className="text-sm"
+								style={{ maxWidth: "2vw" }}
+							/>
 						</div>
 					)}
 					<span className="text-xs lg:text-sm font-normal lg:font-bold">
