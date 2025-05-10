@@ -7,6 +7,12 @@ body {
   font-family: "DM Sans", sans-serif;
 }
 
+.points ul {
+	list-style: disc;
+	padding-right: 20px;
+	/* margin-left: 40px; */
+}
+
 .custom-container1 {
   width: 100%;
   max-width: 1500px;

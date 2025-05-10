@@ -100,104 +100,130 @@ const ItemTypes = ({
 					<h2 className="font-semibold text-2xl bg-slate-950 mb-0 text-white p-10 pb-0 w-5/6 mx-auto">
 						{subCategoryName}
 					</h2>
-					<div className="overflow-x-scroll scroll-hidden overflow-y-hidden bg-slate-950 p-5 w-5/6 mx-auto">
-						<div className="flex flex-row  mt-0">
-							{subCategories
-								?.slice(
-									0,
-									subCategories.length / 2 < 5
-										? 5
-										: subCategories.length / 2
-								)
-								.map((item, index) => (
-									<div
-										key={index}
-										// href={`/product/${item.id}`}
-										onClick={() => {
-											setSupSubId(item.id);
-											setSupSubName(
-												item.name[
-													locale === "en"
-														? "en"
-														: "ar"
-												]
-											);
-										}}
-										className="bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
-									>
-										<Image
-											src={item.image_url}
-											alt={
-												item.name[
-													locale === "en"
-														? "en"
-														: "ar"
-												]
-											}
-											width={150}
-											height={150}
-											className="min-w-[80px] h-[60px] md:min-w-[240px] md:h-[140px] p-1 object-contain"
-										/>
-										<h4 className="font-light text-sm text-center">
-											{
-												item.name[
-													locale === "en"
-														? "en"
-														: "ar"
-												]
-											}
-										</h4>
-									</div>
-								))}
+					<div className="relative">
+						<span
+							className="text-white bg-slate-950 text-3xl cursor-pointer absolute p-2 rounded-full text-[#000000BB] top-1/2 -translate-y-1/2 left-[2vmax]"
+							onClick={() =>
+								document
+									.getElementById("sub-scroll")
+									?.scrollBy({
+										left: -200,
+										behavior: "smooth",
+									})
+							}>
+							<>&#8592;</>
+						</span>
+						<div id='sub-scroll' className="overflow-x-scroll scroll-hidden overflow-y-hidden bg-slate-950 p-5 w-5/6 mx-auto">
+							<div className="flex flex-row  mt-0">
+								{subCategories
+									?.slice(
+										0,
+										subCategories.length / 2 < 5
+											? 5
+											: subCategories.length / 2
+									)
+									.map((item, index) => (
+										<div
+											key={index}
+											// href={`/product/${item.id}`}
+											onClick={() => {
+												setSupSubId(item.id);
+												setSupSubName(
+													item.name[
+														locale === "en"
+															? "en"
+															: "ar"
+													]
+												);
+											}}
+											className="bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
+										>
+											<Image
+												src={item.image_url}
+												alt={
+													item.name[
+														locale === "en"
+															? "en"
+															: "ar"
+													]
+												}
+												width={150}
+												height={150}
+												className="min-w-[80px] h-[60px] md:min-w-[240px] md:h-[140px] p-1 object-contain"
+											/>
+											<h4 className="font-light text-sm text-center">
+												{
+													item.name[
+														locale === "en"
+															? "en"
+															: "ar"
+													]
+												}
+											</h4>
+										</div>
+									))}
+							</div>
+							<div className="flex flex-row  mt-0">
+								{subCategories
+									?.slice(
+										subCategories.length / 2 < 5
+											? 5
+											: subCategories.length / 2
+									)
+									.map((item, index) => (
+										<div
+											key={index}
+											// href={`/product/${item.id}`}
+											onClick={() => {
+												setSupSubId(item.id);
+												setSupSubName(
+													item.name[
+														locale === "en"
+															? "en"
+															: "ar"
+													]
+												);
+											}}
+											className="bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
+										>
+											<Image
+												src={item.image_url}
+												alt={
+													item.name[
+														locale === "en"
+															? "en"
+															: "ar"
+													]
+												}
+												width={150}
+												height={150}
+												className="min-w-[80px] h-[60px] md:min-w-[240px] md:h-[140px] p-1 object-contain"
+											/>
+											<h4 className="font-light text-sm text-center">
+												{
+													item.name[
+														locale === "en"
+															? "en"
+															: "ar"
+													]
+												}
+											</h4>
+										</div>
+									))}
+							</div>
 						</div>
-						<div className="flex flex-row  mt-0">
-							{subCategories
-								?.slice(
-									subCategories.length / 2 < 5
-										? 5
-										: subCategories.length / 2
-								)
-								.map((item, index) => (
-									<div
-										key={index}
-										// href={`/product/${item.id}`}
-										onClick={() => {
-											setSupSubId(item.id);
-											setSupSubName(
-												item.name[
-													locale === "en"
-														? "en"
-														: "ar"
-												]
-											);
-										}}
-										className="bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
-									>
-										<Image
-											src={item.image_url}
-											alt={
-												item.name[
-													locale === "en"
-														? "en"
-														: "ar"
-												]
-											}
-											width={150}
-											height={150}
-											className="min-w-[80px] h-[60px] md:min-w-[240px] md:h-[140px] p-1 object-contain"
-										/>
-										<h4 className="font-light text-sm text-center">
-											{
-												item.name[
-													locale === "en"
-														? "en"
-														: "ar"
-												]
-											}
-										</h4>
-									</div>
-								))}
-						</div>
+						<span
+							className="text-white text-3xl absolute bg-slate-950 p-2 rounded-full cursor-pointer top-1/2 -translate-y-1/2 right-[2vmax] "
+							onClick={() =>
+								document
+									.getElementById("sub-scroll")
+									?.scrollBy({
+										left: 200,
+										behavior: "smooth",
+									})
+							}>
+							<>&#8594;</>
+							</span>
 					</div>
 				</>
 			)}
@@ -235,66 +261,97 @@ const ItemTypes = ({
 					<h2 className="font-semibold text-2xl bg-slate-950 mb-0 text-white p-10 pb-0 md:w-5/6 mx-auto">
 						{supSubName}
 					</h2>
-					<div className="overflow-x-scroll scroll-hidden overflow-y-hidden bg-slate-950 md:w-5/6 mx-auto p-5">
-						<div className="flex flex-row mt-0">
-							{products
-								?.slice(
-									0,
-									products.length / 2 > 5
-										? products.length / 2
-										: 5
-								)
-								.map((item, index) => (
-									<div
-										key={index}
-										// href={`/product/${item.id}`}
-										onClick={() => {
-											setSubSubCategoryId(item.id);
-										}}
-										className=" bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
-									>
-										<Image
-											src={item.image_url}
-											alt={item.name[locale]}
-											width={150}
-											height={150}
-											className="min-w-[80px] h-[60px] md:min-w-[200px] md:h-[140px] p-1 object-contain"
-										/>
-										<h4 className="font-light text-sm text-center">
-											{item.name[locale]}
-										</h4>
-									</div>
-								))}
+					<div className="relative flex">
+						<span
+							className="text-white bg-slate-950 text-3xl cursor-pointer absolute p-2 rounded-full text-[#000000BB] top-1/2 -translate-y-1/2 left-[2vmax]"
+							onClick={() =>
+								document
+									.getElementById("scrollable-subcategories")
+									?.scrollBy({
+										left: -200,
+										behavior: "smooth",
+									})
+							}
+						>
+							<>&#8592;</>
+						</span>
+						<div
+							id="scrollable-subcategories"
+							className="relative overflow-x-scroll scroll-hidden overflow-y-hidden bg-slate-950 md:w-5/6 mx-auto p-5"
+						>
+							<div className="flex flex-row mt-0">
+								{products
+									?.slice(
+										0,
+										products.length / 2 > 5
+											? products.length / 2
+											: 5
+									)
+									.map((item, index) => (
+										<div
+											key={index}
+											// href={`/product/${item.id}`}
+											onClick={() => {
+												setSubSubCategoryId(item.id);
+											}}
+											className=" bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
+										>
+											<Image
+												src={item.image_url}
+												alt={item.name[locale]}
+												width={150}
+												height={150}
+												className="min-w-[80px] h-[60px] md:min-w-[200px] md:h-[140px] p-1 object-contain"
+											/>
+											<h4 className="font-light text-sm text-center">
+												{item.name[locale]}
+											</h4>
+										</div>
+									))}
+							</div>
+							<div className="flex flex-row mt-0">
+								{products
+									?.slice(
+										products.length / 2 > 5
+											? products.length / 2
+											: 5
+									)
+									.map((item, index) => (
+										<div
+											key={index}
+											// href={`/product/${item.id}`}
+											onClick={() => {
+												setSubSubCategoryId(item.id);
+											}}
+											className=" bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
+										>
+											<Image
+												src={item.image_url}
+												alt={item.name[locale]}
+												width={150}
+												height={150}
+												className="min-w-[80px] h-[60px] md:min-w-[200px] md:h-[140px] p-1 object-contain"
+											/>
+											<h4 className="font-light text-sm text-center">
+												{item.name[locale]}
+											</h4>
+										</div>
+									))}
+							</div>
 						</div>
-						<div className="flex flex-row mt-0">
-							{products
-								?.slice(
-									products.length / 2 > 5
-										? products.length / 2
-										: 5
-								)
-								.map((item, index) => (
-									<div
-										key={index}
-										// href={`/product/${item.id}`}
-										onClick={() => {
-											setSubSubCategoryId(item.id);
-										}}
-										className=" bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
-									>
-										<Image
-											src={item.image_url}
-											alt={item.name[locale]}
-											width={150}
-											height={150}
-											className="min-w-[80px] h-[60px] md:min-w-[200px] md:h-[140px] p-1 object-contain"
-										/>
-										<h4 className="font-light text-sm text-center">
-											{item.name[locale]}
-										</h4>
-									</div>
-								))}
-						</div>
+						<span
+							className="text-white text-3xl absolute bg-slate-950 p-2 rounded-full cursor-pointer top-1/2 -translate-y-1/2 right-[2vmax] "
+							onClick={() =>
+								document
+									.getElementById("scrollable-subcategories")
+									?.scrollBy({
+										left: 200,
+										behavior: "smooth",
+									})
+							}
+						>
+							<>&#8594;</>
+						</span>
 					</div>
 				</>
 			)}

@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 
 interface PersonalDetailsProps {
 	send: boolean;
-	payment: string; // Replace 'string' with the appropriate type for 'payment' if needed\
-	setResponse: (response: any) => void; // Adjust the type of 'response' as needed
+	payment: string;
+	setResponse: (response: any) => void;
 }
 
 const PersonalDetails = ({

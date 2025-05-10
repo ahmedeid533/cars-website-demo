@@ -13,9 +13,9 @@ const CompleteRegistration = () => {
 		setPayment(e.target.value);
 		console.log(e.target.value);
 	};
-	const handleOpen = useCallback(() => {
+	const handleOpen = () => {
 		setOpen((prev) => !prev);
-	}, []);
+	}
 	return (
 		<section className="col-span-1 lg:col-span-2 rounded border border-transparent lg:border-custom-black p-5 flex flex-col gap-5 lg:gap-10">
 			<h2 className="text-xl lg:text-3xl font-bold text-custom-black">
@@ -36,7 +36,7 @@ const CompleteRegistration = () => {
 			{/* {payment === "p3" && <CardDetails />} */}
 			<button
 				className="w-full rounded bg-custom-blue text-white py-2"
-				onClick={handleOpen}
+				onClick={()=>handleOpen()}
 			>
 				Complete
 			</button>

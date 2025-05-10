@@ -1,15 +1,18 @@
-"use client"
-import { productImage } from '@/mocks/productImage'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import Details from './Details/Details';
+"use client";
+import { productImage } from "@/mocks/productImage";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import Details from "./Details/Details";
 
 interface Product {
-  photos?: {
+	photos?: {
 		main_photo: string;
 		all_photos: any[];
-  };
-	mainInfo?: any; 
+	};
+	mainInfo?: any;
 	id: string | number;
 }
 
@@ -17,6 +20,56 @@ const ProductDetails = ({ product }: { product: Product }) => {
 	const [selectedImage, setSelectedImage] = useState(
 		product?.photos!.main_photo
 	);
+	useEffect(() => {
+		if (product?.photos?.main_photo) {
+			setSelectedImage(product?.photos!.main_photo);
+		}
+	}, [product]);
+	const handleArrowClick = (direction: "left" | "right") => {
+		const currentIndex = product?.photos?.all_photos?.findIndex(
+			(item) => item.url === selectedImage
+		);
+		console.log("currentIndex ==> ", currentIndex);
+
+		if (currentIndex !== undefined) {
+			if (direction === "left") {
+				if (currentIndex === 0) {
+					setSelectedImage(product?.photos!.main_photo);
+				} else if (currentIndex === -1) {
+					setSelectedImage(
+						product?.photos?.all_photos[
+							(product?.photos?.all_photos?.length ?? 0) - 1
+						].url
+					);
+				}
+				setSelectedImage(
+					product?.photos?.all_photos[currentIndex - 1].url
+				);
+			} else if (direction === "right") {
+				if (
+					currentIndex ===
+					(product?.photos?.all_photos?.length ?? 0) - 1
+				) {
+					setSelectedImage(product?.photos!.main_photo);
+				} else if (currentIndex === -1) {
+					setSelectedImage(product?.photos?.all_photos[0].url);
+				}
+				setSelectedImage(
+					product?.photos?.all_photos[currentIndex + 1].url
+				);
+			}
+		} else {
+			if (direction === "left") {
+				setSelectedImage(product?.photos?.all_photos[0].url);
+			} else if (direction === "right") {
+				setSelectedImage(
+					product?.photos?.all_photos[
+						(product?.photos?.all_photos?.length ?? 0) - 1
+					].url
+				);
+			}
+		}
+	};
 
 	return (
 		<section className="grid grid-cols-1 lg:grid-cols-5 items-start gap-10 gap-x-0 lg:gap-x-10">
@@ -73,13 +126,23 @@ const ProductDetails = ({ product }: { product: Product }) => {
 							className="object-contain w-[250px] lg:w-[400px] h-[250px] lg:h-[400px]"
 						/>
 					)}
+					<div
+						onClick={() => handleArrowClick("left")}
+						className="absolute text-[#000000BB] cursor-pointer top-1/2 -translate-y-1/2 left-[2vmax]"
+					>
+						<ArrowCircleLeftIcon className="text-[5vmax]" />
+					</div>
+					<div
+						onClick={() => handleArrowClick("right")}
+						className="absolute text-[#000000BB] cursor-pointer top-1/2 -translate-y-1/2 right-[2vmax] "
+					>
+						<ArrowCircleRightIcon className="text-[5vmax]" />
+					</div>
 				</div>
 			</div>
-			<Details
-				productDetails={product?.mainInfo} id={product?.id}
-			/>
+			<Details productDetails={product?.mainInfo} id={product?.id} />
 		</section>
 	);
 };
 
-export default ProductDetails
+export default ProductDetails;

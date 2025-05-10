@@ -34,22 +34,30 @@ const SecondPart = () => {
 						{value?.map((elm: List) => (
 							<Link
 								key={elm.id}
-								href={`/product/${elm.id}`}
+								href={
+									elm.id == 0
+										? elm.slug
+										: `/product/${elm.id}`
+								}
 								onClick={() => setValue([])}
-								className="text-md flex search text-lg justify-between border-b-2 border-[#929292] h-[70px] px-2 py-1 cursor-pointer hover:bg-custom-blue font-semibold hover:text-white"
+								className="text-md flex search md:text-lg text-md justify-between border-b-2 border-[#929292] h-[50px] md:h-[70px] px-2 py-1 cursor-pointer hover:bg-custom-blue font-semibold hover:text-white"
 							>
 								<div>
-									<div>
+									<div className="text-ellipsis overflow-hidden max-w-[200px] md:max-w-[45vw] whitespace-nowrap">
 										{locale == "en"
 											? elm.name_en
-											: elm.name_ar}
+											: elm.name_ar }
 									</div>
 									<div className="text-[#929292] searchPrice">
 										{elm.price}
 									</div>
 								</div>
 								<Image
-									src={`https://3arbitk.com/storage/${elm.main_photo}`}
+									src={
+										elm.id == 0
+											? elm.main_photo
+											: `https://3arbitk.com/storage/${elm.main_photo}`
+									}
 									alt="product"
 									width={50}
 									height={50}
@@ -69,11 +77,27 @@ const SecondPart = () => {
 								setValue([]);
 							} else {
 								apiClient()
-									.get("/products/search?query=" + e.target.value)
+									.get(
+										"/products/search?query=" +
+											e.target.value
+									)
 									.then((res) => {
-										console.log(res.data);
 										setValue(res.data.data);
-										console.log("list ==> ", res.data.data);
+										if (res.data.data.length === 0) {
+											setValue([
+												{
+													id: 0,
+													name_ar:
+														"المنتج غير موجود يمكنك طلبه من هنا",
+													name_en:
+														"product not found you can order it from here",
+													slug: "/search",
+													price: "0000",
+													main_photo:
+														"/search/not-found.svg",
+												},
+											]);
+										}
 									})
 									.catch((err) => {
 										console.log(err);

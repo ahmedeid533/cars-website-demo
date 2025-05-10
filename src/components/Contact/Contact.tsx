@@ -12,7 +12,7 @@ const Contact = () => {
                 <Touch />
                 <div className='flex flex-col gap-5'>
                     <ContactDetails />
-                    <ContactUserLinks />
+                    {/* <ContactUserLinks /> */}
                 </div>
             </div>
             <div className="custom-container1 py-10">

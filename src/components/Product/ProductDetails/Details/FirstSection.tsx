@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useLocale } from 'next-intl';
 
 interface MainInfo {
 	name: string;
@@ -8,6 +9,7 @@ interface MainInfo {
 }
 
 const FirstSection = ({ mainInfo }: { mainInfo: MainInfo }) => {
+	const locale = useLocale();
 	return (
 		<div className="flex flex-col gap-2">
 			<div className="flex items-start gap-4 w-full">
@@ -33,7 +35,7 @@ const FirstSection = ({ mainInfo }: { mainInfo: MainInfo }) => {
 				<h2>{mainInfo.price}EGP</h2>
 			</div>
 			<p className="text-custom-black text-sm">
-				In Stock ({mainInfo.stock}) - Ships within 24 hrs
+				{locale == "en" ? "In Stock":"في المخزن"} ({mainInfo.stock}) - {locale == "en" ? "Ships within 24 hrs" : "يتم الشحن خلال 24 ساعة"}
 			</p>
 		</div>
 	);

@@ -59,8 +59,11 @@ const FilterAndItems = ({
 			parseInt(document.location.href.split("=")[1], 10),
 			parseInt(document.location.href.split("=")[2], 10)
 		);
+		const all = document.location.href.split("/")[5];
+		console.log("all ==> ", all);
 		apiClient()
 			.get<{ data: Product[] }>(
+				all == "all" ? "/products":
 				`/products?category_id=${parseInt(
 					document.location.href.split("=")[1],
 					10

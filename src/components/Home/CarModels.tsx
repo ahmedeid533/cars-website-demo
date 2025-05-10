@@ -48,7 +48,7 @@ const CarModels = ({logos}: { logos: Logo[] }) => {
           {...settings}
           className={`grid grid-cols-12 items-center gap-10`}
         >
-          {logos.map((logo, index) => (
+          {logos?.map((logo, index) => (
             <div key={index} title={logo.brand_name} >
               <div className='flex justify-center items-center gap-5 w-auto h-auto'>
                 <Image
