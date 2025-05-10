@@ -39,7 +39,12 @@ const SecondPart = () => {
 										? elm.slug
 										: `/product/${elm.id}`
 								}
-								onClick={() => setValue([])}
+								onClick={() => {
+									setValue([])
+									if (document.location.href.includes("/search")) {
+										document.location.href = elm.slug;
+									}
+								}}
 								className="text-md flex search md:text-lg text-md justify-between border-b-2 border-[#929292] h-[50px] md:h-[70px] px-2 py-1 cursor-pointer hover:bg-custom-blue font-semibold hover:text-white"
 							>
 								<div>

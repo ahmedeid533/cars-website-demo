@@ -8,7 +8,7 @@ import VehicleSelectionBtn from "@/components/Navbar/Components/VehicleSelection
 import { useLocale } from "next-intl";
 
 const FirstLine = () => {
-	const [open, setOpen] = useState(false);
+	const [open_, setOpen_] = useState(false);
 	const [orders, setOrders] = useState([]);
 	const cookie = new Cookies();
 	const user = cookie.get("customer");
@@ -34,11 +34,11 @@ const FirstLine = () => {
 						</h2>
 						<button
 							className="py-2 px-10 border font-bold text-lg border-custom-black rounded transition duration-300 hover:bg-custom-blue hover:border-custom-blue hover:text-white"
-							onClick={() => setOpen(true)}
+							onClick={() => setOpen_(true)}
 						>
 							{locale == "en" ? "Edit" : "تعديل"}
 						</button>
-						<ChangePasswordModal open={open} setOpen={setOpen} />
+						<ChangePasswordModal open={open_} setOpen={setOpen_} />
 					</div>
 					<div className=" mt-5 flex flex-col gap-2 w-full md:w-1/2">
 						<div className="w-full flex items-center justify-between">
@@ -46,7 +46,7 @@ const FirstLine = () => {
 								{locale == "en" ? "Email :" : "البريد الإلكتروني :"}
 							</h2>
 							<span className="text-custom-gray text-sm">
-								{user.email}
+								{user?.email}
 							</span>
 						</div>
 						<div className="w-full flex items-center justify-between">
