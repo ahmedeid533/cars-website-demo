@@ -6,6 +6,7 @@ import { BannerFooter } from '@/types'
 import { useLocale } from 'next-intl'
 
 const Advertisments = ({ bannerFooter }: { bannerFooter: BannerFooter[] }) => {
+console.log("bannerFooter ==> ", bannerFooter);
   const locale = useLocale()
   return (
 		<section className="custom-container1 py-10">
@@ -16,6 +17,7 @@ const Advertisments = ({ bannerFooter }: { bannerFooter: BannerFooter[] }) => {
 							backgroundImage={bannerFooter[0].image_url}
 							title={bannerFooter[0].title}
 							id={bannerFooter[0].id}
+							url={bannerFooter[0].banner_url}
 						/>
 					)}
 					{bannerFooter[1] && (
@@ -23,6 +25,7 @@ const Advertisments = ({ bannerFooter }: { bannerFooter: BannerFooter[] }) => {
 							backgroundImage={bannerFooter[1].image_url}
 							title={bannerFooter[1].title}
 							id={bannerFooter[1].id}
+							url={bannerFooter[1].banner_url}
 						/>
 					)}
 				</div>
@@ -38,7 +41,11 @@ const Advertisments = ({ bannerFooter }: { bannerFooter: BannerFooter[] }) => {
 							{/* {bannerFooter[2].title} */}
 						</h3>
 						<Link
-							href={`/category/all?category_id=${bannerFooter[2].id}`}
+							href={
+								bannerFooter[2].banner_url
+									? bannerFooter[2].banner_url
+									: `/category/all?category_id=${bannerFooter[2].id}`
+							}
 							className="bg-custom-blue px-3 py-1 rounded font-bold text-white text-sm md:mt-[25vh] mt-[20vh]"
 						>
 							{locale === "en" ? "SHOP NOW" : "تسوق الآن"}
@@ -50,11 +57,13 @@ const Advertisments = ({ bannerFooter }: { bannerFooter: BannerFooter[] }) => {
 						backgroundImage={bannerFooter[3].image_url}
 						title={bannerFooter[3].title}
 						id={bannerFooter[3].id}
+						url={bannerFooter[3].banner_url}
 					/>
 					<MajiorAdv
 						backgroundImage={bannerFooter[4].image_url}
 						title={bannerFooter[4].title}
 						id={bannerFooter[4].id}
+						url={bannerFooter[4].banner_url}
 					/>
 				</div>
 			</div>

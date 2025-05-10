@@ -9,9 +9,9 @@ export const profileLinks = [
         path: "/orders",
         title: "orders"
     },
-    {
-        icon: "/love.svg",
-        path: "#",
-        title: "wish lists"
-    },
+    // {
+    //     icon: "/love.svg",
+    //     path: "#",
+    //     title: "wish lists"
+    // },
 ]

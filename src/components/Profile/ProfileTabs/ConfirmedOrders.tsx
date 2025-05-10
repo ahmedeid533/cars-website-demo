@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React,{useEffect,useState} from "react";
 import { apiClient } from "@/util/axois";
+import { useLocale } from "next-intl";
 
 const ConfirmedOrders = () => {
 	interface Order {
@@ -16,6 +17,7 @@ const ConfirmedOrders = () => {
 	const [orders, setOrders] = useState<Order[]>([]);
 	const cookie = new Cookies();
 	const token = cookie.get("token");
+	const locale = useLocale();
 	const fetchOrders = async () => {
 		try {
 			apiClient(token).get("/orders").then((res) => {
@@ -37,7 +39,7 @@ const ConfirmedOrders = () => {
 			style={{ boxShadow: "0px 4px 4px 0px #00000040" }}
 		>
 			<h2 className="text-xl font-bold text-custom-black">
-				last Orders
+				{locale == "en" ? "last Orders" : "الطلبات الأخيرة"}
 			</h2>
 			<div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-x-3 gap-y-5">
 				{orders.slice(0,4).map((item, index) => (
@@ -71,7 +73,7 @@ const ConfirmedOrders = () => {
 								href={`/orders/${item.id}`}
 								className="text-center text-xs lg:text-base w-full rounded py-3 border border-custom-black capitalize text-custom-black transition duration-300 hover:bg-custom-blue hover:border-custom-blue hover:text-white"
 							>
-								view order details
+								{locale == "en" ? "view order details" : "عرض تفاصيل الطلب"}
 							</Link>
 						</div>
 					</div>
@@ -82,7 +84,7 @@ const ConfirmedOrders = () => {
 					href={"/orders"}
 					className="cursor-pointer text-custom-blue"
 				>
-					View All Orders
+					{locale == "en" ? "View All Orders" : "عرض جميع الطلبات"}
 				</Link>
 			</div>
 		</div>

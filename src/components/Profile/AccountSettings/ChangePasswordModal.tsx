@@ -6,6 +6,7 @@ import Cookies from "universal-cookie";
 import { useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
+import { useLocale } from "next-intl";
 
 type props = {
 	open: boolean;
@@ -17,6 +18,7 @@ const ChangePasswordModal = ({ open, setOpen }: props) => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const cookie = new Cookies();
 	const token = cookie.get("token");
+	const locale = useLocale();
 	const changePassword = () => {
 		// Handle password change logic here
 		apiClient(token)
@@ -70,12 +72,14 @@ const ChangePasswordModal = ({ open, setOpen }: props) => {
 									height={100}
 								/>
 								<span className="font-bold text-custom-black text-lg">
-									Services
+									{locale == "en"
+										? "Services"
+										: "خدمات"}
 								</span>
 							</div>
 							<TextField
 								id="outlined-password-input"
-								label="Current password*"
+								label={locale == "en" ? "Current password*" : "كلمة المرور الحالية*"}
 								type="password"
 								className="w-full"
 								value={currentPassword}
@@ -85,7 +89,7 @@ const ChangePasswordModal = ({ open, setOpen }: props) => {
 							/>
 							<TextField
 								id="outlined-password-input"
-								label="New password*"
+								label={locale == "en" ? "New password*" : "كلمة المرور الجديدة*"}
 								type="password"
 								className="w-full"
 								value={newPassword}
@@ -95,7 +99,7 @@ const ChangePasswordModal = ({ open, setOpen }: props) => {
 							/>
 							<TextField
 								id="outlined-password-input"
-								label="Confirm password*"
+								label={locale == "en" ? "Confirm password*" : "تأكيد كلمة المرور*"}
 								type="password"
 								className="w-full"
 								value={confirmPassword}
@@ -111,7 +115,7 @@ const ChangePasswordModal = ({ open, setOpen }: props) => {
 										setOpen(false);
 									}}
 								>
-									Return
+									{locale == "en" ? "Return" : "عودة"}
 								</div>
 								<div
 									className="bg-custom-blue py-2 border border-custom-blue rounded w-full md:w-1/3 text-white text-center cursor-pointer"
@@ -119,7 +123,7 @@ const ChangePasswordModal = ({ open, setOpen }: props) => {
 										changePassword();
 									}}
 								>
-									Edit password
+									{locale == "en" ? "Edit password" : "تعديل كلمة المرور"}
 								</div>
 							</div>
 						</div>

@@ -1,5 +1,6 @@
 import { profileTabs } from '@/mocks/profileTabs'
 import { Box } from '@mui/material'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import Cookies from 'universal-cookie'
@@ -7,6 +8,7 @@ import Cookies from 'universal-cookie'
 const ProfileTabs = () => {
 	const cookies = new Cookies()
 	const user = cookies.get("customer")
+	const locale =  useLocale()
     return (
 		<Box
 			// lg:h-[885px]
@@ -22,12 +24,14 @@ const ProfileTabs = () => {
 					className="object-cover rounded-full"
 				/>
 				<h2 className="text-xl font-bold text-custom-black">
-					Welcome {user.name}
+					{locale == "en" ? "Welcome" : "اهلا"} {user.name}
 				</h2>
 				<p className="text-sm text-custom-gray text-center lg:text-start">
-					To your Account , You can You can now control your profile
+					{locale == "en"
+						? `To your Account , You can You can now control your profile
 					and know all the details of the products that you have
-					previously searched and other Managed
+					previously searched and other Managed`
+						: `اهلا بك في حسابك يمكنك الان التحكم في ملفك الشخصي ومعرفة جميع تفاصيل المنتجات التي قمت بالبحث عنها سابقا وغيرها من التفاصيل`}
 				</p>
 			</div>
 			{/* <div className='hidden lg:flex flex-col gap-1 mb-10 mt-5 rounded-md border border-custom-black p-3 text-custom-black bg-transparent transition duration-300 hover:bg-[#405FF226] hover:border-[#405FF226]'>
