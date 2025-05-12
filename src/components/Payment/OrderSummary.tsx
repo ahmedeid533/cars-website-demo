@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "universal-cookie";
 import { apiClient } from "@/util/axois";
+import { useLocale } from 'next-intl';
 
 interface CartItem {
 	id: number;
@@ -27,6 +28,7 @@ const OrderSummary = () => {
 	const [cart, setCart] = useState<Cart | null>(null);
 	const cookie = new Cookies();
 	const router = useRouter();
+	const locale = useLocale();
 	const getCart = () => {
 		const token = cookie.get("token");
 		if (!token) {
@@ -54,10 +56,12 @@ const OrderSummary = () => {
                 <Divider className=' bg-custom-black' />
             </div> */}
 			<h2 className="text-xl font-bold text-custom-black">
-				ORDER SUMMARY
+				{locale == "en" ? "ORDER SUMMARY" : "ملخص الطلب"}
 			</h2>
 			<div className="flex flex-col gap-2">
-				<h6>{cart?.items?.length} items in your Cart</h6>
+				<h6>{cart?.items?.length}
+					{locale == "en" ? "items in your Cart" : "عناصر في سلة التسوق الخاصة بك"}
+				</h6>
 				<Divider className=" bg-custom-black" />
 			</div>
 			{/* <div className='flex flex-col gap-2'>
@@ -74,7 +78,9 @@ const OrderSummary = () => {
             </div> */}
 			<div className="flex items-center justify-between w-full gap-2">
 				<div className="flex-col flex gap-1">
-					<h6>Total</h6>
+					<h6>
+						{locale == "en" ? "Total" : "الإجمالي"}
+					</h6>
 					{/* <p className='text-sm'>Including $2.24 in taxes</p> */}
 				</div>
 				<p className="font-bold text-4xl">{cart?.total}EGP</p>

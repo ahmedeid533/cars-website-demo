@@ -7,6 +7,7 @@ import Cookies from "universal-cookie";
 import { apiClient } from "@/util/axois";
 import React from "react";
 import { toast } from "react-toastify";
+import { useLocale } from "next-intl";
 
 type props = {
 	open: boolean;
@@ -18,6 +19,7 @@ const CancelOrderModal = ({ open, setOpen }: props) => {
 
 	const cookies = new Cookies();
 	const token = cookies.get("token");
+	const locale = useLocale();
 	const cancelOrder = () => {
 		apiClient(token)
 			.post(`/orders/${id}/cancel`)
@@ -67,7 +69,7 @@ const CancelOrderModal = ({ open, setOpen }: props) => {
 									height={100}
 								/>
 								<span className="font-bold text-custom-black text-lg">
-									Services
+									{locale == "en" ? "Services" : "الخدمات"}
 								</span>
 							</div>
 							<div className="relative flex flex-row items-center gap-2 mt-10 w-full">
@@ -78,8 +80,9 @@ const CancelOrderModal = ({ open, setOpen }: props) => {
 									height={30}
 								/>
 								<h2 className="font-bold text-custom-black text-lg">
-									Are you sure that you want to Cancel the
-									Order{" "}
+									{locale == "en"
+										? `Are you sure that you want to Cancel the Order?`
+										: "هل أنت متأكد أنك تريد إلغاء الطلب؟"}
 								</h2>
 							</div>
 							{/* <textarea rows={10} placeholder='Messages...' className='bg-transparent p-2 border border-black rounded w-full'></textarea> */}
@@ -97,7 +100,7 @@ const CancelOrderModal = ({ open, setOpen }: props) => {
 										router.back();
 									}}
 								>
-									Return
+									{locale == "en" ? "Return" : "العودة"}
 								</div>
 								<div
 									className="bg-[#C60000] py-2 rounded w-full md:w-1/3 text-white text-center cursor-pointer"
@@ -105,7 +108,9 @@ const CancelOrderModal = ({ open, setOpen }: props) => {
 										cancelOrder();
 									}}
 								>
-									Cancel Order
+									{locale == "en"
+										? "Cancel Order"
+										: "إلغاء الطلب"}
 								</div>
 							</div>
 						</div>

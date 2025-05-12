@@ -2,6 +2,7 @@ import * as React from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import ClearIcon from "@mui/icons-material/Clear";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { useLocale } from "next-intl";
 
 type Order = {
 	id: string;
@@ -16,11 +17,12 @@ type props = {
 	order: Order;
 };
 const OrderInfo = ({ order }: props) => {
+	const locale = useLocale();
 	return (
 		<div className="w-full flex items-start justify-center lg:justify-between gap-5 p-4">
 			<div className="flex flex-col items-start justify-start gap-1 lg:gap-5">
 				<h4 className="font-bold text-black text-sm lg:text-lg">
-					Order Number
+					{locale == "en" ? "Order Number" : "رقم الطلب"}
 				</h4>
 				<h6 className="text-xs lg:text-sm text-custom-black">
 					{order.order_number}
@@ -28,7 +30,7 @@ const OrderInfo = ({ order }: props) => {
 			</div>
 			<div className="flex flex-col items-start justify-start gap-1 lg:gap-5">
 				<h4 className="font-bold text-black text-sm lg:text-lg">
-					Status
+					{locale == "en" ? "Status" : "الحالة"}
 				</h4>
 				<h6 className="text-xs lg:text-sm text-custom-black flex items-center gap-1">
 					{order.status === "paid" && (
@@ -53,7 +55,7 @@ const OrderInfo = ({ order }: props) => {
 			</div>
 			<div className="flex flex-col items-start justify-start gap-1 lg:gap-5">
 				<h4 className="font-bold text-black text-sm lg:text-lg">
-					Order Date
+					{locale == "en" ? "Order Date" : "تاريخ الطلب"}
 				</h4>
 				<h6 className="text-xs lg:text-sm text-custom-black">
 					{order.created_at.split(" ")[0]}
@@ -61,7 +63,7 @@ const OrderInfo = ({ order }: props) => {
 			</div>
 			<div className="flex flex-col items-start justify-start gap-1 lg:gap-5">
 				<h4 className="font-bold text-black text-sm lg:text-lg">
-					Price
+					{locale == "en" ? "Price" : "السعر"}
 				</h4>
 				<h6 className="text-xs lg:text-sm text-custom-black">
 					{order.total_amount}

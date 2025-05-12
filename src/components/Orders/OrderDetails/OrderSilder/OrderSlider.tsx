@@ -10,12 +10,16 @@ import "slick-carousel/slick/slick-theme.css";
 import SliderArrowsRef from "./SliderArrowsRef";
 import SliderArrowBtns from "./SliderArrowBtns";
 import { orderSliderConfig } from "./orderSliderConfig";
+import { useLocale } from "next-intl";
 
 const OrderSlider = ({ items }: { items: any[] }) => {
 	const { sliderRef, handleNext, handlePrev } = SliderArrowsRef();
+	const locale = useLocale();
 	return (
 		<div className="flex flex-col gap-4">
-			<h2 className="font-bold text-xl text-custom-black">Your Items </h2>
+			<h2 className="font-bold text-xl text-custom-black">
+				{locale == "en" ? "Your Items" : "عناصر الطلب"}
+			</h2>
 			<div className="slider-container relative">
 				{items?.length == 1 && (
 					<div className="custom-container1 md:w-fit">
@@ -52,15 +56,22 @@ const OrderSlider = ({ items }: { items: any[] }) => {
 								</div> */}
 								<div className="flex flex-row gap-2 items-center">
 									<ExtensionIcon className="text-custom-black" />
-									<span className="text-sm"> {items[0]?.quantity} pieces</span>
+									<span className="text-sm">
+										{" "}
+										{items[0]?.quantity}{" "}
+										{locale == "en" ? "pieces" : "قطعه"}
+									</span>
 								</div>
 								<div className="flex flex-row gap-2 items-center">
 									<MonetizationOnOutlinedIcon className="text-custom-black" />
-									<span className="text-sm">{items[0]?.unit_price} </span>
+									<span className="text-sm">
+										{items[0]?.unit_price}{" "}
+									</span>
 								</div>
 							</div>
 							<h2 className=" p-3 w-full text-sm font-bold text-custom-blue">
-								Subtotal : {items[0]?.total_price} EGP
+								{locale == "en" ? "Subtotal" : "المجموع الفرعي"}{" "}
+								: {items[0]?.total_price} EGP
 							</h2>
 						</div>
 					</div>
@@ -116,7 +127,10 @@ const OrderSlider = ({ items }: { items: any[] }) => {
 												<ExtensionIcon className="text-custom-black" />
 												<span className="text-sm">
 													{" "}
-													{item?.quantity} pieces
+													{item?.quantity}{" "}
+													{locale == "en"
+														? "pieces"
+														: "قطعه"}
 												</span>
 											</div>
 											<div className="flex flex-row gap-2 items-center">
@@ -127,7 +141,10 @@ const OrderSlider = ({ items }: { items: any[] }) => {
 											</div>
 										</div>
 										<h2 className=" p-3 w-full text-sm font-bold text-custom-blue">
-											Subtotal : {item?.total_price}{" "}EGP
+											{locale == "en"
+												? "Subtotal"
+												: "المجموع الفرعي"}{" "} :
+											{item?.total_price} EGP
 										</h2>
 									</div>
 								</div>

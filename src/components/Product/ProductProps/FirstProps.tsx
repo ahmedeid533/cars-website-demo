@@ -1,14 +1,18 @@
-import React from 'react'
+import { useLocale } from "next-intl";
+import React from "react";
 
 interface FirstPropsProps {
 	description: string;
 }
 
 const FirstProps: React.FC<FirstPropsProps> = ({ description }) => {
+	const locale = useLocale();
 	return (
 		<div className="flex flex-col gap-2">
 			<div className="flex flex-col gap-4 text-custom-black bg-[#EEEEEE] rounded py-5 px-8">
-				<h2 className="font-bold text-2xl">Product details</h2>
+				<h2 className="font-bold text-2xl">
+					{locale == "en" ? "Product details" : "تفاصيل المنتج"}{" "}
+				</h2>
 				<ul className="list-disc p-4">
 					<li className="text-sm">{description}</li>
 				</ul>
@@ -52,4 +56,4 @@ const FirstProps: React.FC<FirstPropsProps> = ({ description }) => {
 	);
 };
 
-export default FirstProps
+export default FirstProps;

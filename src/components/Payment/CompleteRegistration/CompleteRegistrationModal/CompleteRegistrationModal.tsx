@@ -1,9 +1,9 @@
-"use client"
-import ClearIcon from '@mui/icons-material/Clear';
-import { Backdrop, Divider, Fade, Modal } from '@mui/material'
-import FirstSection from './FirstSection'
-import SecondSection from './SecondSection'
-import ThirdSection from './ThirdSection';
+"use client";
+import ClearIcon from "@mui/icons-material/Clear";
+import { Backdrop, Divider, Fade, Modal } from "@mui/material";
+import FirstSection from "./FirstSection";
+import SecondSection from "./SecondSection";
+import ThirdSection from "./ThirdSection";
 
 type props = {
 	open: boolean;
@@ -62,4 +62,4 @@ const CompleteRegistrationModal = ({ open, setOpen, response }: props) => {
 	);
 };
 
-export default CompleteRegistrationModal
+export default CompleteRegistrationModal;

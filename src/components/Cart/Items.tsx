@@ -44,9 +44,9 @@ const Items = ({ cart }: { cart: any[] }) => {
 						</div>
 						<div className="flex items-center gap-x-10 text-lg font-bold">
 							{/* <SortServices label="QTY" /> */}
-							<div>quantity: {item?.quantity}</div>
+							<div>{locale == "en" ? "quantity: " : "الكميه: "} {item?.quantity}</div>
 							<span>
-								{item.total}EGP each: {item.price}EGP
+								{item.total}EGP {locale == "en" ? "each:" : "كل قطعه:"} {item.price}EGP
 							</span>
 						</div>
 						{/* <div className="rounded border border-custom-blue px-6 py-2 flex items-center w-3/4 gap-2">
@@ -59,12 +59,13 @@ const Items = ({ cart }: { cart: any[] }) => {
 						<div className="flex flex-col gap-4">
 							<div>
 								<h2 className="font-bold text-lg">
-									Disclaimer
+									{locale == "en" ? "Disclaimer" : "تنبيه"}
 								</h2>
 								<ul className="list-disc text-sm pl-5 text-custom-blue font-bold">
 									<li>
-										This product is valid for exchange for
-										14 days from now
+										{locale == "en"
+											? `This product is valid for exchange for 14 days from now.`
+											: `هذا المنتج صالح للاستبدال لمدة 14 يومًا من الآن.`}
 									</li>
 								</ul>
 							</div>

@@ -28,16 +28,18 @@ const CategoryName = ({
 	const [subSubCategoryId, setSubSubCategoryId] = useState<number>(-1);
 	const [option, setOption] = useState<string>("");
 	const locale = useLocale();
+	console.log("subCategoryOption ==> ", subCategoryOption);
+
 
 	return (
 		<>
 			<MainSection category={category} />
-			<div className="flex justify-evenly items-center w-full md:w-[80%] mx-auto mt-4 mb-4 overflow-scroll scroll-hidden">
+			<div className="flex justify-evenly items-start w-full md:w-[80%] mx-auto mt-4 mb-4 overflow-scroll scroll-hidden bg-[#6F88FF26]">
 				{subCategoryOption &&
 					subCategoryOption[0]?.values.map((option, index) => (
 						<div
 							key={index}
-							className="font-bold text-sm text-white bg-[#1E1E1E] text-nowrap mx-1 rounded-lg px-4 py-2 cursor-pointer hover:bg-[#3A3A3A]"
+							className="font-bold text-sm bg-white text-[#1E1E1E] text-nowrap mx-2 rounded-lg px-8 py-4 cursor-pointer hover:bg-[#3A3A3A]"
 							onClick={() => {
 								setOption(option?.id + "");
 							}}
@@ -71,7 +73,9 @@ const CategoryName = ({
 					<FilterAndItems
 						subSubCategoryId={subSubCategoryId}
 						option={option}
-						optionId={subCategoryOption ? subCategoryOption[0]?.id : 0}
+						optionId={
+							subCategoryOption ? subCategoryOption[0]?.id : 0
+						}
 					/>
 				)}
 			</div>

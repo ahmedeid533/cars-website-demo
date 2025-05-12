@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 import { apiClient } from "@/util/axois";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { useLocale } from "next-intl";
 
 const Cart = () => {
 	const cookie = new Cookies();
 	const router = useRouter();
+	const locale = useLocale();
 
 	interface Cart {
 		items: any[]; // Replace `any` with the specific type of items if known
@@ -57,7 +59,7 @@ const Cart = () => {
 		<>
 			<div className="custom-container1 py-10 flex flex-col gap-5">
 				<h2 className="text-custom-black font-bold text-3xl uppercase">
-					Shopping Cart
+					{locale === "en" ? "Shopping Cart" : "عربة التسوق"}
 				</h2>
 				<div className="grid grid-cols-1 lg:grid-cols-4 items-start gap-5">
 					<div className="flex flex-col col-span-1 lg:col-span-3 gap-3">
@@ -85,7 +87,7 @@ const Cart = () => {
 					<div className="w-full flex items-center justify-between">
 						<div className="flex items-center justify-center">
 							<Link href={"/category/all"} className="rounded text-white bg-custom-blue  py-3 px-6 font-normal">
-								Keep Shopping
+								{locale === "en" ? "Keep Shopping" : "استمر في التسوق"}
 							</Link>
 						</div>
 						<div className="flex items-end justify-end">
@@ -95,7 +97,7 @@ const Cart = () => {
 								}}
 								className="text-custom-blue font-bold"
 							>
-								Clear The Cart
+								{locale === "en" ? "Clear The Cart" : "مسح العربة"}
 							</button>
 						</div>
 					</div>

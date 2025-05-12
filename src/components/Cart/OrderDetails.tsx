@@ -1,14 +1,20 @@
 import { FormControl, InputLabel, OutlinedInput } from '@mui/material'
+import { useLocale } from 'next-intl'
 import Link from 'next/link'
 import React from 'react'
 
-const OrderDetails = ({total}:{total:number}) => {
+const OrderDetails = ({ total }: { total: number }) => {
+		const locale = useLocale()
     return (
         <div className='my-5 lg:my-0 rounded border border-custom-black p-3 flex flex-col gap-3'>
-            <h2 className='capitalize font-bold text-xl text-center'>ORDER Details</h2>
+				<h2 className='capitalize font-bold text-xl text-center'>
+					{locale == 'en' ? "ORDER Details" : "تفاصيل الطلب"}
+				</h2>
             <div className='flex flex-col gap-4 text-custom-black'>
                 <div className='w-full flex pb-3 flex-row items-center justify-between border-b border-b-custom-black'>
-                    <h4 className='capitalize'>total</h4>
+						<h4 className='capitalize'>
+							{locale == 'en' ? "total" : "المجموع"}
+										</h4>
                     <p>{total}EGP</p>
                 </div>
                 {/* <div className='w-full flex pb-3 flex-row items-center justify-between border-b border-b-custom-black'>
@@ -32,7 +38,7 @@ const OrderDetails = ({total}:{total:number}) => {
                 If you use the promo code Seacode, there is a 30% discount.
             </p> */}
             <Link href={'/payment'} className='w-full bg-custom-blue text-white rounded py-3 text-center'>
-                Continue To Check out
+                {locale == 'en' ? "Continue To Check out" : "استمر في الدفع"}
             </Link>
         </div>
     )

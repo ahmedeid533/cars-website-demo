@@ -8,6 +8,7 @@ import { Box, Divider } from '@mui/material';
 import { useEffect } from 'react';
 import { apiClient } from '@/util/axois';
 import Cookies from 'universal-cookie';
+import { useLocale } from 'next-intl';
 
 
 const Orders = () => {
@@ -23,7 +24,8 @@ const Orders = () => {
 
 	const [orders, setOrders] = useState<Order[]>([]);
 		const cookie = new Cookies();
-		const token = cookie.get("token");
+	const token = cookie.get("token");
+	const locale = useLocale();
 		const fetchOrders = async () => {
 			try {
 				apiClient(token).get("/orders").then((res) => {
@@ -47,10 +49,12 @@ const Orders = () => {
 			<div className="custom-container1 flex flex-col gap-5 py-10">
 				<div className="flex flex-col gap-1">
 					<h2 className="font-bold text-2xl text-custom-black">
-						Order History
+						{locale == "en" ? "Order History" : "تاريخ الطلبات"}
 					</h2>
 					<p className="text-sm text-custom-gray">
-						Mange your recent orders and invoices
+						{locale == "en"
+							? "Mange your recent orders and invoices"
+							: "إدارة الطلبات والفواتير الأخيرة الخاصة بك"}
 					</p>
 				</div>
 				<div className="flex flex-col gap-10">

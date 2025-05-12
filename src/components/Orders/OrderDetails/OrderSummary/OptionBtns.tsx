@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import TrackOrderModal from "../../Modals/TrackOrderModal/TrackOrderModal";
 import { useParams } from "next/navigation";
 import CancelOrderModal from "../../Modals/CancelOrderModal";
+import { useLocale } from "next-intl";
 
-const OptionBtns = ({ id_, status }: { id_: string; status: string; }) => {
+const OptionBtns = ({ id_, status }: { id_: string; status: string }) => {
 	const { id } = useParams();
 	const [trackOpen, setTrackOpen] = useState(false);
 	const [cancelledOpen, setCancelledOpen] = useState(false);
+	const locale = useLocale();
 	const Print = () => {
 		const printDiv1 = document.getElementById("print1")
 			? document.getElementById("print1")
@@ -42,7 +44,7 @@ const OptionBtns = ({ id_, status }: { id_: string; status: string; }) => {
 					className="py-2 text-center rounded border border-black px-5 w-full lg:w-[200px]"
 					onClick={Print}
 				>
-					Print
+					{locale == "en" ? "Print" : "طباعة"}
 				</div>
 				{/* <Link
 					href={`/orders/${id}/?track=${Number(id) + 1}`}
@@ -55,18 +57,17 @@ const OptionBtns = ({ id_, status }: { id_: string; status: string; }) => {
 					href={`/contact`}
 					className="py-2 text-center rounded bg-custom-green text-white px-5 w-full lg:w-[200px]"
 				>
-					Support
+					{locale == "en" ? "Support" : "الدعم الفني"}
 				</Link>
-				{
-					status === "pending" &&
+				{status === "pending" && (
 					<Link
-					href={`/orders/${id}/?cancel=${Number(id_)}`}
-					className="py-2 text-center rounded bg-[#C60000] text-white px-5 w-full lg:w-[200px]"
-					onClick={() => setCancelledOpen(true)}
-				>
-					Cancel
+						href={`/orders/${id}/?cancel=${Number(id_)}`}
+						className="py-2 text-center rounded bg-[#C60000] text-white px-5 w-full lg:w-[200px]"
+						onClick={() => setCancelledOpen(true)}
+					>
+						{locale == "en" ? "Cancel" : "إلغاء"}
 					</Link>
-				}
+				)}
 
 				{/* <TrackOrderModal open={trackOpen} setOpen={setTrackOpen} /> */}
 				<CancelOrderModal

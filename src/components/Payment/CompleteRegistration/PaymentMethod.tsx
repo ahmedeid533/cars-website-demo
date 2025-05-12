@@ -1,5 +1,6 @@
 import { apiClient } from "@/util/axois";
 import { Radio } from "@mui/material";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -9,6 +10,7 @@ type props = {
 };
 const PaymentMethod = ({ payment, setPayment }: props) => {
 	const [payments, setPayments] = useState<any[]>([]);
+	const locale = useLocale();
 
 	const controlProps = (item: string) => ({
 		checked: payment === item,
@@ -37,7 +39,7 @@ const PaymentMethod = ({ payment, setPayment }: props) => {
 	return (
 		<div className="flex flex-col gap-5 w-full">
 			<h2 className="text-xl font-bold text-custom-black">
-				Payment methods
+				{locale == "en"?"Payment methods":"طرق الدفع"}
 			</h2>
 
 			<div className="flex gap-2 lg:gap-4 items-center flex-wrap">

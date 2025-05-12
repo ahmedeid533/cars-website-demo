@@ -1,5 +1,6 @@
 import { additionalItems } from "@/mocks/additionalItems";
 import { apiClient } from "@/util/axois";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
@@ -10,6 +11,7 @@ interface SimilarProductsProps {
 
 const SimilarProducts: React.FC<SimilarProductsProps> = ({ id }) => {
 	const [items, setItems] = React.useState<any>([]);
+	const locale = useLocale();
 	useEffect(() => {
 		console.log("id ==> ", id);
 		apiClient().get(`/products/related/${id}`)
@@ -20,7 +22,7 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id }) => {
 					return {
 						id: item.id,
 						image: `https://3arbitk.com/storage/${item.main_photo}`,
-						title: item.name_en,
+						title: locale == "en" ? item.name_en : item.name_ar,
 					};
 				});
 				console.log("items_ ==> ", items_);
@@ -33,7 +35,7 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id }) => {
 
 	return (
 		<div className="custom-container1 flex flex-col gap-6 text-custom-black py-10">
-			<h2 className="text-xl font-bold">Similar Products</h2>
+			<h2 className="text-xl font-bold">{locale == "en" ? "Similar Products" : "منتجات مشابهه"} </h2>
 			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-center gap-x-0 gap-y-0 lg:gap-x-16 lg:gap-y-10">
 				{/* disable ts next line */}
 				{/* @ts-ignore */}

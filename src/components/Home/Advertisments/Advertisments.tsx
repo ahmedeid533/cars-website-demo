@@ -10,9 +10,12 @@ console.log("bannerFooter ==> ", bannerFooter);
   const locale = useLocale()
   return (
 		<section className="custom-container1 py-10">
-			<div className="items-center gap-5 grid grid-cols-1 lg:grid-cols-4">
+			{
+				bannerFooter && 
+				<div className="items-center gap-5 grid grid-cols-1 lg:grid-cols-4">
 				<div className="flex flex-row lg:flex-col gap-3">
-					{bannerFooter[0] && (
+					{
+						bannerFooter[0] && (
 						<MajiorAdv
 							backgroundImage={bannerFooter[0].image_url}
 							title={bannerFooter[0].title}
@@ -66,7 +69,8 @@ console.log("bannerFooter ==> ", bannerFooter);
 						url={bannerFooter[4].banner_url}
 					/>
 				</div>
-			</div>
+				</div>
+			}
 		</section>
   );
 }
