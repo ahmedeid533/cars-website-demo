@@ -15,7 +15,19 @@ const MainSection = () => {
 						{locale == "en" ? "3RABITK" : "عربيتك"}{" "}
 					</span>
 				</h2>
-				<p className="text-[#333] text-xs sm:text-sm">{t("3rabitk")}</p>
+				<p className="text-[#333] text-xs sm:text-sm">
+					{t("3rabitk1")}
+				</p>
+				<p className="text-[#333] text-xs sm:text-sm">
+					{t("3rabitk2")}
+				</p>
+				<p className="text-[#333] text-xs sm:text-sm">
+					{t("3rabitk3")}
+				</p>
+				<p className="text-[#333] text-xs sm:text-sm">
+					{t("3rabitk4")}
+				</p>
+
 				<div className="flex items-start">
 					<Link
 						href={"contact"}
