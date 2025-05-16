@@ -80,7 +80,7 @@ const Product = ({ id }: { id: string }) => {
 					productDetails: {
 						id: d.id,
 						photos: {
-							main_photo: `https://3arbitk.com/storage/${d.main_photo}`,
+							main_photo: `https://app.3arbitk.com/storage/${d.main_photo}`,
 							all_photos: d.photos,
 						},
 						mainInfo: {

@@ -11,13 +11,17 @@ import ItemsInMobile from "./ItemsInMobile";
 const FilterAndItems = ({
 	subSubCategoryId,
 	option,
+	subCategoryName,
+	subSubCategoryName,
 	optionId,
 }: {
-	subSubCategoryId: number;
+		subSubCategoryId: number;
+		subCategoryName: string;
+		subSubCategoryName: string;
 	option: string;
 	optionId: number;
 }) => {
-	const [gridColsNumber, setGridColsNumber] = useState(1);
+	const [gridColsNumber, setGridColsNumber] = useState(3);
 	const [products, setProducts] = useState<any[]>([]);
 
 	interface Product {
@@ -102,10 +106,12 @@ const FilterAndItems = ({
 	}, []);
 
 	return (
-		<section className="flex flex-col gap-2 mb-10  md:w-[70vw] mx-auto ">
+		<section className="flex flex-col gap-2 mb-10 mt-[2vmax] md:w-[70vw] mx-auto ">
 			<GridOptionsAndResults
 				setGridColsNumber={handleSetGridColsNumber}
 				allItemsCount={products.length}
+				subCategoryName={subCategoryName}
+				subSubCategoryName={subSubCategoryName}
 			/>
 			<div className="grid grid-cols-1 lg:grid-cols-4 items-start gap-10">
 				{/* <Filters />  if back make next line cool-span-3 */}

@@ -6,11 +6,19 @@ import React, { memo } from 'react';
 const GridOptionsAndResults = ({
 	setGridColsNumber,
 	allItemsCount,
+	subCategoryName,
+	subSubCategoryName,
 }: {
 	setGridColsNumber: (cols: number) => void;
-	allItemsCount:number}) => {
+		allItemsCount: number;
+		subCategoryName: string;
+		subSubCategoryName: string;
+}) => {
 	return (
 		<div className="hidden lg:flex items-center justify-end w-full gap-2">
+			<p className="text-custom-black text-sm font-semibold ml-auto">
+				{`${subCategoryName} - ${subSubCategoryName}`}
+			</p>
 			<div className="text-custom-blue">
 				<AppsIcon
 					className="cursor-pointer"

@@ -22,7 +22,7 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 					<div
 						className={`${
 							gridColsNumber === 3
-								? "h-[40vh] bg-[#F3F3F300] w-full flex"
+								? "h-[30vh] bg-[#F3F3F300] w-full flex"
 								: "h-auto bg-transparent block"
 						} items-center justify-center`}
 					>
@@ -33,7 +33,7 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 							height={200}
 							className={
 								"object-contain " + (gridColsNumber === 3
-									? "h-[300px] w-[300px]"
+									? "h-full p-4 w-[300px]"
 									: "h-[200px] w-[200px]")
 							}
 						/>
