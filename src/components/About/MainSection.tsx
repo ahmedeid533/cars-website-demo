@@ -43,7 +43,7 @@ const MainSection = () => {
 				</div>
 			</div>
 			<div className="rounded overflow-hidden">
-				<iframe
+				{/* <iframe
 					width="100%"
 					height="400"
 					src="https://www.youtube.com/embed/FjileRn1Ykw"
@@ -52,7 +52,12 @@ const MainSection = () => {
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					referrerPolicy="strict-origin-when-cross-origin"
 					allowFullScreen
-				></iframe>
+				></iframe> */}
+				<img
+					src="/about/vidoeReplace.jpeg"
+					alt="3RABITK"
+					className="w-full h-[400px] object-cover"
+				/>
 			</div>
 		</div>
 	);

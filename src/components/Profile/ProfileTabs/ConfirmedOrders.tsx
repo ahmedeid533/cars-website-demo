@@ -65,7 +65,7 @@ const ConfirmedOrders = () => {
 								{item.status}
 							</h4>
 							<p className="font-bold text-xs lg:text-base">
-								${item.total_amount}
+								{item.total_amount}EGP
 							</p>
 						</div>
 						<div className="flex items-center justify-center w-full">

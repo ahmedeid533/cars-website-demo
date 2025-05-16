@@ -12,11 +12,26 @@ body {
 	padding-right: 20px;
 	/* margin-left: 40px; */
 }
+.swiper-slide {
+  transform: scale(0.75);
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide-active {
+  transform: scale(1) !important;
+  z-index: 10;
+}
+.custom-container3 {
+  width: 100%;
+  margin: 0px auto;
+}
 
 .custom-container1 {
   width: 100%;
-  /* max-width: 1500px; */
+  max-width: 1500px;
   margin: 0px auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .custom-container2 {

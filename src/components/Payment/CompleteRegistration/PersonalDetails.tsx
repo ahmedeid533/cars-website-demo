@@ -11,12 +11,14 @@ interface PersonalDetailsProps {
 	send: boolean;
 	payment: string;
 	setResponse: (response: any) => void;
+	setSend: (send: boolean) => void;
 }
 
 const PersonalDetails = ({
 	send,
 	payment,
 	setResponse,
+	setSend,
 }: PersonalDetailsProps) => {
 	const locale = useLocale();
 	const [government, setGovernment] = useState("");
@@ -124,32 +126,41 @@ const PersonalDetails = ({
 			payment_method_id: payment,
 		};
 
-		apiClient(token)
-			.post("/checkout/process", data)
-			.then((response) => {
-				console.log("Checkout successful:", response.data);
-				setResponse(response.data);
-				toast.success(
-					locale === "en"
-						? "Checkout successful"
-						: "تمت عملية الشراء بنجاح"
-				);
-			})
-			.catch((error) => {
-				console.error("Error during checkout:", error);
-				if (error.response.data.status === "error") {
-					toast.error(error.response.data.message);
-					toast.info(
+		try {
+			apiClient(token)
+				.post("/checkout/process", data)
+				.then((response) => {
+					console.log("Checkout successful:", response.data);
+					setResponse(response.data);
+					toast.success(
 						locale === "en"
-							? "please remove the item from the cart"
-							: "من فضلك قم بإزالة العنصر من السلة"
+							? "Checkout successful"
+							: "تمت عملية الشراء بنجاح"
 					);
-					return;
-				}
-				toast.error(
-					locale === "en" ? "Checkout failed" : "فشلت عملية الشراء"
-				);
-			});
+				})
+				.catch((error) => {
+					console.error("Error during checkout:", error);
+					if (error.response.data.status === "error") {
+						toast.error(error.response.data.message);
+						toast.info(
+							locale === "en"
+								? "please remove the item from the cart"
+								: "من فضلك قم بإزالة العنصر من السلة"
+						);
+						return;
+					}
+					toast.error(
+						locale === "en"
+							? "Checkout failed"
+							: "فشلت عملية الشراء"
+					);
+				});
+		} catch (error) {
+			console.error("Error during checkout:", error);
+			toast.error(
+				locale === "en" ? "Checkout failed" : "فشلت عملية الشراء"
+			);
+		}
 
 		console.log(data);
 	};
@@ -166,6 +177,7 @@ const PersonalDetails = ({
 	useEffect(() => {
 		if (send) {
 			checkOut();
+			setSend(false); // Reset send state after checkout
 		}
 	}, [send]);
 

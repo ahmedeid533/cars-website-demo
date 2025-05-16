@@ -106,6 +106,40 @@ const Trader = () => {
 							variant="outlined"
 							fullWidth
 						/>
+						<div className="text-black text-xl">
+							{locale == "en"
+								? "login details as a trader :"
+								: "	بيانات تسجيل الدخول كتاجر :"}
+						</div>
+						<TextField
+							label={
+								locale == "en"
+									? "Email Address"
+									: "عنوان البريد الإلكتروني"
+							}
+							variant="outlined"
+							fullWidth
+							required
+						/>
+						<TextField
+							label={locale == "en" ? "password" : "كلمة المرور"}
+							type="password"
+							variant="outlined"
+							fullWidth
+							required
+						/>
+						<TextField
+							label={
+								locale == "en"
+									? "Confirm Password"
+									: "تأكيد كلمة المرور"
+							}
+							type="password"
+							variant="outlined"
+							fullWidth
+							required
+						/>
+
 						<Typography>
 							{locale == "en"
 								? "Address Details:"
@@ -171,7 +205,6 @@ const Trader = () => {
 									}
 									variant="outlined"
 									fullWidth
-									required
 								/>
 							</div>
 						</div>

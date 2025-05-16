@@ -13,7 +13,7 @@ const CarCollections = ({ mainCategories }: { mainCategories: Category[] }) => {
           <Link
             href={`/category/${collection.slug}?category_id=${collection.id}`}
             key={index}
-            className={`h-[12vh] lg:h-[45vh] w-full bg-no-repeat bg-cover bg-center overflow-hidden`}
+            className={`h-[12vh] lg:h-[35vh] w-full bg-no-repeat bg-cover bg-center overflow-hidden`}
             style={{ backgroundImage: `url(${collection.image_url})` }}
           >
             <div className='flex justify-center bg-[#00000066] custom-style w-full h-full'>

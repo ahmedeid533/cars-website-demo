@@ -26,9 +26,9 @@ const ProductAddForm = () => {
 	};
 	const handleSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
-		if (file && description) {
+		if (description) {
 			const formData = new FormData();
-			formData.append("file", file);
+			file ? formData.append("file", file): formData.append("file", "");
 			formData.append("description", description);
 			apiClient(token)
 				.post("/product-request", formData)
@@ -57,6 +57,12 @@ const ProductAddForm = () => {
 							: "حدث خطأ أثناء إرسال طلبك"
 					);
 				});
+		} else {
+			toast.error(
+				locale === "en"
+					? "Please enter a description"
+					: "يرجى إدخال وصف"
+			);
 		}
 	};
 	return (

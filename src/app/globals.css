@@ -1,0 +1,13 @@
+.swiper-slide img {
+  transform: scale(0.85);
+	/* width: 90%; */
+  transition: transform 0.3s ease-in-out;
+	/* padding: 20px; */
+}
+
+.swiper-slide-active img {
+  transform: scale(1) !important;
+  z-index: 10;
+	transition: transform 0.3s ease-in-out;
+	/* padding: 0px; */
+}

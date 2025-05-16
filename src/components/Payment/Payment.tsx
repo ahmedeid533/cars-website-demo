@@ -25,7 +25,7 @@ const Payment = () => {
 						</Link>{" "}
 						or{" "} */}
 						<Link
-							href={`https://wa.me/2001014893650/?text=Hello%20I%20need%20help%20with%20my%20order`}
+							href={`https://wa.me/2001503443558/?text=Hello%20I%20need%20help%20with%20my%20order`}
 							target="_blank"
 							className="text-custom-blue"
 						>
@@ -33,10 +33,10 @@ const Payment = () => {
 						</Link>
 						{locale == "en"?"Call us at":"اتصل بنا على"}{" "}
 						<Link
-							href={"tel:+2001014893650"}
+							href={"tel:+2001503443558"}
 							className="text-custom-blue"
 						>
-							(+20) 01014893650
+							(+20) 01503443558
 						</Link>
 					</p>
 				</section>

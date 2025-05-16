@@ -65,8 +65,8 @@ const OrderInfo = ({ order }: props) => {
 				<h4 className="font-bold text-black text-sm lg:text-lg">
 					{locale == "en" ? "Price" : "السعر"}
 				</h4>
-				<h6 className="text-xs lg:text-sm text-custom-black">
-					{order.total_amount}
+				<h6 dir="ltr" className="text-xs lg:text-sm text-custom-black">
+					{order.total_amount.toString().split(".")[0]} EGP
 				</h6>
 			</div>
 		</div>

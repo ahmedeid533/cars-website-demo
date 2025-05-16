@@ -17,10 +17,10 @@ const Profile = () => {
 				<div className="custom-container1">
 					<ProfileTabsAndOrders />
 				</div>
-				{/* <Divider className="hidden lg:block" />
+				<Divider className="hidden lg:block" />
 				<div className="custom-container2">
 					<OrderConfig />
-				</div> */}
+				</div>
 				<Divider className="block" />
 				<div className="custom-container2">
 					<AccountSettings />

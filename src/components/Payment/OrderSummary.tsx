@@ -1,5 +1,6 @@
 "use client"
 import { Divider } from '@mui/material'
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import React from 'react'
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -59,8 +60,11 @@ const OrderSummary = () => {
 				{locale == "en" ? "ORDER SUMMARY" : "ملخص الطلب"}
 			</h2>
 			<div className="flex flex-col gap-2">
-				<h6>{cart?.items?.length}
-					{locale == "en" ? "items in your Cart" : "عناصر في سلة التسوق الخاصة بك"}
+				<h6>
+					{cart?.items?.length}
+					{locale == "en"
+						? "items in your Cart"
+						: "عناصر في سلة التسوق الخاصة بك"}
 				</h6>
 				<Divider className=" bg-custom-black" />
 			</div>
@@ -78,9 +82,13 @@ const OrderSummary = () => {
             </div> */}
 			<div className="flex items-center justify-between w-full gap-2">
 				<div className="flex-col flex gap-1">
-					<h6>
-						{locale == "en" ? "Total" : "الإجمالي"}
-					</h6>
+					<h6>{locale == "en" ? "Total" : "الإجمالي"}</h6>
+					<p className="text-sm">
+						<LocalShippingIcon  className='ml-2'/>
+						{locale == "en"
+							? "without shipping"
+							: "بدون مصاريف شحن"}
+					</p>
 					{/* <p className='text-sm'>Including $2.24 in taxes</p> */}
 				</div>
 				<p className="font-bold text-4xl">{cart?.total}EGP</p>

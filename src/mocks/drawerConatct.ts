@@ -1,14 +1,10 @@
 export const drawerContact = [
     {
         image: "/call.svg",
-        title: "01014953685"
+				title : "01503443558"
     },
     {
         image: "/help.svg",
         title: "Help Center"
-    },
-    {
-        image: "/chat.svg",
-        title: "Live Chat"
     },
 ]

@@ -12,7 +12,7 @@ const ProfileTabs = () => {
     return (
 		<Box
 			// lg:h-[885px]
-			className="py-10 lg:py-5 px-10 border border-[#A4A4A4] rounded-xl lg:rounded flex flex-col gap-10 h-full lg:h-[60vh] "
+			className="py-10 lg:py-5 px-10 border border-[#A4A4A4] rounded-xl lg:rounded flex flex-col gap-10 h-full lg:h-[100%] "
 			sx={{ boxShadow: { xs: "none", lg: "0px 4px 4px 0px #00000040" } }}
 		>
 			<div className="flex flex-col items-center lg:items-start gap-4 relative">

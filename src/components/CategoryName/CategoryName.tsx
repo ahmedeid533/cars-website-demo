@@ -83,7 +83,7 @@ const CategoryName = ({
 					/>
 				</div>
 			)} */}
-			<div className="custom-container1">
+			<div className="custom-container3">
 				{
 					// hasBrands === false &&
 					sub_subCategories?.length > 0 && (

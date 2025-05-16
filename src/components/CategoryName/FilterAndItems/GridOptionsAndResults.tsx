@@ -16,7 +16,7 @@ const GridOptionsAndResults = ({
 }) => {
 	return (
 		<div className="hidden lg:flex items-center justify-end w-full gap-2">
-			<p className="text-custom-black text-sm font-semibold ml-auto">
+			<p className="text-custom-black text-sm font-semibold me-auto">
 				{`${subCategoryName} - ${subSubCategoryName}`}
 			</p>
 			<div className="text-custom-blue">

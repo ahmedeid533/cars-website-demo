@@ -97,7 +97,7 @@ const SecondPart = () => {
 													name_en:
 														"product not found you can order it from here",
 													slug: "/search",
-													price: "0000",
+													price: "",
 													main_photo:
 														"/search/not-found.svg",
 												},

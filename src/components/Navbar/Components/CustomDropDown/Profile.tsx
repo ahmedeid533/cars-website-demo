@@ -33,9 +33,9 @@ const Profile = () => {
 		<div className="flex flex-col gap-10">
 			<div className="flex flex-col gap-3">
 				{token && (
-					<h3 className="font-bold text-custom-black">
+					<div className="font-bold text-md text-custom-black">
 						{t("My Account")}
-					</h3>
+					</div>
 				)}
 				{!token && (
 					<div className="flex flex-col items-center gap-4 text-center">

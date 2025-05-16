@@ -97,7 +97,11 @@ const SecondPart = () => {
 									{t("Connect With Us")}
 								</h3>
 								<div className="flex flex-row justify-between items-center w-full">
-									<Link href={"#"}>
+									<Link
+										href={
+											"https://www.facebook.com/share/16bNyUHo56/?mibextid=wwXIfr"
+										}
+									>
 										<Image
 											src={"/facebook.svg"}
 											alt="facebook"
@@ -113,7 +117,11 @@ const SecondPart = () => {
 											height={20}
 										/>
 									</Link>
-									<Link href={"#"}>
+									<Link
+										href={
+											"https://www.instagram.com/3arbitk.egy?igsh=c2RpbDNmajI0NDUy&utm_source=qr"
+										}
+									>
 										<Image
 											src={"/instagram.svg"}
 											alt="instagram"
@@ -121,14 +129,14 @@ const SecondPart = () => {
 											height={20}
 										/>
 									</Link>
-									<Link href={"#"}>
+									{/* <Link href={"#"}>
 										<Image
 											src={"/linkedIn.svg"}
 											alt="linkedIn"
 											width={20}
 											height={20}
 										/>
-									</Link>
+									</Link> */}
 								</div>
 							</div>
 						</div>

@@ -5,6 +5,7 @@ import { Autoplay, Navigation, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "@/app/globals.css";
 import Link from "next/link";
 import Image from "next/image";
 import { Banner } from "@/types";
@@ -16,33 +17,26 @@ interface IMainSectionSlider {
 
 const MainSectionSlider = ({ banners }: IMainSectionSlider) => {
 	const t = useTranslations("homepage");
-	const locale = useLocale();
+	const locale = useLocale(); 
 
 	return (
-		<div className="w-[80%] m-auto" dir={locale === "ar" ? "rtl" : "ltr"}>
+		<div className="w-[100%] m-auto" dir={"ltr"}>
 			<Swiper
 				modules={[Autoplay, Navigation, EffectFade]}
 				autoplay={{
-					delay: 3000,
+					delay: 4000,
 					disableOnInteraction: false,
 					reverseDirection: true,
 				}}
 				navigation
 				// effect="fade"
-				loop
-				speed={500}
-				slidesPerView={1}
-				// centeredSlides={true}
-				// breakpoints={{
-				// 	640: {
-				// 		slidesPerView: 1.5,
-				// 	},
-				// 	1024: {
-				// 		slidesPerView: 1.8,
-				// 	},
-				// }}
-				// spaceBetween={30}
-				className="w-full h-[50vh] min-h-[300px]"
+				loop={true}
+				speed={1500}
+				slidesPerView={2.4}
+				// initialSlide={1}
+				// centeredSlidesBounds={true}
+				centeredSlides={true}
+				className="w-full h-[65vh] min-h-[370px]"
 			>
 				{banners?.map((section, index) => (
 					<SwiperSlide key={index}>
@@ -54,16 +48,16 @@ const MainSectionSlider = ({ banners }: IMainSectionSlider) => {
 								fill
 								className="absolute object-contain"
 							/>
-							<div className="z-10 relative flex justify-center bg-[#00000066] w-full h-full">
+							<div className="z-10 relative flex justify-center w-full h-full">
 								<div className="flex flex-col justify-center items-center gap-2 text-white text-center">
 									{section.title && (
 										<h1 className="mb-0 md:mb-2 font-bold text-3xl md:text-6xl">
-											{section.title}
+											{/* {section.title} */}
 										</h1>
 									)}
 									<Link
 										href={`/category/all?category_id=${section.id}`}
-										className="bg-custom-blue mt-5 px-20 py-2 rounded-lg text-white"
+										className="bg-custom-blue mt-52 px-20 py-2 rounded-lg text-white"
 									>
 										{t("Book Now")}
 									</Link>
