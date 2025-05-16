@@ -16,7 +16,7 @@ const CompleteRegistration = () => {
 		console.log(e.target.value);
 	};
 	const handleOpen = () => {
-		setOpen(true);
+		setOpen((prev) => !prev);
 	};
 	return (
 		<section className="col-span-1 lg:col-span-2 rounded border border-transparent lg:border-custom-black p-5 flex flex-col gap-5 lg:gap-10">
@@ -35,7 +35,7 @@ const CompleteRegistration = () => {
 				send={open}
 				payment={payment}
 				setResponse={setResponse}
-				setSend={setOpen}
+				setSend={handleOpen}
 			/>
 			<PaymentMethod setPayment={handlePayment} payment={payment} />
 			{/* {payment === "p3" && <CardDetails />} */}

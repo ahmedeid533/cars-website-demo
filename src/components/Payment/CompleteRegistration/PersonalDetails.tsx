@@ -11,7 +11,7 @@ interface PersonalDetailsProps {
 	send: boolean;
 	payment: string;
 	setResponse: (response: any) => void;
-	setSend: (send: boolean) => void;
+	setSend: () => void;
 }
 
 const PersonalDetails = ({
@@ -177,7 +177,7 @@ const PersonalDetails = ({
 	useEffect(() => {
 		if (send) {
 			checkOut();
-			setSend(false); // Reset send state after checkout
+			setSend(); // Reset send state after checkout
 		}
 	}, [send]);
 
