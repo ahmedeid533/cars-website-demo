@@ -16,7 +16,7 @@ const MajiorAdv = ({
 	const locale = useLocale();
 	return (
 		<div
-			className={` bg-cover bg-right bg-no-repeat h-[208px] w-1/2 lg:w-full`}
+			className={` bg-cover bg-right bg-no-repeat h-[140px] w-1/2 lg:w-full`}
 			style={{ backgroundImage: `url(${backgroundImage})` }}
 		>
 			{/* bg-[#00000066] */}
@@ -26,7 +26,7 @@ const MajiorAdv = ({
 				</h3>
 				<Link
 					href={url ? url : `/category/all?category_id=${id}`}
-					className="bg-custom-blue px-3 lg:px-3 py-1 md:mt-[20vh] mt-[15vh] rounded font-bold text-white text-sm"
+					className="bg-custom-blue px-3 lg:px-3 py-1 md:mt-[20vh] mt-[10vh] rounded font-bold text-white text-sm"
 				>
 					{locale === "en" ? "SHOP NOW" : "تسوق الآن"}
 				</Link>

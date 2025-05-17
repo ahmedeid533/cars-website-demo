@@ -42,7 +42,7 @@ const CustomTabs = ({ value, setValue, categoryTabs }: props) => {
               <Tab
                 key={tab.id}
                 label={tab.name[locale === 'en' ? 'en' : 'ar']}
-                className='flex-1 p-0 min-w-[120px] min-h-[35px] font-bold text-black text-xs lg:text-lg capitalize'
+                className='flex-1 p-0 min-w-[120px] min-h-[35px] font-bold  text-black text-sm lg:text-lg capitalize'
                 sx={{
                   '&.Mui-selected': {
                     color: 'black'

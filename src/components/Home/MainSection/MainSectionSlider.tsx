@@ -32,11 +32,21 @@ const MainSectionSlider = ({ banners }: IMainSectionSlider) => {
 				// effect="fade"
 				loop={true}
 				speed={1500}
-				slidesPerView={2.4}
+				slidesPerView={1}
 				// initialSlide={1}
 				// centeredSlidesBounds={true}
+				breakpoints={
+					{
+						768: {
+							slidesPerView: 1.5,
+						},
+						1024: {
+							slidesPerView: 2.4,
+						},
+					}
+				}
 				centeredSlides={true}
-				className="w-full h-[65vh] min-h-[370px]"
+				className="w-full h-[30vh] lg:h-[65vh] min-h-[300px]"
 			>
 				{banners?.map((section, index) => (
 					<SwiperSlide key={index}>

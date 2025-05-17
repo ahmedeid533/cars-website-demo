@@ -35,7 +35,7 @@ const CarModels = ({logos}: { logos: Logo[] }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 5,
           slidesToScroll: 1
         }
       }

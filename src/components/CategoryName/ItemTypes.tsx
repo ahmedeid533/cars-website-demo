@@ -114,7 +114,7 @@ const ItemTypes = ({
 								document
 									.getElementById("sub-scroll")
 									?.scrollBy({
-										left: -200,
+										left: -400,
 										behavior: "smooth",
 									})
 							}
@@ -172,7 +172,7 @@ const ItemTypes = ({
 													]
 												);
 											}}
-											className="bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
+											className="bg-slate-50 m-2 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
 										>
 											<Image
 												src={item.image_url}
@@ -185,7 +185,7 @@ const ItemTypes = ({
 												}
 												width={150}
 												height={150}
-												className="min-w-[80px] h-[60px] md:min-w-[260px] md:h-[140px] p-1 object-contain"
+												className="min-w-[100px] h-[60px] md:min-w-[260px] md:h-[140px] p-1 object-contain"
 											/>
 											<h4 className="font-light text-sm text-center">
 												{
@@ -261,7 +261,7 @@ const ItemTypes = ({
 								document
 									.getElementById("sub-scroll")
 									?.scrollBy({
-										left: 200,
+										left: 400,
 										behavior: "smooth",
 									})
 							}
@@ -294,7 +294,7 @@ const ItemTypes = ({
 					{supSubName}
 				</h2>
 			)}
-			<div className="items-center md:gap-x-5 md:gap-y-3 w-5/6 mx-auto grid md:grid-cols-7 grid-cols-4">
+			<div className="items-center gap-3 md:gap-x-5 md:gap-y-3 w-5/6 mx-auto grid md:grid-cols-7 grid-cols-4">
 				{(shape || show) &&
 					products?.map((item, index) => (
 						<div
@@ -313,9 +313,9 @@ const ItemTypes = ({
 								alt={item.name[locale]}
 								width={150}
 								height={150}
-								className="w-[141px] h-[141px] object-contain"
+								className=" w-[90px] h-[90px]  md:w-[141px] md:h-[141px] object-contain"
 							/>
-							<h4 className="font-light text-sm text-center">
+							<h4 className="font-light text-sm text-center text-ellipsis overflow-hidden whitespace-nowrap max-w-[90px] md:max-w-auto">
 								{item.name[locale]}
 							</h4>
 						</div>
@@ -333,7 +333,7 @@ const ItemTypes = ({
 								document
 									.getElementById("scrollable-subcategories")
 									?.scrollBy({
-										left: -200,
+										left: -400,
 										behavior: "smooth",
 									})
 							}
@@ -380,14 +380,14 @@ const ItemTypes = ({
 													item.name[locale]
 												);
 											}}
-											className=" bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
+											className=" bg-slate-50 m-2 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
 										>
 											<Image
 												src={item.image_url}
 												alt={item.name[locale]}
 												width={150}
 												height={150}
-												className="min-w-[80px] h-[60px] md:min-w-[260px] md:h-[140px] p-1 object-contain"
+												className="min-w-[100px] h-[60px] md:min-w-[260px] md:h-[140px] p-1 object-contain"
 											/>
 											<h4 className="font-light text-sm text-center">
 												{item.name[locale]}
@@ -412,14 +412,14 @@ const ItemTypes = ({
 													item.name[locale]
 												);
 											}}
-											className=" bg-slate-50 m-1 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
+											className=" bg-slate-50 m-2 md:m-4 gap-2 scale-100 hover:scale-110 transition duration-300 cursor-pointer"
 										>
 											<Image
 												src={item.image_url}
 												alt={item.name[locale]}
 												width={150}
 												height={150}
-												className="min-w-[80px] h-[60px] md:min-w-[260px] md:h-[140px] p-1 object-contain"
+												className="min-w-[100px] h-[60px] md:min-w-[260px] md:h-[140px] p-1 object-contain"
 											/>
 											<h4 className="font-light text-sm text-center">
 												{item.name[locale]}
@@ -434,7 +434,7 @@ const ItemTypes = ({
 								document
 									.getElementById("scrollable-subcategories")
 									?.scrollBy({
-										left: 200,
+										left: 400,
 										behavior: "smooth",
 									})
 							}

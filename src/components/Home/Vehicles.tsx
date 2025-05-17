@@ -13,7 +13,7 @@ const Vehicles = () => {
             <div className={`grid grid-cols-${vehicles.length} items-center gap-1 md:gap-5 `}>
                 {
                     vehicles.map((vehicle, index) => (
-                        <Link href={vehicle.path} key={index} className='flex flex-col items-center gap-3 h-[15vh] md:h-[20vh] text-center cursor-pointer'>
+                        <Link href={vehicle.path} key={index} className='flex flex-col items-center gap-3 h-[10vh] md:h-[20vh] text-center cursor-pointer'>
                             <div className={`h-[50px] w-[50px] md:h-[100px] md:w-[100px] p-1 rounded-full flex items-center justify-center  ${pathname === `/${locale}${vehicle.path}` ? "bg-custom-blue" : "bg-[#D9D9D9]"}  `}>
                                 <Image src={vehicle.image} alt={vehicle.name[locale]} width={100} height={100} className='p-1 object-contain' />
                             </div>

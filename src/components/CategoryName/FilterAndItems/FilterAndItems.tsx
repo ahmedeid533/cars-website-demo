@@ -117,7 +117,11 @@ const FilterAndItems = ({
 				{/* <Filters />  if back make next line cool-span-3 */}
 				<div className="col-span-4 flex flex-col gap-5">
 					<Items gridColsNumber={gridColsNumber} items={products} />
-					<ItemsInMobile items={products} />
+					<ItemsInMobile
+						items={products}
+						subCategoryName={subCategoryName}
+						subSubCategoryName={subSubCategoryName}
+					/>
 					{/* <GetMore /> */}
 					{/* <AdditionalItems /> */}
 				</div>

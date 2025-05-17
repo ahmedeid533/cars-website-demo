@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const Notes = () => {
 	const t = useTranslations("about");
@@ -15,7 +16,7 @@ const Notes = () => {
 						height={20}
 					/>
 					<h2 className="font-bold">{t("Our Vision")} </h2>
-					<p className="font-light text-sm">
+					<p className="font-medium text-md">
 						{t(
 							"To become the leading choice in Egypt and the region for delivering comprehensive solutions in the automotive spare parts sector, by offering reliable and fast services tailored to every car owner’s needs"
 						)}
@@ -72,13 +73,18 @@ const Notes = () => {
 				<div className="flex flex-col justify-center items-center gap-5 p-5 rounded w-full text-custom-black">
 					<h2 className="font-bold">{t("Follow Us")}</h2>
 					<div className="flex items-center gap-4">
-						<Image
-							src={"/about/facebook.svg"}
-							alt="facebook"
-							width={50}
-							height={50}
-							className="cursor-pointer"
-						/>
+						<Link
+							href="https://www.facebook.com/share/16bNyUHo56/?mibextid=wwXIfr"
+							target="_blank"
+						>
+							<Image
+								src={"/about/facebook.svg"}
+								alt="facebook"
+								width={50}
+								height={50}
+								className="cursor-pointer"
+							/>
+						</Link>
 						<Image
 							src={"/about/youtube.svg"}
 							alt="youtube"
@@ -86,13 +92,20 @@ const Notes = () => {
 							height={50}
 							className="cursor-pointer"
 						/>
-						<Image
-							src={"/about/instagram.svg"}
-							alt="instagram"
-							width={70}
-							height={70}
-							className="cursor-pointer"
-						/>
+						<Link
+							href={
+								"https://www.instagram.com/3arbitk.egy?igsh=c2RpbDNmajI0NDUy&utm_source=qr"
+							}
+							target="_blank"
+						>
+							<Image
+								src={"/about/instagram.svg"}
+								alt="instagram"
+								width={70}
+								height={70}
+								className="cursor-pointer"
+							/>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -15,7 +15,7 @@ const FirstSection = ({ mainInfo }: { mainInfo: MainInfo }) => {
 			<div className="flex items-start gap-4 w-full">
 				{/* <FavoriteBorderIcon className="text-white text-4xl cursor-pointer bg-[#B1B1B1] p-1 rounded transition duration-300 hover:bg-custom-blue" /> */}
 				<div className="text-sm sm:text-3xl font-bold text-custom-black">
-					<h2 className='text-ellipsis'>{mainInfo?.name}</h2>
+					<h2 className="text-ellipsis">{mainInfo?.name}</h2>
 				</div>
 			</div>
 			{/* <div className="flex items-center gap-10 lg:gap-4">
@@ -35,7 +35,10 @@ const FirstSection = ({ mainInfo }: { mainInfo: MainInfo }) => {
 				<h2>{mainInfo.price}EGP</h2>
 			</div>
 			<p className="text-custom-black text-sm">
-				{locale == "en" ? "In Stock":"في المخزن"} ({mainInfo.stock}) - {locale == "en" ? "Ships within 24 hrs" : "يتم الشحن خلال 24 ساعة"}
+				{locale == "en" ? "In Stock" : "في المخزن"} ({mainInfo.stock}) -{" "}
+				{locale == "en"
+					? "Ships within 24 hrs in cairo"
+					: " يتم الشحن خلال 24 ساعة في القاهره"}
 			</p>
 		</div>
 	);

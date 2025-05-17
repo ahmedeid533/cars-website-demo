@@ -37,7 +37,7 @@ const CategoryName = ({
 		<>
 			<MainSection category={category} />
 			{subCategoryOption && subCategoryOption[0] && (
-				<div className="font-bold text-xl md:w-[80%] mx-auto pt-3 text-black px-6  bg-[#6F88FF26] ">
+				<div className="font-bold text-xl md:w-[80%] mt-4 md:mt-0 mx-auto pt-3 text-black px-6  bg-[#6F88FF26] ">
 					{locale == "en" ? "size" : "المقاس"}
 				</div>
 			)}
@@ -46,7 +46,7 @@ const CategoryName = ({
 					subCategoryOption[0]?.values.map((option, index) => (
 						<div
 							key={index}
-							className="font-bold text-xl bg-white text-[#1E1E1E] text-nowrap mx-2 clicks rounded-lg px-12 py-4 m-2 cursor-pointer hover:bg-custom-blue"
+							className="font-bold text-xl bg-white text-[#1E1E1E] text-nowrap mx-1 clicks rounded-lg px-8 py-4 m-2 cursor-pointer hover:bg-custom-blue"
 							onClick={(e) => {
 								setOption(option?.id + "");
 								document

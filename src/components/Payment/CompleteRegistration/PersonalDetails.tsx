@@ -11,14 +11,12 @@ interface PersonalDetailsProps {
 	send: boolean;
 	payment: string;
 	setResponse: (response: any) => void;
-	setSend: () => void;
 }
 
 const PersonalDetails = ({
 	send,
 	payment,
 	setResponse,
-	setSend,
 }: PersonalDetailsProps) => {
 	const locale = useLocale();
 	const [government, setGovernment] = useState("");
@@ -142,11 +140,13 @@ const PersonalDetails = ({
 					console.error("Error during checkout:", error);
 					if (error.response.data.status === "error") {
 						toast.error(error.response.data.message);
-						toast.info(
-							locale === "en"
-								? "please remove the item from the cart"
-								: "من فضلك قم بإزالة العنصر من السلة"
-						);
+						if (error.response.data.message.includes("insufficient")) {
+							toast.info(
+								locale === "en"
+									? "please remove the item from the cart"
+									: "من فضلك قم بإزالة العنصر من السلة"
+							);
+						}
 						return;
 					}
 					toast.error(
@@ -177,7 +177,6 @@ const PersonalDetails = ({
 	useEffect(() => {
 		if (send) {
 			checkOut();
-			setSend(); // Reset send state after checkout
 		}
 	}, [send]);
 

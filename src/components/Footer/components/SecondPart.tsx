@@ -10,18 +10,18 @@ const SecondPart = () => {
   return (
 		<div className="custom-container2 py-10">
 			<div className="flex flex-wrap justify-between items-center gap-y-10 w-full">
-				<div className="flex flex-col gap-5 w-full lg:w-1/3">
+				<div className="flex flex-col gap-5 w-full mx-auto lg:w-1/4">
 					<div className="flex flex-col items-start gap-2">
 						<Link href={"/"}>
 							<Image
-								src={"/main-logo-2.png"}
+								src={"/main-logo-1.png"}
 								alt="logo"
-								width={150}
-								height={100}
-								className="object-none"
+								width={250}
+								height={140}
+								className="object-contain mb-8"
 							/>
 						</Link>
-						<p className="font-[300] text-xs">
+						<p className="font-[300] text-xs w-full text-center">
 							{t(
 								"Receive pricing updates, shopping tips & more!"
 							)}
@@ -101,6 +101,7 @@ const SecondPart = () => {
 										href={
 											"https://www.facebook.com/share/16bNyUHo56/?mibextid=wwXIfr"
 										}
+										target="_blank"
 									>
 										<Image
 											src={"/facebook.svg"}
@@ -121,6 +122,7 @@ const SecondPart = () => {
 										href={
 											"https://www.instagram.com/3arbitk.egy?igsh=c2RpbDNmajI0NDUy&utm_source=qr"
 										}
+										target="_blank"
 									>
 										<Image
 											src={"/instagram.svg"}

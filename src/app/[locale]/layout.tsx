@@ -27,44 +27,44 @@ export default async function LocaleLayout ({
     notFound();
   }
   return (
-    <html lang='en'>
-      <head>
-        {/* <meta name='viewport' content='width=device-width, initial-scale=1.0' /> */}
-        <link rel='icon' href='/main-logo-2.png' />
-      </head>
-      <body lang={locale} dir={locale === 'en' ? 'ltr' : 'rtl'}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <NextTopLoader
-            color='#2F80ED'
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={3}
-            crawl={true}
-            showSpinner={false}
-            easing='ease'
-            speed={200}
-            shadow='0 0 10px #2299DD,0 0 5px #2299DD'
-          />
-          <Layout>{children}</Layout>
-          <ToastContainer
-                position="bottom-right"
-                autoClose={10000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                transition={Flip}
-                style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                }}
-            />
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  )
+		<html lang="en">
+			<head>
+				{/* <meta name='viewport' content='width=device-width, initial-scale=1.0' /> */}
+				<link rel="icon" href="/logo-Main.jpeg" />
+			</head>
+			<body lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
+				<NextIntlClientProvider locale={locale} messages={messages}>
+					<NextTopLoader
+						color="#2F80ED"
+						initialPosition={0.08}
+						crawlSpeed={200}
+						height={3}
+						crawl={true}
+						showSpinner={false}
+						easing="ease"
+						speed={200}
+						shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+					/>
+					<Layout>{children}</Layout>
+					<ToastContainer
+						position="bottom-right"
+						autoClose={10000}
+						hideProgressBar={false}
+						newestOnTop={false}
+						closeOnClick
+						rtl={false}
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover
+						theme="light"
+						transition={Flip}
+						style={{
+							fontSize: "16px",
+							fontWeight: "bold",
+						}}
+					/>
+				</NextIntlClientProvider>
+			</body>
+		</html>
+  );
 }

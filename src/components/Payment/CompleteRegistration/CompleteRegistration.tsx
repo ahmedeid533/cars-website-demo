@@ -35,7 +35,6 @@ const CompleteRegistration = () => {
 				send={open}
 				payment={payment}
 				setResponse={setResponse}
-				setSend={handleOpen}
 			/>
 			<PaymentMethod setPayment={handlePayment} payment={payment} />
 			{/* {payment === "p3" && <CardDetails />} */}

@@ -41,7 +41,7 @@ const Navbar = () => {
       </header>
 
       {isNotAuthPage && (
-        <div className='md:hidden block custom-container1 py-5'>
+        <div className='md:hidden block custom-container1 py-[0.5rem]'>
           <VehicleSelectionBtn/>
         </div>
       )}

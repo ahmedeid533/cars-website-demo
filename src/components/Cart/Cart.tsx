@@ -23,7 +23,8 @@ const Cart = () => {
 	const [cart, setCart] = useState<Cart>({ items: [], total: 0 });
 
 	const getCart = () => {
-		const token = cookie.get("token");
+		try {
+			const token = cookie.get("token");
 		if (!token) {
 			router.push("/login");
 		}
@@ -36,6 +37,9 @@ const Cart = () => {
 			.catch((err) => {
 				console.log("error ==> ", err);
 			});
+		}	catch (error) {
+			console.error("Error fetching cart:", error);
+		}
 	};
 
 	const clearCart = () => {

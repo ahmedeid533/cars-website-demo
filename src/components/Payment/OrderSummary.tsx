@@ -86,7 +86,7 @@ const OrderSummary = () => {
 					<p className="text-sm">
 						<LocalShippingIcon  className='ml-2'/>
 						{locale == "en"
-							? "without shipping"
+							? " without shipping"
 							: "بدون مصاريف شحن"}
 					</p>
 					{/* <p className='text-sm'>Including $2.24 in taxes</p> */}
