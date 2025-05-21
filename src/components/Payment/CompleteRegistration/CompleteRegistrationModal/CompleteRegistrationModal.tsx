@@ -7,19 +7,19 @@ import ThirdSection from "./ThirdSection";
 
 type props = {
 	open: boolean;
-	setOpen: () => void;
+	setOpen: (open: boolean) => void;
 	response: any;
 };
 const CompleteRegistrationModal = ({ open, setOpen, response }: props) => {
 	if (!response) {
-		setOpen();
+		setOpen(false);
 		return null;
 	}
 	return (
 		<Modal
 			open={open}
 			onClose={() => {
-				setOpen();
+				setOpen(false);
 			}}
 			closeAfterTransition
 			slots={{ backdrop: Backdrop }}
@@ -37,7 +37,7 @@ const CompleteRegistrationModal = ({ open, setOpen, response }: props) => {
 					>
 						<div className="custom-container2 py-20 text-custom-black bg-white rounded flex flex-col gap-10 min-h-screen overflow-y-scroll relative">
 							<div
-								onClick={() => setOpen()}
+								onClick={() => setOpen(false)}
 								className="absolute right-3 top-3 cursor-pointer"
 							>
 								<ClearIcon />

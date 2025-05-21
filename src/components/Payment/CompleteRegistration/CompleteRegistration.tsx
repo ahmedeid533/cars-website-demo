@@ -46,7 +46,7 @@ const CompleteRegistration = () => {
 			</button>
 			<CompleteRegistrationModal
 				open={open}
-				setOpen={handleOpen}
+				setOpen={setOpen}
 				response={response}
 			/>
 		</section>
