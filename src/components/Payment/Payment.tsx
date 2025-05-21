@@ -14,7 +14,7 @@ const Payment = () => {
 					<p className="text-center text-[#ACACAC] text-sm lg:text-base px-5 lg:px-0">
 						{locale == "en" ? "Shop Safely at" : "تسوق بأمان في"}{" "}
 						<Link href={"/"} className="text-custom-blue">
-							3arbitk.com
+							app.3arbitk.com
 						</Link>{" "}
 						{locale == "en"
 							? "Your information is secure. Need Help?"

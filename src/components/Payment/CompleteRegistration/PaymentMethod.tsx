@@ -52,7 +52,7 @@ const PaymentMethod = ({ payment, setPayment }: props) => {
 							className="flex items-center justify-center p-2 cursor-pointer"
 						>
 							<Image
-								src={`https://3arbitk.com${item?.image}`}
+								src={`https://app.3arbitk.com${item?.image}`}
 								alt={item?.name}
 								width={100}
 								height={70}

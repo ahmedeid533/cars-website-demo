@@ -67,15 +67,15 @@ const ProductAddForm = () => {
 	};
 	return (
 		<div
-			className="bg-[#FAFAFA] p-8 rounded-md flex flex-col gap-10"
+			className="bg-[#FAFAFA] p-8 md:p-[4] rounded-md flex flex-col gap-10 md:gap-4 "
 			style={{
-				boxShadow: "0px 4px 4px 0px #00000040",
+				boxShadow: "2px 2px 2px 2px #00000020",
 			}}
 		>
 			<h4 className="font-bold text-md md:text-xl text-custom-black text-center">
 				{locale === "en"
-					? "Please enter these data, you can bring the products you need"
-					: "يرجى إدخال هذه البيانات، يمكنك إحضار المنتجات التي تحتاجها"}
+					? "Please enter these data, we can bring the products you need"
+					: "يرجى إدخال هذه البيانات، يمكننا إحضار المنتجات التي تحتاجها"}
 			</h4>
 			<div className="grid grid-cols-1 items-center gap-5 justify-center ">
 				{/* <SelectInput data={carYear} value={carYearValue} setValue={setCarYearValue} />
@@ -86,7 +86,7 @@ const ProductAddForm = () => {
 				</div>
 			</div>
 			<textarea
-				rows={10}
+				rows={4}
 				placeholder={
 					locale === "en"
 						? "Write a product description"
@@ -97,7 +97,7 @@ const ProductAddForm = () => {
 				className="outline-none border border-[#525252] rounded shadow-xl p-4"
 			></textarea>
 			<div className="border border-[#525252] py-5 flex flex-col justify-center items-center gap-5 rounded">
-				<label className=" cursor-pointer relative shadow-lg w-1/2 border border-black bg-[#405FF214] p-5 flex flex-col items-center justify-center text-center gap-3">
+				<label className=" cursor-pointer relative shadow-lg w-2/3 border border-black bg-[#405FF214] p-5 flex flex-col items-center justify-center text-center gap-3">
 					<Image
 						src={
 							file
@@ -107,14 +107,14 @@ const ProductAddForm = () => {
 						alt="add"
 						width={300}
 						height={300}
-						className="object-contain h-[100px] md:h-[250px]"
+						className="object-contain h-[100px] md:h-[50px]"
 					/>
 					<h6 className="text-xs md:text-sm text-custom-black">
 						{file
 							? file.name
 							: locale === "en"
-							? "Upload a photo of the product you want to add"
-							: "قم بتحميل صورة للمنتج الذي تريد إضافته"}
+							? "Upload a photo of the product you want to order"
+							: "قم بتحميل صورة للمنتج الذي تريد طلبه"}
 					</h6>
 					<input
 						type="file"
