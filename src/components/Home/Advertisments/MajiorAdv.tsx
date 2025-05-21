@@ -16,7 +16,7 @@ const MajiorAdv = ({
 	const locale = useLocale();
 	return (
 		<div
-			className={` bg-cover bg-right bg-no-repeat h-[140px] w-1/2 lg:w-full`}
+			className={` bg-cover bg-right bg-no-repeat h-[140px] md:h-[208px] w-1/2 lg:w-full`}
 			style={{ backgroundImage: `url(${backgroundImage})` }}
 		>
 			{/* bg-[#00000066] */}

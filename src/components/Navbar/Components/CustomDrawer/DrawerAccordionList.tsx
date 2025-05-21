@@ -38,74 +38,74 @@ const DrawerAccordionList = ({
     }
   }, [link,link.id])
   return (
-    <Accordion
-      expanded={expanded === index.toString()}
-      onChange={handleChange(index.toString())}
-      sx={{
-        boxShadow: 'none',
-        borderBottom: 'none',
-        '&:before': { display: 'none' }
-      }}
-    >
-      <AccordionSummary
-        expandIcon={
-          expanded === index.toString() ? (
-            <ExpandMoreIcon className='text-[#5C5C5C]' />
-          ) : (
-            <KeyboardArrowRightIcon
-              className='text-[#5C5C5C]'
-              style={
-                locale === 'ar'
-                  ? { transform: 'rotate(180deg)' }
-                  : { transform: 'none' }
-              }
-            />
-          )
-        }
-        aria-controls={index.toString()}
-        id={index.toString()}
-        sx={{ borderBottom: 'none' }}
-      >
-        <div className='flex flex-row items-center gap-3'>
-          {link.image_url && (
-            <Image
-              src={link.image_url}
-              alt={link.name[locale === 'en' ? 'en' : 'ar']}
-              width={40}
-              height={40}
-              className='object-contain'
-            />
-          )}
-          <h4 className='text-custom-black'>
-            {link.name[locale === 'en' ? 'en' : 'ar']}
-          </h4>
-        </div>
-      </AccordionSummary>
-      <AccordionDetails sx={{ borderBottom: 'none' }} className='px-10'>
-        <div className='flex flex-col gap-7'>
-          {categoryItems?.map((item, index) => (
-            <Link
-              href={`/product/${item.slug}?id=${item.id}`}
-              key={index}
-              className='flex items-center gap-3'
-              onClick={toggleDrawer}
-            >
-              <Image
-                src={item.image_url}
-                alt={item.name[locale === 'en' ? 'en' : 'ar']}
-                width={40}
-                height={40}
-                className='object-contain'
-              />
-              <h4 className='text-custom-black'>
-                {item.name[locale === 'en' ? 'en' : 'ar']}
-              </h4>
-            </Link>
-          ))}
-        </div>
-      </AccordionDetails>
-    </Accordion>
-  )
+		<Accordion
+			expanded={expanded === index.toString()}
+			onChange={handleChange(index.toString())}
+			sx={{
+				boxShadow: "none",
+				borderBottom: "none",
+				"&:before": { display: "none" },
+			}}
+		>
+			<AccordionSummary
+				expandIcon={
+					expanded === index.toString() ? (
+						<ExpandMoreIcon className="text-[#5C5C5C]" />
+					) : (
+						<KeyboardArrowRightIcon
+							className="text-[#5C5C5C]"
+							style={
+								locale === "ar"
+									? { transform: "rotate(180deg)" }
+									: { transform: "none" }
+							}
+						/>
+					)
+				}
+				aria-controls={index.toString()}
+				id={index.toString()}
+				sx={{ borderBottom: "none" }}
+			>
+				<div className="flex flex-row items-center gap-3">
+					{link.image_url && (
+						<Image
+							src={link.image_url}
+							alt={link.name[locale === "en" ? "en" : "ar"]}
+							width={40}
+							height={40}
+							className="object-contain"
+						/>
+					)}
+					<h4 className="text-custom-black">
+						{link.name[locale === "en" ? "en" : "ar"]}
+					</h4>
+				</div>
+			</AccordionSummary>
+			<AccordionDetails sx={{ borderBottom: "none" }} className="px-10">
+				<div className="flex flex-col gap-7">
+					{categoryItems?.map((item, index) => (
+						<Link
+							href={`/category/${item.slug}?category_id=${link.id}&sub_category_id=${item.id}`}
+							key={index}
+							className="flex items-center gap-3"
+							onClick={toggleDrawer}
+						>
+							<Image
+								src={item.image_url}
+								alt={item.name[locale === "en" ? "en" : "ar"]}
+								width={40}
+								height={40}
+								className="object-contain"
+							/>
+							<h4 className="text-custom-black">
+								{item.name[locale === "en" ? "en" : "ar"]}
+							</h4>
+						</Link>
+					))}
+				</div>
+			</AccordionDetails>
+		</Accordion>
+  );
 }
 
 export default DrawerAccordionList
