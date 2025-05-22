@@ -9,6 +9,8 @@ import {
 	InputLabel,
 	FormControl,
 } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { apiClient } from "@/util/axois";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -31,6 +33,7 @@ const Trader = () => {
 	const [cityOptions, setCityOptions] = useState<OptionType[]>([]);
 	const [government, setGovernment] = useState("");
 	const [city, setCity] = useState("");
+	const [show, setShow] = useState(false);
 	const [full_name, setFullName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -213,17 +216,34 @@ const Trader = () => {
 					);
 				})
 				.catch((error) => {
-					console.error("Error during checkout:", error);
-					if (error.response.data.status === "error") {
-						toast.error(error.response.data.message);
+					console.error("Error during regist:", error);
+					if (error.response.data.errors) {
+						if (error.response.data.errors.email)
+							toast.error(
+								locale === "en"
+									? error.response.data.errors.email[0]
+									: "البريد الإلكتروني مستخدم بالفعل"
+							);
+						if (error.response.data.errors.password)
+							toast.error(
+								locale === "en"
+									? error.response.data.errors.password[0]
+									: "كلمة المرور يجب أن تكون 8 أحرف على الأقل"
+							);
+						if (error.response.data.errors.store_photo)
+							toast.error(
+								locale === "en"
+									? error.response.data.errors.store_photo[1]
+									: "يجب أن تكون صورة المتجر بتنسيق jpg أو jpeg أو png"
+							);
 						return;
 					}
 					toast.error(
-						locale === "en" ? "regist failed" : "فشلت عملية التسجيل"
+						locale === "en" ? "regist failed check the entered data" : "فشلت عملية التسجيل مشكلة في البيانات"
 					);
 				});
 		} catch (error) {
-			console.error("Error during checkout:", error);
+			console.error("Error during regist:", error);
 			toast.error(
 				locale === "en" ? "regist failed" : "فشلت عملية التسجيل"
 			);
@@ -302,14 +322,23 @@ const Trader = () => {
 							required
 							onChange={(e) => setEmail(e.target.value)}
 						/>
-						<TextField
-							label={locale == "en" ? "password" : "كلمة المرور"}
-							type="password"
-							variant="outlined"
-							fullWidth
-							required
-							onChange={(e) => setPassword(e.target.value)}
-						/>
+						<div className="relative">
+							<TextField
+								label={
+									locale == "en" ? "password" : "كلمة المرور"
+								}
+								type={show ? "text" : "password"}
+								variant="outlined"
+								fullWidth
+								required
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+							<div onClick={() => setShow(!show)} className={"absolute top-1/2 -translate-y-1/2 cursor-pointer" + (locale == "en" ? " right-2" : " left-2")}>
+								{
+									show ?<VisibilityOffIcon/> :<VisibilityIcon/>
+								}
+							</div>
+						</div>
 						<Typography>
 							{locale == "en"
 								? "Address Details:"
@@ -364,17 +393,14 @@ const Trader = () => {
 								</FormControl>
 
 								<TextField
-									label={
-										locale == "en"
-											? "District"
-											: "الحي"
-									}
+									label={locale == "en" ? "District" : "الحي"}
 									variant="outlined"
 									fullWidth
 									required
 									onChange={(e) =>
 										setDistrict(e.target.value)
-									}/>
+									}
+								/>
 								<TextField
 									label={
 										locale == "en"
@@ -431,6 +457,12 @@ const Trader = () => {
 											: "تحميل صورة بطاقة الهوية"}
 									</Button>
 								</label>
+								<div>
+									{id_card_photo &&
+										(locale == "en"
+											? `Selected file: ${id_card_photo?.name}`
+											: `الملف المحدد: ${id_card_photo?.name}`)}
+								</div>
 							</div>
 							<div className="w-full">
 								<Input
@@ -450,6 +482,12 @@ const Trader = () => {
 											: " تحميل صورة المتجر (اليافطه)"}
 									</Button>
 								</label>
+								<div>
+									{store_photo &&
+										(locale == "en"
+											? `Selected file: ${store_photo?.name}`
+											: `الملف المحدد: ${store_photo?.name}`)}
+								</div>
 							</div>
 						</div>
 						<Button
