@@ -239,7 +239,9 @@ const Trader = () => {
 						return;
 					}
 					toast.error(
-						locale === "en" ? "regist failed check the entered data" : "فشلت عملية التسجيل مشكلة في البيانات"
+						locale === "en"
+							? "regist failed check the entered data"
+							: "فشلت عملية التسجيل مشكلة في البيانات"
 					);
 				});
 		} catch (error) {
@@ -333,10 +335,18 @@ const Trader = () => {
 								required
 								onChange={(e) => setPassword(e.target.value)}
 							/>
-							<div onClick={() => setShow(!show)} className={"absolute top-1/2 -translate-y-1/2 cursor-pointer" + (locale == "en" ? " right-2" : " left-2")}>
-								{
-									show ?<VisibilityOffIcon/> :<VisibilityIcon/>
+							<div
+								onClick={() => setShow(!show)}
+								className={
+									"absolute top-1/2 -translate-y-1/2 cursor-pointer" +
+									(locale == "en" ? " right-2" : " left-2")
 								}
+							>
+								{show ? (
+									<VisibilityOffIcon />
+								) : (
+									<VisibilityIcon />
+								)}
 							</div>
 						</div>
 						<Typography>
