@@ -27,7 +27,7 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 						} items-center justify-center`}
 					>
 						<Image
-							src={`https://3arbitk.com/storage/${item.main_photo}`}
+							src={`https://app.3arbitk.com/storage/${item.main_photo}`}
 							alt={item.name_en}
 							width={200}
 							height={200}
