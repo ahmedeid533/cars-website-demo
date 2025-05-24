@@ -9,6 +9,7 @@ import {
 	InputLabel,
 	FormControl,
 } from "@mui/material";
+import { compressImageFile } from "@/util/compressImages";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { apiClient } from "@/util/axois";
@@ -91,20 +92,27 @@ const Trader = () => {
 			console.error("Error fetching city options:", error);
 		}
 	};
-	const handleFileIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleFileIdChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.files && event.target.files[0]) {
 			const file = event.target.files[0];
 			console.log("file ==> ", file);
-			setIdCardPhoto(file);
+			// Compress the image before setting it
+			const compressedFile = await compressImageFile(file);
+			setIdCardPhoto(compressedFile);
 		}
 	};
 
-	const handleFileStoreChange = (
+	const handleFileStoreChange = async (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		if (event.target.files && event.target.files[0]) {
 			const file = event.target.files[0];
-			setStorePhoto(file);
+			console.log("file before==> ", file.size);
+			// Compress the image before setting it
+			// Note: You can adjust the quality and maxWidth as needed compressedFile(file, quality = 0.7, maxWidth = 800);
+			const compressedFile = await compressImageFile(file);
+			console.log("file after==> ", compressedFile.size);
+			setStorePhoto(compressedFile);
 		}
 	};
 
@@ -183,6 +191,14 @@ const Trader = () => {
 			);
 			return;
 		}
+		if (!store_photo) {
+			toast.error(
+				locale === "en"
+					? "Store photo is required"
+					: "صورة المتجر مطلوبة"
+			);
+			return;
+		}
 
 		const data = {
 			full_name: full_name.trim(),
@@ -201,6 +217,11 @@ const Trader = () => {
 		};
 
 		try {
+			toast.info(
+				locale === "en"
+					? "Data is being uploaded, please wait a moment"
+					: "يتم الآن تحميل البيانات يرجى الانتظار قليلًا"
+			);
 			apiClient()
 				.post("/sellers/register", data, {
 					headers: {
