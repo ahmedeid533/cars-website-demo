@@ -21,7 +21,7 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id }) => {
 				const items_ = d.map((item: any) => {
 					return {
 						id: item.id,
-						image: `https://3arbitk.com/storage/${item.main_photo}`,
+						image: `https://app.3arbitk.com/storage/${item.main_photo}`,
 						title: locale == "en" ? item.name_en : item.name_ar,
 					};
 				});
