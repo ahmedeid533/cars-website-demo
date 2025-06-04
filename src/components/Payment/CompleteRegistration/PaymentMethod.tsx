@@ -39,20 +39,23 @@ const PaymentMethod = ({ payment, setPayment }: props) => {
 	return (
 		<div className="flex flex-col gap-5 w-full">
 			<h2 className="text-xl font-bold text-custom-black">
-				{locale == "en"?"Payment methods":"طرق الدفع"}
+				{locale == "en" ? "Payment methods" : "طرق الدفع"}
 			</h2>
 
 			<div className="flex gap-2 lg:gap-4 items-center flex-wrap">
 				{payments?.map((item, index) => (
 					<div key={index} className="flex items-center gap-2">
-						<Radio {...controlProps(item?.id+"")} color="success" />
+						<Radio
+							{...controlProps(item?.id + "")}
+							color="success"
+						/>
 
 						<label
 							htmlFor={item?.id}
 							className="flex items-center justify-center p-2 cursor-pointer"
 						>
 							<Image
-								src={`https://app.3arbitk.com${item?.image}`}
+								src={`${process.env.NEXT_PUBLIC_API}${item?.image}`}
 								alt={item?.name}
 								width={100}
 								height={70}

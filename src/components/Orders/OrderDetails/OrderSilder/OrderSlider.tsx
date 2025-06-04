@@ -39,7 +39,7 @@ const OrderSlider = ({ items }: { items: any[] }) => {
 								/>
 							</div>
 							<div className="p-3 mt-10 flex flex-col gap-4 text-custom-black">
-								<h2 className="w-full text-sm font-bold">
+								<h2 className="w-full text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">
 									{items[0].product?.name}
 								</h2>
 								{/* <div className="flex flex-row gap-2 items-center">
@@ -101,7 +101,7 @@ const OrderSlider = ({ items }: { items: any[] }) => {
 											/>
 										</div>
 										<div className="p-3 mt-10 flex flex-col gap-4 text-custom-black">
-											<h2 className="w-full text-sm font-bold">
+											<h2 className="w-full text-sm font-bold text-ellipsis overflow-hidden whitespace-nowrap">
 												{item.product?.name}
 											</h2>
 											{/* <div className="flex flex-row gap-2 items-center">
@@ -143,8 +143,8 @@ const OrderSlider = ({ items }: { items: any[] }) => {
 										<h2 className=" p-3 w-full text-sm font-bold text-custom-blue">
 											{locale == "en"
 												? "Subtotal"
-												: "المجموع الفرعي"}{" "} :
-											{item?.total_price} EGP
+												: "المجموع الفرعي"}{" "}
+											:{item?.total_price} EGP
 										</h2>
 									</div>
 								</div>

@@ -8,11 +8,19 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
+				hostname: "test.3arbitk.com",
+			},
+			{
+				protocol: "https",
 				hostname: "app.3arbitk.com",
 			},
 			{
 				protocol: "https",
 				hostname: "3arbitk.com",
+			},
+			{
+				protocol: "https",
+				hostname: "cdn-icons-png.flaticon.com",
 			},
 		],
 	},

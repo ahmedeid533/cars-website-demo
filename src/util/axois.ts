@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const apiClient = (token? : string) => {
 	return axios.create({
-		baseURL: 'https://app.3arbitk.com/api',
+		baseURL: `${process.env.NEXT_PUBLIC_API}/api`,
 		headers: {
 			'Content-Type': 'application/json',
 			Accept: 'application/json',

@@ -14,7 +14,7 @@ const Payment = () => {
 					<p className="text-center text-[#ACACAC] text-sm lg:text-base px-5 lg:px-0">
 						{locale == "en" ? "Shop Safely at" : "تسوق بأمان في"}{" "}
 						<Link href={"/"} className="text-custom-blue">
-							app.3arbitk.com
+							{process.env.NEXT_PUBLIC_API}
 						</Link>{" "}
 						{locale == "en"
 							? "Your information is secure. Need Help?"
@@ -29,9 +29,11 @@ const Payment = () => {
 							target="_blank"
 							className="text-custom-blue"
 						>
-							{locale == "en" ? "check whatsapp" : "تحقق من الواتس اب"}
+							{locale == "en"
+								? "check whatsapp"
+								: "تحقق من الواتس اب"}
 						</Link>
-						{locale == "en"?"Call us at":"اتصل بنا على"}{" "}
+						{locale == "en" ? "Call us at" : "اتصل بنا على"}{" "}
 						<Link
 							href={"tel:+2001503443558"}
 							className="text-custom-blue"

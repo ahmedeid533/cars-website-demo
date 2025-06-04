@@ -32,7 +32,7 @@ const ItemsInMobile = ({
 							className={`h-[20vh] w-full flex items-center justify-center overflow-hidden border-b border-b-[#A0A0A0]`}
 						>
 							<Image
-								src={`https://app.3arbitk.com/storage/${item.main_photo}`}
+								src={`${process.env.NEXT_PUBLIC_API}/storage/${item.main_photo}`}
 								alt={item.name_en}
 								width={200}
 								height={200}
@@ -70,7 +70,7 @@ const ItemsInMobile = ({
 									? item.description_en
 									: item.description_ar}
 							</p>
-							<h5 dir='ltr' className="text-black">
+							<h5 dir="ltr" className="text-black">
 								{item.selling_price} EGP
 							</h5>
 							<Link

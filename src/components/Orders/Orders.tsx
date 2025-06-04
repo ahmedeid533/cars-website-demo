@@ -71,7 +71,11 @@ const Orders = () => {
 						>
 							<div className="flex flex-col lg:flex-row col-span-5 items-center justify-center rounded-xl border border-custom-blue lg:border-transparent">
 								<Image
-									src={order.image}
+									src={
+										order.image
+											? order.image
+											: "https://cdn-icons-png.flaticon.com/512/1356/1356594.png"
+									}
 									alt="item"
 									width={200}
 									height={200}
@@ -80,7 +84,10 @@ const Orders = () => {
 								<Divider className="bg-custom-black w-full block lg:hidden" />
 								<OrderInfo order={order} />
 							</div>
-							<OrderOptions id={Number(order.id)} status={order.status} />
+							<OrderOptions
+								id={Number(order.id)}
+								status={order.status}
+							/>
 						</Box>
 					))}
 				</div>

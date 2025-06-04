@@ -27,12 +27,13 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 						} items-center justify-center`}
 					>
 						<Image
-							src={`https://app.3arbitk.com/storage/${item.main_photo}`}
+							src={`${process.env.NEXT_PUBLIC_API}/storage/${item.main_photo}`}
 							alt={item.name_en}
 							width={200}
 							height={200}
 							className={
-								"object-contain " + (gridColsNumber === 3
+								"object-contain " +
+								(gridColsNumber === 3
 									? "h-full p-4 w-[300px]"
 									: "h-[200px] w-[200px]")
 							}
@@ -114,7 +115,7 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 							href={`/product/${item.id}`}
 							className="text-custom-black border rounded border-custom-black py-2 px-6 transition duration-300 hover:text-white hover:bg-custom-blue hover:border-custom-blue"
 						>
-							{locale == "en"?"View Details":"عرض التفاصيل"}
+							{locale == "en" ? "View Details" : "عرض التفاصيل"}
 						</Link>
 					</div>
 				</div>

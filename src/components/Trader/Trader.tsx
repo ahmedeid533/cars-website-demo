@@ -288,7 +288,7 @@ const Trader = () => {
 	}, [government]);
 	return (
 		<aside className="py-10 flex items-center justify-center">
-			<div className="w-5/6 lg:w-2/3  gap-8 flex flex-col items-center justify-center">
+			<div className="w-5/6 lg:w-2/3 gap-8 flex flex-col items-center justify-center">
 				<Box className="p-6 bg-white shadow-md rounded-lg">
 					<Typography variant="h6" className="mb-4">
 						{locale == "en"
