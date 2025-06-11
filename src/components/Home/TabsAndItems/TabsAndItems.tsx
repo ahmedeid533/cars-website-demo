@@ -36,7 +36,7 @@ const TabsAndItems = ({ allCategoryItems, category_tabs }: ITabsAndItems) => {
 						}
 						data={
 							allCategoryItems[value]
-								? allCategoryItems[value].data
+								? allCategoryItems[value]?.data
 								: []
 						}
 					/>

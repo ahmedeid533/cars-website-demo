@@ -42,8 +42,8 @@ const ItemsInMobile = ({
 						<div
 							className={`w-full p-2 text-custom-black flex flex-col gap-1 items-center`}
 						>
-							<div className="flex flex-col items-center ">
-								<h2 className="font-bold text-ellipsis overflow-hidden whitespace-nowrap w-full text-center ">
+							<div className="flex flex-col items-center w-full">
+								<h2 className="font-bold p-1 text-ellipsis overflow-hidden whitespace-nowrap w-full text-center ">
 									{locale == "en"
 										? item.name_en
 										: item.name_ar}
