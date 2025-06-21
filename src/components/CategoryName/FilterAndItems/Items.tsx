@@ -24,7 +24,7 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 							gridColsNumber === 3
 								? "h-[30vh] bg-[#F3F3F300] w-full flex"
 								: "h-auto bg-transparent block"
-						} items-center justify-center`}
+						} items-center relative justify-center`}
 					>
 						<Image
 							src={`${process.env.NEXT_PUBLIC_API}/storage/${item.main_photo}`}
@@ -38,6 +38,14 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 									: "h-[200px] w-[200px]")
 							}
 						/>
+						{item?.type && (
+							<span
+								className="absolute top-2 left-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded"
+								style={{ zIndex: 2 }}
+							>
+								{item?.type[locale]}
+							</span>
+						)}
 					</div>
 					<div
 						className={`${

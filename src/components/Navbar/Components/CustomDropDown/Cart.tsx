@@ -11,7 +11,13 @@ import { useLocale, useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import { get } from "http";
 
-const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; setCartItemsCount?: (count: number) => void }) => {
+const Cart = ({
+	hovered,
+	setCartItemsCount = () => {},
+}: {
+	hovered: boolean;
+	setCartItemsCount?: (count: number) => void;
+}) => {
 	const t = useTranslations("Header");
 	const locale = useLocale();
 	interface CartItem {
@@ -44,8 +50,10 @@ const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; set
 		apiClient(token)
 			.get("/cart")
 			.then((res) => {
-				setCart(res.data.data);
-				setCartItemsCount(res.data.data.items.length);
+				if (res.data.data) {
+					setCart(res.data.data);
+					setCartItemsCount(res.data.data.items.length);
+				}
 			})
 			.catch((err) => {
 				console.log("error ==> ", err);
@@ -95,11 +103,11 @@ const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; set
 						<div key={index} className="flex flex-col gap-4">
 							<div className="flex flex-row justify-between items-start w-full">
 								<Image
-									src={`https://3arbitk.com/storage/${item.product.main_photo}`}
+									src={`https://3arbitk.com/storage/${item?.product?.main_photo}`}
 									alt={
 										locale == "en"
-											? item.product.name_en
-											: item.product.name_ar
+											? item?.product?.name_en
+											: item?.product?.name_ar
 									}
 									width={40}
 									height={20}
@@ -107,12 +115,12 @@ const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; set
 								/>
 								<p className="w-3/4 font-bold text-sm">
 									{locale == "en"
-										? item.product.name_en
-										: item.product.name_ar}{" "}
+										? item?.product?.name_en
+										: item?.product?.name_ar}{" "}
 								</p>
 								<DeleteOutlineIcon
 									onClick={() => {
-										clearItem(item.id);
+										clearItem(item?.id);
 									}}
 									className="cursor-pointer"
 								/>
@@ -122,7 +130,7 @@ const Cart = ({ hovered, setCartItemsCount = () => {} }: { hovered: boolean; set
 									{t("Qty")}: {item?.quantity}
 								</span>
 								<span>
-									{item.total}EGP each: {item.price}EGP
+									{item?.total}EGP each: {item?.price}EGP
 								</span>
 							</p>
 						</div>

@@ -69,7 +69,7 @@ const ItemTypes = ({
 					<h2 className="font-semibold mx-auto w-5/6 text-2xl">
 						{subCategoryName}
 					</h2>
-					<div className="items-center md:gap-x-8 md:gap-y-5 mx-auto w-5/6 grid md:grid-cols-10 grid-cols-3">
+					<div className="items-center md:gap-x-8 md:gap-y-5 mx-auto w-5/6 grid md:grid-cols-6 grid-cols-3">
 						{subCategories?.map((item, index) => (
 							<div
 								key={index}

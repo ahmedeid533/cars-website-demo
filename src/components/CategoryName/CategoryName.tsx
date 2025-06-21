@@ -1,13 +1,14 @@
 'use client'
 import FilterAndItems from './FilterAndItems/FilterAndItems'
+import { getOptionSubSubCategories } from "@/libs/get-option-sub-sub-categories";
 import { getCategories } from "@/libs/get-categories";
-import ItemTypes from './ItemTypes'
-import MainSection from './MainSection'
-import TiresTypes from './TiresTypes'
-import OptionMobileBtn from './OptionMobileBtn'
-import { Category, SubCategory, SubCategoryOption } from '@/types'
-import { useLocale } from 'next-intl'
-import { useEffect } from 'react'
+import ItemTypes from "./ItemTypes";
+import MainSection from "./MainSection";
+import TiresTypes from "./TiresTypes";
+import OptionMobileBtn from "./OptionMobileBtn";
+import { Category, SubCategory, SubCategoryOption } from "@/types";
+import { useLocale } from "next-intl";
+import { useEffect } from "react";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -26,24 +27,45 @@ const CategoryName = ({
 	subCategoryOption,
 }: ICategoryName) => {
 	const [subSubCategoryId, setSubSubCategoryId] = useState<number>(-1);
+	const [subCategoryOptions, setSubCategoryOptions] = useState<
+		SubCategoryOption[]
+	>(subCategoryOption || []);
 	const [option, setOption] = useState<string>("");
 	const [subCategoryName_, setSubCategoryName_] = useState<string>("");
 	const [subSubCategoryName_, setSubSubCategoryName_] = useState<string>("");
 	const locale = useLocale();
 	console.log("subCategoryOption ==> ", subCategoryOption);
 
+	useEffect(() => {
+		if (subCategoryOption) {
+			setSubCategoryOptions(subCategoryOption);
+		}
+	}, [subCategoryOption]);
+
+	useEffect(() => {
+		if (subSubCategoryId !== -1) {
+			getOptionSubSubCategories(subSubCategoryId).then((res) => {
+				console.log("res 12354 ==> ", res);
+				if (res) {
+					setSubCategoryOptions(res);
+				}
+			});
+		} else {
+			setSubCategoryOptions(subCategoryOption);
+		}
+	}, [subSubCategoryId]);
 
 	return (
 		<>
 			<MainSection category={category} />
-			{subCategoryOption && subCategoryOption[0] && (
+			{subCategoryOptions && subCategoryOptions[0] && (
 				<div className="font-bold text-xl md:w-[80%] mt-4 md:mt-0 mx-auto pt-3 text-black px-6  bg-[#6F88FF26] ">
-					{locale == "en" ? "size" : "المقاس"}
+					{subCategoryOptions[0]?.name[locale as "en" | "ar"]}
 				</div>
 			)}
 			<div className="flex justify-evenly items-start w-full md:w-[80%] mx-auto mt-0 mb-4 overflow-scroll scroll-hidden bg-[#6F88FF26]">
-				{subCategoryOption &&
-					subCategoryOption[0]?.values.map((option, index) => (
+				{subCategoryOptions &&
+					subCategoryOptions[0]?.values.map((option, index) => (
 						<div
 							key={index}
 							className="font-bold text-xl bg-white text-[#1E1E1E] text-nowrap mx-1 clicks rounded-lg px-8 py-4 m-2 cursor-pointer hover:bg-custom-blue"
@@ -103,7 +125,7 @@ const CategoryName = ({
 						subSubCategoryName={subSubCategoryName_}
 						option={option}
 						optionId={
-							subCategoryOption ? subCategoryOption[0]?.id : 0
+							subCategoryOptions ? subCategoryOptions[0]?.id : 0
 						}
 					/>
 				)}

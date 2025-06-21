@@ -23,21 +23,29 @@ const ItemsInMobile = ({
 			<div
 				className={`grid lg:hidden grid-cols-2 items-center gap-x-2 gap-y-5`}
 			>
-				{items.map((item, index) => (
+				{items?.map((item, index) => (
 					<div
 						key={index}
 						className={`overflow-hidden rounded border border-[#A0A0A0] flex flex-col p-0 items-center`}
 					>
 						<div
-							className={`h-[20vh] w-full flex items-center justify-center overflow-hidden border-b border-b-[#A0A0A0]`}
+							className={`h-[20vh] relative w-full flex items-center justify-center overflow-hidden border-b border-b-[#A0A0A0]`}
 						>
 							<Image
-								src={`${process.env.NEXT_PUBLIC_API}/storage/${item.main_photo}`}
+								src={`${process.env.NEXT_PUBLIC_API}/storage/${item?.main_photo}`}
 								alt={item.name_en}
 								width={200}
 								height={200}
 								className="object-contain h-[200px] w-[200px] p-4"
 							/>
+							{item?.type && (
+								<span
+									className="absolute top-2 left-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded"
+									style={{ zIndex: 2 }}
+								>
+									{item?.type[locale]}
+								</span>
+							)}
 						</div>
 						<div
 							className={`w-full p-2 text-custom-black flex flex-col gap-1 items-center`}
