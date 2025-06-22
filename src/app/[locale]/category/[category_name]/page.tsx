@@ -9,8 +9,8 @@ import { getSubCategories } from "@/libs/get-sub-categories";
 
 type props = {
 	params: Promise<{
-    category_name: string[];
-  }>;
+		category_name: string;
+	}>;
 	searchParams: Promise<{
 		category_id: string;
 		sub_category_id?: string;
@@ -20,8 +20,8 @@ type props = {
 export async function generateMetadata({ params }: props): Promise<Metadata> {
 	const resolvedParams = await params;
 	return {
-		title: `3RABITK | Category | ${resolvedParams.category_name.join(" / ").toUpperCase()}`,
-		description: `Generated for 3RABITK ${resolvedParams.category_name.join(" / ").toUpperCase()} Category`,
+		title: `3RABITK | Category | ${resolvedParams.category_name.toUpperCase()}`,
+		description: `Generated for 3RABITK ${resolvedParams.category_name.toUpperCase()} Category`,
 	};
 }
 
@@ -63,7 +63,7 @@ const page = async ({ params, searchParams }: props) => {
 			category={current_category}
 			hasBrands={hasBrands}
 			sub_subCategories={sub_subCategories}
-			subCategoryName={(await params).category_name.join(" / ")}
+			subCategoryName={(await params).category_name}
 			subCategoryOption={subCategoryOption}
 		/>
 	);
