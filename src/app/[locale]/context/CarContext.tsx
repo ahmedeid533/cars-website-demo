@@ -27,11 +27,15 @@ const CarContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!token || token === '') return
-      const res = (await get_customer_vehicle(token)) as CustomerVehicle[]
-      if (res.length > 0) {
-        setCars(res)
-      }
+			if (!token || token === '') return
+			try {
+				const res = (await get_customer_vehicle(token)) as CustomerVehicle[]
+				if (res.length > 0) {
+					setCars(res)
+				}
+			} catch (error) {
+				console.error('Error fetching customer vehicles:', error)
+			}
     }
     fetchData()
   }, [])

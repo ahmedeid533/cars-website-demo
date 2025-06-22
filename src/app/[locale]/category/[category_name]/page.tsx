@@ -4,29 +4,29 @@ import { getOptionSubCategories } from "@/libs/get-option-sub-categories";
 import { getSub_subCategories } from "@/libs/get-sub-sub-categories";
 import { SubCategory, SubCategoryOption } from "@/types";
 import { Metadata } from "next";
-import { useEffect } from "react";
 import { getMainCategories } from "@/libs/get-main-categories";
 import { getSubCategories } from "@/libs/get-sub-categories";
 
 type props = {
-	params: {
-		category_name: string;
-	};
-	searchParams: {
+	params: Promise<{
+    category_name: string[];
+  }>;
+	searchParams: Promise<{
 		category_id: string;
 		sub_category_id?: string;
-	};
+	}>;
 };
 
 export async function generateMetadata({ params }: props): Promise<Metadata> {
+	const resolvedParams = await params;
 	return {
-		title: `3RABITK | Category | ${params.category_name.toUpperCase()}`,
-		description: `Generated for 3RABITK ${params.category_name.toUpperCase()} Category`,
+		title: `3RABITK | Category | ${resolvedParams.category_name.join(" / ").toUpperCase()}`,
+		description: `Generated for 3RABITK ${resolvedParams.category_name.join(" / ").toUpperCase()} Category`,
 	};
 }
 
 const page = async ({ params, searchParams }: props) => {
-	const { category_id, sub_category_id } = searchParams;
+	const { category_id, sub_category_id } = await searchParams;
 	const categories = category_id !== "1" ? await getCategories() : null;
 	const mainCategory = await getMainCategories();
 	let current_category = categories
@@ -42,9 +42,9 @@ const page = async ({ params, searchParams }: props) => {
 	const hasBrands = sub_category_id === "36" || sub_category_id === "2";
 	let sub_subCategories = [] as SubCategory[];
 	if (sub_category_id) {
-		sub_subCategories = (
-		await getSub_subCategories(Number(sub_category_id))
-		) as SubCategory[];
+		sub_subCategories = (await getSub_subCategories(
+			Number(sub_category_id)
+		)) as SubCategory[];
 	} else {
 		sub_subCategories = (await getSubCategories(
 			Number(category_id)
@@ -63,7 +63,7 @@ const page = async ({ params, searchParams }: props) => {
 			category={current_category}
 			hasBrands={hasBrands}
 			sub_subCategories={sub_subCategories}
-			subCategoryName={params.category_name}
+			subCategoryName={(await params).category_name.join(" / ")}
 			subCategoryOption={subCategoryOption}
 		/>
 	);

@@ -24,7 +24,7 @@ const Items = ({ cart }: { cart: any[] }) => {
 						}}
 					>
 						<Image
-							src={`https://3arbitk.com/storage/${item.product.main_photo}`}
+							src={`${process.env.NEXT_PUBLIC_API}/storage/${item.product.main_photo}`}
 							alt={
 								locale == "en"
 									? item.product.name_en
@@ -44,9 +44,14 @@ const Items = ({ cart }: { cart: any[] }) => {
 						</div>
 						<div className="flex items-center gap-x-10 text-lg font-bold">
 							{/* <SortServices label="QTY" /> */}
-							<div>{locale == "en" ? "quantity: " : "الكميه: "} {item?.quantity}</div>
+							<div>
+								{locale == "en" ? "quantity: " : "الكميه: "}{" "}
+								{item?.quantity}
+							</div>
 							<span>
-								{item.total}EGP {locale == "en" ? "each:" : "كل قطعه:"} {item.price}EGP
+								{item.total}EGP{" "}
+								{locale == "en" ? "each:" : "كل قطعه:"}{" "}
+								{item.price}EGP
 							</span>
 						</div>
 						{/* <div className="rounded border border-custom-blue px-6 py-2 flex items-center w-3/4 gap-2">

@@ -25,19 +25,30 @@ const Cart = () => {
 	const getCart = () => {
 		try {
 			const token = cookie.get("token");
-		if (!token) {
-			router.push("/login");
-		}
-		console.log("token ==> ", token);
-		apiClient(token)
-			.get("/cart")
-			.then((res) => {
-				setCart(res.data.data);
-			})
-			.catch((err) => {
-				console.log("error ==> ", err);
-			});
-		}	catch (error) {
+			if (!token) {
+				router.push("/login");
+			}
+			console.log("token ==> ", token);
+			apiClient(token)
+				.get("/cart")
+				.then((res) => {
+					setCart(res.data.data);
+				})
+				.catch((err) => {
+					console.log("error ==> ", err);
+					if (err.response?.data?.message === "Unauthenticated") {
+						toast.error("Please login to view your cart");
+						setCart({ items: [], total: 0 });
+						// Clear the token from cookies
+						cookie.remove("token", { path: "/" });
+						cookie.remove("customer", { path: "/" });
+						// clear local storage
+						localStorage.clear();
+						// Redirect to login page
+						router.push("/login");
+					}
+				});
+		} catch (error) {
 			console.error("Error fetching cart:", error);
 		}
 	};
@@ -54,7 +65,7 @@ const Cart = () => {
 				console.log("error ==> ", err);
 			});
 	};
-	
+
 	useEffect(() => {
 		getCart();
 	}, []);
@@ -90,8 +101,13 @@ const Cart = () => {
 					<OrderDetails total={cart?.total} />
 					<div className="w-full flex items-center justify-between">
 						<div className="flex items-center justify-center">
-							<Link href={"/category/all"} className="rounded text-white bg-custom-blue  py-3 px-6 font-normal">
-								{locale === "en" ? "Keep Shopping" : "استمر في التسوق"}
+							<Link
+								href={"/category/all"}
+								className="rounded text-white bg-custom-blue  py-3 px-6 font-normal"
+							>
+								{locale === "en"
+									? "Keep Shopping"
+									: "استمر في التسوق"}
 							</Link>
 						</div>
 						<div className="flex items-end justify-end">
@@ -101,7 +117,9 @@ const Cart = () => {
 								}}
 								className="text-custom-blue font-bold"
 							>
-								{locale === "en" ? "Clear The Cart" : "مسح العربة"}
+								{locale === "en"
+									? "Clear The Cart"
+									: "مسح العربة"}
 							</button>
 						</div>
 					</div>

@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Divider, List, ListItem, ListItemButton } from "@mui/material";
 import Link from "next/link";
-import { logout } from '@/action/auth/logout'
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
+import LangChangeModal from "../Navbar/Components/LangChangeModal";
+import { logout } from "@/action/auth/logout";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import Image from "next/image";
-import { makeNotification } from '@/util/makeNotification'
+import { makeNotification } from "@/util/makeNotification";
 import DrawerAccordionList from "../Navbar/Components/CustomDrawer/DrawerAccordionList";
 import { drawerItems } from "@/mocks/drawerItems";
 import { drawerUserInfo } from "@/mocks/drawerUserInfo";
@@ -15,13 +16,13 @@ import { drawerContact } from "@/mocks/drawerConatct";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import VehicleSelectionBtn from "@/components/Navbar/Components/VehicleSelectionBtn";
 import { getCategories } from "@/libs/get-categories";
-import { useTranslations,useLocale } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Category } from "@/types";
 import Cookies from "universal-cookie";
 
-
 const MobileList = () => {
-	const [expanded, setExpanded] = React.useState<string | false>(false);
+	const [expanded, setExpanded] = useState<string | false>(false);
+	const [open, setOpen] = useState(false);
 	const locale = useLocale();
 	const cookie = new Cookies();
 	const user = cookie.get("customer");
@@ -30,6 +31,7 @@ const MobileList = () => {
 
 	const toggleDrawer = () => {};
 	const handleLogout = async () => {
+		if (!token) return;
 		await logout(token)
 			.then((res) => {
 				if (res && res.message) {
@@ -40,8 +42,8 @@ const MobileList = () => {
 				makeNotification("error", err?.message);
 			})
 			.finally(() => {
-				cookie.remove("token");
-				cookie.remove("customer");
+				cookie.remove("token",{path: "/"});
+				cookie.remove("customer", { path: "/" });
 				window.location.href = `/${locale}`;
 			});
 	};
@@ -50,7 +52,7 @@ const MobileList = () => {
 		(event: React.SyntheticEvent, isExpanded: boolean) => {
 			setExpanded(isExpanded ? panel : false);
 		};
-	const [departments, setDepartments] = React.useState<Category[]>([]);
+	const [departments, setDepartments] = useState<Category[]>([]);
 	useEffect(() => {
 		const fetchDepartments = async () => {
 			const response = (await getCategories()) as Category[];
@@ -149,21 +151,39 @@ const MobileList = () => {
 							</>
 						)}
 						<Divider className="mb-10" />
-						{drawerContact.map((link, index) => (
-							<DrawerContactList
-								key={index}
-								link={link}
-								toggleDrawer={function (
-									event:
-										| React.KeyboardEvent
-										| React.MouseEvent
-								): void {
-									throw new Error(
-										"Function not implemented."
-									);
-								}}
+						<button
+							className="flex flex-row items-center gap-2 p-2 m-4 border-[1px] border-custom-black rounded w-auto"
+							onClick={() => setOpen(true)}
+						>
+							<Image
+								src={"/localization.svg"}
+								alt="logo"
+								width={20}
+								height={20}
 							/>
-						))}
+							<span className="text-[#3C3C3C]">
+								{locale === "en" ? "English" : "العربية"}
+							</span>
+						</button>
+						{drawerContact &&
+							drawerContact?.length > 0 &&
+							drawerContact?.map((link, index) => (
+								<DrawerContactList
+									key={index}
+									link={link}
+									toggleDrawer={function (
+										event:
+											| React.KeyboardEvent
+											| React.MouseEvent
+									): void {
+										throw new Error(
+											"Function not implemented."
+										);
+									}}
+								/>
+							))}
+
+						{/* <Divider className="mb-10" /> */}
 						<ListItem disablePadding className="mb-24">
 							<Link href="/trader" className="w-full">
 								<ListItemButton className="flex flex-row items-center gap-3 w-full">
@@ -174,6 +194,8 @@ const MobileList = () => {
 								</ListItemButton>
 							</Link>
 						</ListItem>
+
+						<LangChangeModal open={open} setOpen={setOpen} />
 					</div>
 				</List>
 			</div>

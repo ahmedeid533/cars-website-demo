@@ -35,7 +35,7 @@ const FirstSection = ({ mainInfo }: { mainInfo: MainInfo }) => {
 				<h2>{mainInfo.price}EGP</h2>
 			</div>
 			<p className="text-custom-black text-sm">
-				{locale == "en" ? "In Stock" : "في المخزن"} ({mainInfo.stock}) -{" "}
+				{/* {locale == "en" ? "In Stock" : "في المخزن"} ({mainInfo.stock}) -{" "} */}
 				{locale == "en"
 					? "Ships within 24 hrs in cairo"
 					: " يتم الشحن خلال 24 ساعة في القاهره"}

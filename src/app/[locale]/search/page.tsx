@@ -4,19 +4,20 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 type props = {
-  searchParams: {
+  searchParams: Promise<{
     car_model: string
     car_year: string
     car_brand: string
-  }
+  }>
 }
 
 export async function generateMetadata ({
   searchParams
 }: props): Promise<Metadata> {
+  const params = await searchParams;
   return {
-    title: `3RABITK | ${searchParams.car_year} ${searchParams.car_brand} ${searchParams.car_model}`,
-    description: `Generated for 3RABITK ${searchParams.car_year} ${searchParams.car_brand} ${searchParams.car_model} search`
+    title: `3RABITK | ${params.car_year} ${params.car_brand} ${params.car_model}`,
+    description: `Generated for 3RABITK ${params.car_year} ${params.car_brand} ${params.car_model} search`
   }
 }
 

@@ -41,7 +41,7 @@ const Cart = ({
 	const cookie = new Cookies();
 	const router = useRouter();
 
-	const getCart = () => {
+	const getCart = async () => {
 		const token = cookie.get("token");
 		if (!token) {
 			router.push("/login");
@@ -55,8 +55,20 @@ const Cart = ({
 					setCartItemsCount(res.data.data.items.length);
 				}
 			})
-			.catch((err) => {
-				console.log("error ==> ", err);
+			.catch(async (err) => {
+				console.log("error from cart ==> ", await err.response?.data);
+				if (err.response?.data?.message === "Unauthenticated") {
+					toast.error("Please login to view your cart");
+					setCart({ items: [], total: 0 });
+					setCartItemsCount(0);
+					// Clear the token from cookies
+					cookie.remove("token", { path: "/" });
+					cookie.remove("customer", { path: "/" });
+					// clear local storage
+					localStorage.clear();
+					// Redirect to login page
+					router.push("/login");
+				}
 			});
 	};
 	const clearCart = () => {
@@ -103,7 +115,7 @@ const Cart = ({
 						<div key={index} className="flex flex-col gap-4">
 							<div className="flex flex-row justify-between items-start w-full">
 								<Image
-									src={`https://3arbitk.com/storage/${item?.product?.main_photo}`}
+									src={`${process.env.NEXT_PUBLIC_API}/storage/${item?.product?.main_photo}`}
 									alt={
 										locale == "en"
 											? item?.product?.name_en

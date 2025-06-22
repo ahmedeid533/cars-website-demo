@@ -2,15 +2,16 @@ import OrderDetails from '@/components/Orders/OrderDetails/OrderDetails'
 import { Metadata } from 'next'
 
 type props = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: props): Promise<Metadata> {
+  const resolvedParams = await params;
   return {
-    title: `3RABITK | Order #${params.id}`,
-    description: `Generated for 3RABITK Order #${params.id}`,
+    title: `3RABITK | Order #${resolvedParams.id}`,
+    description: `Generated for 3RABITK Order #${resolvedParams.id}`,
   }
 }
 

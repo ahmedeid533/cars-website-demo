@@ -484,8 +484,8 @@ const Trader = () => {
 										className="w-full bg-custom-blue"
 									>
 										{locale == "en"
-											? "Upload ID Card Photo"
-											: "تحميل صورة بطاقة الهوية"}
+											? "Upload ID Card Photo (Identity Card)"
+											: "(البطاقه الشخصيه) تحميل صورة بطاقة الهوية"}
 									</Button>
 								</label>
 								<div>

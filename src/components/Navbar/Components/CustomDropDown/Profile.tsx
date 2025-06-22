@@ -14,6 +14,7 @@ const Profile = () => {
 	const cookie = new Cookies();
 	const token = cookie.get("token");
 	const handleLogout = async () => {
+		if (!token) return;
 		await logout(token)
 			.then((res) => {
 				if (res && res.message) {
@@ -24,9 +25,11 @@ const Profile = () => {
 				makeNotification("error", err?.message);
 			})
 			.finally(() => {
-				cookie.remove("token");
-				cookie.remove("customer");
-				window.location.href = `/${locale}`;
+				cookie.remove("token", { path: "/" });
+				cookie.remove("customer", { path: "/" });
+				localStorage.clear();
+				console.log("locale logot==> ", locale);
+				window.location.replace(`/${locale}`);
 			});
 	};
 	return (
