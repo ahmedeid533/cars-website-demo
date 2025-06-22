@@ -40,8 +40,12 @@ const SecondPart = () => {
 										: `/product/${elm.id}`
 								}
 								onClick={() => {
-									setValue([])
-									if (document.location.href.includes("/search")) {
+									setValue([]);
+									if (
+										document.location.href.includes(
+											"/search"
+										)
+									) {
 										document.location.href = elm.slug;
 									}
 								}}
@@ -51,7 +55,7 @@ const SecondPart = () => {
 									<div className="text-ellipsis overflow-hidden max-w-[200px] md:max-w-[45vw] whitespace-nowrap">
 										{locale == "en"
 											? elm.name_en
-											: elm.name_ar }
+											: elm.name_ar}
 									</div>
 									<div className="text-[#929292] searchPrice">
 										{elm.price}
@@ -61,7 +65,7 @@ const SecondPart = () => {
 									src={
 										elm.id == 0
 											? elm.main_photo
-											: `https://3arbitk.com/storage/${elm.main_photo}`
+											: `${process.env.NEXT_PUBLIC_API}/storage/${elm.main_photo}`
 									}
 									alt="product"
 									width={50}
