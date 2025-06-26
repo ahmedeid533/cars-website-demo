@@ -13,14 +13,11 @@ import { compressImageFile } from "@/util/compressImages";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { apiClient } from "@/util/axois";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { styled } from "@mui/system";
 import { useLocale } from "next-intl";
 import { useState } from "react";
-import Cookies from "universal-cookie";
-
 const Input = styled("input")({
 	display: "none",
 });
@@ -28,6 +25,7 @@ const Input = styled("input")({
 const Trader = () => {
 	type OptionType = { id: string; name_en: string; name_ar: string };
 
+	const [message, setMessage] = useState("");
 	const [governmentOptions, setGovernmentOptions] = useState<OptionType[]>(
 		[]
 	);
@@ -47,7 +45,6 @@ const Trader = () => {
 	const [id_card_photo, setIdCardPhoto] = useState<File | undefined>();
 	const [store_photo, setStorePhoto] = useState<File | undefined>();
 	const locale = useLocale();
-	const cookie = new Cookies();
 
 	const fetchGovernmentOptions = async () => {
 		try {
@@ -92,7 +89,9 @@ const Trader = () => {
 			console.error("Error fetching city options:", error);
 		}
 	};
-	const handleFileIdChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleFileIdChange = async (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
 		if (event.target.files && event.target.files[0]) {
 			const file = event.target.files[0];
 			console.log("file ==> ", file);
@@ -230,6 +229,11 @@ const Trader = () => {
 				})
 				.then((response) => {
 					console.log("Checkout successful:", response.data);
+					setMessage(
+						locale === "en"
+							? "regist successful"
+							: "تم التسجيل بنجاح"
+					);
 					toast.success(
 						locale === "en"
 							? "regist successful"
@@ -243,7 +247,7 @@ const Trader = () => {
 							toast.error(
 								locale === "en"
 									? error.response.data.errors.email[0]
-									: "البريد الإلكتروني مستخدم بالفعل"
+									: "البريد الإلكتروني مستخدم بالفعل او غير صحيح"
 							);
 						if (error.response.data.errors.password)
 							toast.error(
@@ -288,6 +292,23 @@ const Trader = () => {
 	}, [government]);
 	return (
 		<aside className="py-10 flex items-center justify-center">
+			{message && (
+				<div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+					<div className="bg-white text-center p-6 rounded-lg shadow-lg">
+						<Typography variant="h3" className="text-center">
+							{message}
+						</Typography>
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={() => setMessage("")}
+							className="mt-4 mx-auto"
+						>
+							{locale == "en" ? "Close" : "إغلاق"}
+						</Button>
+					</div>
+				</div>
+			)}
 			<div className="w-5/6 lg:w-2/3 gap-8 flex flex-col items-center justify-center">
 				<Box className="p-6 bg-white shadow-md rounded-lg">
 					<Typography variant="h6" className="mb-4">
