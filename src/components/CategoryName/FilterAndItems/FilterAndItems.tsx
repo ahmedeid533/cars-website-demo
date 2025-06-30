@@ -7,6 +7,7 @@ import Items from "./Items";
 import AdditionalItems from "./AdditionalItems";
 import GetMore from "./GetMore";
 import ItemsInMobile from "./ItemsInMobile";
+import Cookies from "universal-cookie";
 
 const FilterAndItems = ({
 	subSubCategoryId,
@@ -23,6 +24,8 @@ const FilterAndItems = ({
 }) => {
 	const [gridColsNumber, setGridColsNumber] = useState(3);
 	const [products, setProducts] = useState<any[]>([]);
+	const cookie = new Cookies();
+  const token = cookie.get("token");
 
 	interface Product {
 		id: string;
@@ -32,7 +35,7 @@ const FilterAndItems = ({
 	}
 
 	const getProducts = async (supSubId: number): Promise<void> => {
-		apiClient()
+		apiClient(token)
 			.get<{ data: Product[] }>(
 				`/products?sub_subcategory_id=${supSubId}`
 			)
@@ -45,7 +48,7 @@ const FilterAndItems = ({
 			});
 	};
 	const getProductsByOptions = async (option: number): Promise<void> => {
-		apiClient()
+		apiClient(token)
 			.get<{ data: Product[] }>(
 				`/products/by-options?options[${optionId}]=${option}`
 			)
@@ -65,7 +68,7 @@ const FilterAndItems = ({
 		);
 		const all = document.location.href.split("/")[5];
 		console.log("all ==> ", all);
-		apiClient()
+		apiClient(token)
 			.get<{ data: Product[] }>(
 				all == "all" ? "/products":
 				`/products?category_id=${parseInt(

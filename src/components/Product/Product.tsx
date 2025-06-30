@@ -7,6 +7,7 @@ import { Divider } from "@mui/material";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductProps from "./ProductProps/ProductProps";
 import SimilarProducts from "./SimilarProducts";
+import Cookies from "universal-cookie";
 import { apiClient } from "@/util/axois";
 
 
@@ -15,6 +16,8 @@ const Product = ({ id }: { id: string }) => {
 	console.log("idFp ==> ", id);
 	const [value, setValue] = useState(0);
 	const locale = useLocale();
+	const cookie = new Cookies();
+  const token = cookie.get("token");
 	const [product, setProduct] = useState<any>(null);
 
 	interface ProductDetails {
@@ -71,7 +74,7 @@ const Product = ({ id }: { id: string }) => {
 	}
 
 	useEffect(() => {
-		apiClient()
+		apiClient(token)
 			.get(`/products/${id}`)
 			.then((res) => {
 				console.log("res ==> ", res.data.data);
