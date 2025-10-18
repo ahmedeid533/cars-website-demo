@@ -5,6 +5,7 @@ export const apiClient = (token? : string) => {
 		baseURL: `${process.env.NEXT_PUBLIC_API}/api`,
 		headers: {
 			'Content-Type': 'application/json',
+// 'Access-Control-Allow-Origin' : '*',
 			Accept: 'application/json',
 			...(token && {
 				Authorization: `Bearer ${token}`

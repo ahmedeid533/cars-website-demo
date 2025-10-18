@@ -119,7 +119,10 @@ export interface CustomerVehicle {
   is_primary: boolean;
   notes: string | null;
   car_brand: CarBrand;
-  car_model: CarModel;
+car_model : CarModel;
+
+car_image : string | null;
+
   model_year: ModelYear;
   created_at: string;
   updated_at: string;

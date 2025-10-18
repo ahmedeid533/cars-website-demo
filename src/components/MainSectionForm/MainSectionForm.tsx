@@ -38,7 +38,7 @@ const MainSectionForm = ({ setOpen }: IMainSectionForm) => {
     const selectedCar = {
       car_brand_id: carBrandValue.toString(),
       car_model_id: carModelValue.toString(),
-      model_year_id: carYearValue.toString(),
+			model_year_id: carYearValue.toString(),
     }
     carContext?.addCar(selectedCar)
   }

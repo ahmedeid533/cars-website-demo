@@ -94,7 +94,7 @@ const CarContextProvider = ({ children }: { children: React.ReactNode }) => {
       .catch(err => {
         displayErrorMessages(err?.errors as Record<string, string[]>)
       })
-  }
+	}
 
   return (
     <CarContext.Provider value={{ cars, addCar, deleteCarById, setPrimaryCar }}>

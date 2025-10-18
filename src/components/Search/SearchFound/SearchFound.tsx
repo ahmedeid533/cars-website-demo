@@ -4,7 +4,8 @@ import { Category } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import { CarContext } from "@/app/[locale]/context/CarContext";
+import { useContext } from "react";
 type props = {
 	car_model: string | null;
 	car_year: string | null;
@@ -21,6 +22,7 @@ const SearchFound = ({
 	category_tabs,
 	car_brand,
 }: props) => {
+	const carContext = useContext(CarContext);
 	return (
 		<div className="flex flex-col gap-10 custom-container1 pb-20">
 			<div className="flex flex-row items-center gap-20 mt-10">
@@ -38,7 +40,7 @@ const SearchFound = ({
 			</div>
 			<div className="relative w-full h-[30vh] lg:h-[50vh]">
 				<Image
-					src={"/search/item.png"}
+					src={carContext?.cars?.[0]?.car_image || "/search/item.png"}
 					alt={`${car_year} ${car_model} ${car_series}`}
 					fill
 					className="object-contain"
