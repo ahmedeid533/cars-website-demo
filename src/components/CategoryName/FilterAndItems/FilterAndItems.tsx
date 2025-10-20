@@ -42,7 +42,7 @@ const FilterAndItems = ({
 		apiClient(token)
 			.get<{ data: Product[]; meta?: any }>(
 				`/products?sub_subcategory_id=${supSubId}
-										&page=${nextPage}&per_page=15
+										&page=${nextPage}&per_page=12
 
 						`
 			)
@@ -58,7 +58,7 @@ const FilterAndItems = ({
 		apiClient(token)
 			.get<{ data: Product[]; meta?: any }>(
 				`/products/by-options?options[${optionId}]=${option}
-				&page=${nextPage}&per_page=15
+				&page=${nextPage}&per_page=12
 				`
 			)
 			.then((res) => {
@@ -99,7 +99,7 @@ const FilterAndItems = ({
 										10
 								  )
 					  }
-						&page=${nextPage}&per_page=15
+						&page=${nextPage}&per_page=12
 					`
 			)
 			.then((res) => {
@@ -119,20 +119,20 @@ const FilterAndItems = ({
 	useEffect(() => {
 		if (subSubCategoryId === -1) return;
 		getProducts(subSubCategoryId);
-	}, [subSubCategoryId]);
+	}, [subSubCategoryId, nextPage]);
 
 	useEffect(() => {
 		if (option === "") return;
 		getProductsByOptions(parseInt(option, 10));
-	}, [option]);
+	}, [option, nextPage]);
 
 	useEffect(() => {
 		getAllProducts();
 	}, []);
-	useEffect(() => {
-		if (nextPage === 1) return;
-		getAllProducts();
-	}, [nextPage]);
+	// useEffect(() => {
+	// 	if (nextPage === 1) return;
+	// 	getAllProducts();
+	// }, [nextPage]);
 
 	return (
 		<section className="flex flex-col gap-2 mb-10 mt-[2vmax] md:w-[70vw] mx-auto ">
@@ -151,7 +151,7 @@ const FilterAndItems = ({
 						subCategoryName={subCategoryName}
 						subSubCategoryName={subSubCategoryName}
 					/>
-					<GetMore meta={requestMeta} setNextPage={setNextPage} />
+					<GetMore nextPage={nextPage} setNextPage={setNextPage} />
 					{/* <AdditionalItems /> */}
 				</div>
 			</div>

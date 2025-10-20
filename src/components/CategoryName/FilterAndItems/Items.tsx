@@ -91,7 +91,7 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 						{gridColsNumber === 3 && (
 							<>
 								<h6 className="font-bold">
-									{item.selling_price}EGP
+									{item.selling_price} EGP
 								</h6>
 								{/* <p className="text-[#A4A4A4] line-through">
 									$165.09 - $276 .29
@@ -103,7 +103,7 @@ const Items = ({ gridColsNumber, items }: { gridColsNumber: number; items: any[]
 						{gridColsNumber === 1 && (
 							<>
 								<h4 className="text-custom-gray">
-									{item.selling_price}EGP
+									{item.selling_price} EGP
 								</h4>
 								<h5>
 									<span className="text-custom-green font-bold text-4xl">
