@@ -6,7 +6,19 @@ import { SubCategory, SubCategoryOption } from "@/types";
 import { Metadata } from "next";
 import { getMainCategories } from "@/libs/get-main-categories";
 import { getSubCategories } from "@/libs/get-sub-categories";
-
+export async function generateStaticParams() {
+	// 👇 List all your supported locales here
+	return [
+		{
+			locale: "en",
+			category_name: "brakes",
+		},
+		{
+			locale: "ar",
+			category_name: "brakes",
+		},
+	];
+}
 type props = {
 	params: Promise<{
 		category_name: string;

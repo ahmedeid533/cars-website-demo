@@ -11,7 +11,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+		"export": "next export"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -22,6 +23,7 @@
     "@mui/material": "^5.15.19",
     "@mui/x-date-pickers": "^5.0.0",
     "axios": "^1.7.9",
+    "caniuse-lite": "^1.0.30001751",
     "core-js": "^3.37.1",
     "dayjs": "^1.11.13",
     "formik": "^2.4.6",

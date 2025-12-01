@@ -2,7 +2,14 @@ import { Metadata } from "next";
 import PageNotFoundComponent from "./_component";
 import Image from "next/image";
 import React from "react";
-
+export async function generateStaticParams() {
+	// 👇 List all your supported locales here
+	return [
+		{ locale: "en" },
+		{ locale: "ar" },
+		// add more if needed
+	];
+}
 export const metadata: Metadata = {
 	title: "3RABITK | 404 Not Found",
 	description: "Generated for 3RABITK",

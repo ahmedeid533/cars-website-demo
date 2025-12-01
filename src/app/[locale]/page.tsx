@@ -6,7 +6,14 @@ import { getLogos } from '@/libs/get-logos'
 import { getMainCategories } from '@/libs/get-main-categories'
 import { Banner, BannerFooter, Category, Logo } from '@/types'
 import { Metadata } from 'next'
-
+export async function generateStaticParams() {
+	// 👇 List all your supported locales here
+	return [
+		{ locale: "en" },
+		{ locale: "ar" },
+		// add more if needed
+	];
+}
 export const metadata: Metadata = {
   title: '3ARBITK | Homepage',
   description: 'Generated for 3ARBITK, auto space parts'

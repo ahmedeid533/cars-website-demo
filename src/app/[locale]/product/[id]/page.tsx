@@ -1,6 +1,19 @@
 import Product from "@/components/Product/Product"
 import { Metadata } from "next"
-
+export async function generateStaticParams() {
+	// 👇 List all your supported locales here
+	return [
+		{
+			locale: "en",
+			id: "1",
+			
+		 },
+		{
+			locale: "ar",
+			id:"1"
+		 },
+	];
+}
 type props = {
 	params: Promise<{
 		id: string;

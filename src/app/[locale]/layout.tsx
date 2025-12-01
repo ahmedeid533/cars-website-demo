@@ -7,7 +7,14 @@ import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { Flip, ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
-
+export async function generateStaticParams() {
+	// 👇 List all your supported locales here
+	return [
+		{ locale: "en" },
+		{ locale: "ar" },
+		// add more if needed
+	];
+}
 export const metadata: Metadata = {
   title: '3ARBITK',
   description: 'Generated for 3ARBITK, auto space parts'
