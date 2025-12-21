@@ -12,7 +12,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-		"export": "next export"
+    "export": "next export"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -28,7 +28,7 @@
     "dayjs": "^1.11.13",
     "formik": "^2.4.6",
     "framer-motion": "^11.2.13",
-    "next": "^15.3.4",
+    "next": "15.3.8",
     "next-intl": "3.5",
     "nextjs-toploader": "^1.6.12",
     "react": "^18",
